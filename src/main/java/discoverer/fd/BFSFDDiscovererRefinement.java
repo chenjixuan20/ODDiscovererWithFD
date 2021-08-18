@@ -5,12 +5,10 @@ import dataStructures.*;
 import java.util.*;
 
 import dataStructures.fd.*;
-import dataStructures.fd.Array.FDTreeArray;
-import discoverer.fd.Array.FDDiscoverNodeSavingInfoArray;
 import util.Timer;
 
 
-public class BFSFDDiscoverer {
+public class BFSFDDiscovererRefinement {
     public  long keyPruneTimes = 0;
 
     /**
@@ -196,7 +194,7 @@ public class BFSFDDiscoverer {
         System.out.println("refinement方法：");
         System.gc();
         Timer timer1 = new Timer();
-        List<FDCandidate> result1 = new BFSFDDiscoverer().discoverCandidateRefinement(data);
+        List<FDCandidate> result1 = new BFSFDDiscovererRefinement().discoverCandidateRefinement(data);
         System.out.println(timer1.getTimeUsedAndReset() / 1000.0 + "s");
         System.out.println(result1);
         System.out.println(result1.size());

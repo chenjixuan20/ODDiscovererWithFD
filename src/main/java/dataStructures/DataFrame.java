@@ -15,6 +15,7 @@ public class DataFrame {
     public List<String> getColumnName() {
         return columnName;
     }
+
     public void setColumnName(List<String> columnName) {
         this.columnName = columnName;
     }

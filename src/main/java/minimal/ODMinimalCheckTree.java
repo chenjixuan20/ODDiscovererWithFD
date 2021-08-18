@@ -68,6 +68,7 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
     @Override
     public boolean isListMinimal(List<AttributeAndDirection> list){
         HashMap<Integer,Integer> attribute2Index=new HashMap<>();
+        //attribute和list中的index对应
         for (int i = 0; i < list.size(); i++) {
             attribute2Index.put(list.get(i).attribute,i);
         }
@@ -75,7 +76,8 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
             list=reverseDirection(list);
         }
         ODMinimalCheckTreeNode node=root;
-        for(int i=list.size()-1;i>=0;i--){
+        for(int i=list.size()-1; i>=0; i--) {
+            //得到list中的最后一个元素，也就是expandAttribute
             AttributeAndDirection attributeAndDirection=list.get(i);
             node=node.children[attributeAndDirection2childrenIndex(attributeAndDirection)];
             if(node==null)

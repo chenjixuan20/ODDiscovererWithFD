@@ -2,8 +2,6 @@ import dataStructures.DataFrame;
 import dataStructures.fd.FDCandidate;
 import dataStructures.od.ODCandidate;
 import discoverer.fd.Array.BFSFDDiscovererArray;
-import discoverer.fd.BFSFDDiscoverer;
-import discoverer.fd.FDToODSavingInfo;
 import util.Timer;
 import dataStructures.od.ODTree;
 import discoverer.od.BFSODDiscovererFull;
@@ -13,7 +11,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        DataFrame data = DataFrame.fromCsv("Data/FLI 100K.csv");
+        DataFrame data = DataFrame.fromCsv("Data/FLI 10K.csv");
 //        DataFrame data = DataFrame.fromCsv("Data/echocardiogram.csv");
 
 //        System.out.println("将FD中的等价类转化为OD中的");
@@ -42,7 +40,7 @@ public class Main {
         System.out.println("fd时间:"+ timerfd2.getTimeUsedAndReset()/1000.0 + "s");
         System.out.println("发现FDs的数量： " + fds.size());
         Timer timerod2 = new Timer();
-        ODTree discover2 = new BFSODDiscovererFull().discoverFD(data, fds);
+        ODTree discover2 = new BFSODDiscovererFull().discover(data);
         List<ODCandidate> ods2 = discover2.getAllOdsOrderByBFS();
         System.out.println("od时间:"+ timerod2.getTimeUsedAndReset()/1000.0 + "s");
         System.out.println("最终时间:"+ timer2.getTimeUsedAndReset()/1000.0 + "s");

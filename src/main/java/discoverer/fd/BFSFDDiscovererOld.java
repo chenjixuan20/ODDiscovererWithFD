@@ -50,7 +50,7 @@ public class BFSFDDiscovererOld {
                         child.fdRHSCandidate.set(k, false);
                     }else{
                         fdTreeNodeEquivalenceClasses.initializeRight(k, data);
-                        String fdResult = fdTreeNodeEquivalenceClasses.checkFD();
+                        String fdResult = fdTreeNodeEquivalenceClasses.checkFDOld();
 //                            System.out.println("----" + fdResult);
                         if(fdResult == "non-valid"){
                             child.fdRHSCandidate.set(k, false);

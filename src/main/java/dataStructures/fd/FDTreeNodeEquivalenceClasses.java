@@ -47,7 +47,7 @@ public class FDTreeNodeEquivalenceClasses{
      * 传统的fd检测方法
      * @return
      */
-    public String checkFD(){
+    public String checkFDOld(){
         Timer timer =new Timer();
         int[] mapToRight = getRowToRightClusterIndex();
         if(left.clusterBegins.size() == (left.indexes.length + 1)){
@@ -195,9 +195,18 @@ public class FDTreeNodeEquivalenceClasses{
     public FDValidationResult checkFDRefinement(int attribute, DataFrame data){
         FDValidationResult result = new FDValidationResult();
         Timer timer = new Timer();
-//        if(left.clusterBegins.size() == (left.indexes.length + 1)){
-//           return "valid";
-//        }
+        //处理根节点
+        if(this.left.indexes == null){
+            EquivalenceClass newLeft = new EquivalenceClass();
+            newLeft.fdMerge(attribute, data);
+            if(newLeft.clusterBegins.size() == 2){
+                result.status = "valid";
+                return result;
+            }else{
+                result.status = "non-valid";
+                return result;
+            }
+        }
         int clusterNum = left.clusterBegins.size();
         EquivalenceClass newLeft = left.deepClone();
         newLeft.fdMerge(attribute, data);

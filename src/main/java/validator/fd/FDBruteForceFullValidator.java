@@ -10,9 +10,6 @@ import java.util.*;
 
 public class FDBruteForceFullValidator extends FDValidator {
 
-    Map<FDCandidate, Boolean> map = new HashMap<>();
-
-
     @Override
     public Set<Integer> validate(List<FDCandidate> fds, DataFrame data){
         Set<Integer> result =new HashSet<>();

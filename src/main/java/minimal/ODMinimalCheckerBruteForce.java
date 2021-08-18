@@ -18,15 +18,11 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
     public boolean isListMinimalFD(List<AttributeAndDirection> expandList, List<FDCandidate> fdCandidates){
         if(expandList.size() == 1) return true;
         int expandAttribute = expandList.get(expandList.size() - 1).attribute;
-        int beforeExpandAttribute = expandList.get(expandList.size() - 2).attribute;
         List<List<Integer>> leftOfExpandRight = new ArrayList<>();
-        List<Integer> rightOfExpandInLeft = new ArrayList<>();
-        for(int i = 0; i < fdCandidates.size(); i++){
-            if(fdCandidates.get(i).right == expandAttribute){
-                leftOfExpandRight.add(fdCandidates.get(i).left);
-            }
-            if(fdCandidates.get(i).left.size()== 1 && fdCandidates.get(i).left.get(0) == expandAttribute){
-                rightOfExpandInLeft.add(fdCandidates.get(i).right);
+        //这个地方可以优化，可以不传List，传一个Map会更快
+        for (FDCandidate fdCandidate : fdCandidates) {
+            if (fdCandidate.right == expandAttribute) {
+                leftOfExpandRight.add(fdCandidate.left);
             }
         }
 
@@ -36,8 +32,8 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
         }
 
         //FD前推后
-        for(int i = 0; i < leftOfExpandRight.size(); i++){
-            if(expandListAttributes.containsAll(leftOfExpandRight.get(i)))
+        for (List<Integer> integers : leftOfExpandRight) {
+            if (expandListAttributes.containsAll(integers))
                 return false;
         }
 
@@ -101,11 +97,10 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
         return -1;
     }
 
-
     public static boolean m(List<Integer> expandList, List<List<Integer>> leftOfExpandRight){
 
-        for(int i = 0; i < leftOfExpandRight.size(); i++){
-            if(expandList.containsAll(leftOfExpandRight.get(i)))
+        for (List<Integer> integers : leftOfExpandRight) {
+            if (expandList.containsAll(integers))
                 return false;
         }
         return true;
