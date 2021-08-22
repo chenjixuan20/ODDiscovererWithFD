@@ -4,7 +4,6 @@ import dataStructures.PartialDataFrame;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.FDCandidate;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
-import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
 import discoverer.fd.Array.BFSFDDiscovererArray;
@@ -19,10 +18,15 @@ import sampler.RandomSampler;
 import util.Timer;
 import validator.fd.FDBruteForceFullValidator;
 import validator.fd.FDIncrementalValidator;
+import validator.fd.FDTreeIncrementalValidator;
 import validator.od.ODBruteForceFullValidator;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -68,24 +72,6 @@ public class test {
         }
         System.out.println("---");
         System.out.println(result.getRealIndexes());
-    }
-
-    @Test
-    public void testTwoTime(){
-        DataFrame data = DataFrame.fromCsv("Data/fd 15 1000.csv");
-        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
-//        RandomSampler sampler = new RandomSampler();
-        PartialDataFrame result = sampler.sample(data);
-        System.out.println("抽样大小：" + result.getRowCount());
-        util.Timer timer = new Timer();
-        ODTree discover = new BFSODDiscovererFull().discover(result);
-        System.out.println(timer.getTimeUsed() / 1000.0 + "s");
-        ODBruteForceFullValidator validator = new ODBruteForceFullValidator();
-        Set<Integer> newVios = validator.validate(discover,data);
-        System.out.println(newVios);
-        List<ODCandidate> ods = discover.getAllOdsOrderByBFS();
-        System.out.println(ods);
-        System.out.println("发现od数量："+ods.size());
     }
 
     @Test
@@ -163,7 +149,7 @@ public class test {
         while (true){
             i++;
             System.out.println("第" + i + "轮：");
-            fds = discoverer.discoverCandidateRefinementMorePrune(result).fdCandidates;
+            fds = discoverer.discoverCandidateRefinementFromNull(result).fdCandidates;
             System.out.println(fds);
             System.out.println("发现fd数量： " + fds.size());
 
@@ -178,14 +164,23 @@ public class test {
     }
 
     @Test
-    public void  testFDValidatorPro(){
+    public void  testFDValidatorPro() throws IOException {
+//        File f=new File("out.txt");
+//        f.createNewFile();
+//        FileOutputStream fileOutputStream = new FileOutputStream(f);
+//        PrintStream printStream = new PrintStream(fileOutputStream);
+//        System.setOut(printStream);
+//        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
+
         DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
         Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame result = sampler.sample(data);
         System.out.println("抽样数据集大小：" + result.getRowsCount());
+        System.out.println("抽样数据集原始索引： " + result.getRealIndexes());
         List<FDCandidate> fds;
-        FDIncrementalValidator validator = new FDIncrementalValidator();
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
+//        FDIncrementalValidator validator = new FDIncrementalValidator();
         BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
         FDTreeArray reference = null;
         int i = 0;
@@ -193,35 +188,27 @@ public class test {
             i++;
             System.out.println("第" + i + "轮：");
             if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePrune(result);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }else {
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidateBrief(result, reference);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }
             System.out.println(fds);
             System.out.println("发现fd数量： " + fds.size());
             Set<Integer> rows= validator.validate(fds,data);
-            if(rows.isEmpty())
+            if(rows.isEmpty()){
+                System.out.println("违约元组数:" + rows.size());
                 break;
+            }
             System.out.println("违约元组数:" + rows.size());
             result.addRows(rows);
             System.out.println("新数据集大小：" + result.getRowCount());
+//            System.out.println("新数据集原始索引： " + result.getRealIndexes());
         }
         System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
-    }
-
-    @Test
-    public void testFDRefinementArray(){
-        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
-        Timer time = new Timer();
-        BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
-        List<FDCandidate> fds = discoverer.discoverCandidateRefinementMorePrune(data).fdCandidates;
-        System.out.println(time.getTimeUsed() / 1000.0 + "s");
-        System.out.println(fds);
-        System.out.println(fds.size());
     }
 
     @Test
@@ -241,11 +228,11 @@ public class test {
             i++;
             System.out.println("第" + i + "轮：");
             if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePrune(result);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }else {
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidateBrief(result, reference);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }
@@ -351,6 +338,86 @@ public class test {
         System.out.println(timer.getTimeUsedAndReset() / 1000.0 + "s");
         System.out.println(fds);
         System.out.println(fds.size());
+        for(int i = 0; i < 20; i++){
+            FDCandidate fd = fds.get(i);
+            System.out.println("fd: "+fd);
+            System.out.println("left form node: "+getLeftFormNode(fd.fdTreeNode));
+            System.out.println("node attribute: " + fd.fdTreeNode);
+            System.out.println("node parent attribute: "+fd.fdTreeNode.parent);
+        }
+    }
+
+    public List<Integer> getLeftFormNode(FDTreeArray.FDTreeNode node){
+        List<Integer> left = new ArrayList<>();
+        FDTreeArray.FDTreeNode index = node;
+        while (index.parent != null){
+            left.add(index.attribute);
+            index = index.parent;
+        }
+        Collections.reverse(left);
+        return left;
+    }
+
+    @Test
+    public void testTwoTime() throws IOException {
+        File f=new File("out.txt");
+        f.createNewFile();
+        FileOutputStream fileOutputStream = new FileOutputStream(f);
+        PrintStream printStream = new PrintStream(fileOutputStream);
+        System.setOut(printStream);
+        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
+        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+        Timer timer = new Timer();
+        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
+        PartialDataFrame result = sampler.sample(data);
+        System.out.println("抽样数据集大小：" + result.getRowsCount());
+        System.out.println("抽样数据集原始索引： " + result.getRealIndexes());
+        List<FDCandidate> fds;
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
+        BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
+        FDTreeArray reference = null;
+        DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
+        fds = discoverResult.fdCandidates;
+        reference = discoverResult.FDTree;
+        System.out.println(fds);
+        System.out.println("发现fd数量： " + fds.size());
+        Set<Integer> rows= validator.validate(fds,data);
+        System.out.println("违约元组数:" + rows.size());
+        System.out.println("违约元组: "+ rows);
+        result.addRows(rows);
+        System.out.println("新数据集大小：" + result.getRowCount());
+        System.out.println("新数据集原始索引： " + result.getRealIndexes());
+        System.out.println("新数据集原始索引是否保护违约元组： " + result.getRealIndexes().containsAll(rows));
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        System.out.println("-------------------第二轮----------------------");
+        discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
+        fds = discoverResult.fdCandidates;
+        reference = discoverResult.FDTree;
+        System.out.println(fds);
+        System.out.println("发现fd数量： " + fds.size());
+        rows= validator.validate(fds,data);
+        System.out.println("违约元组数:" + rows.size());
+        result.addRows(rows);
+        System.out.println("新数据集大小：" + result.getRowCount());
+        System.out.println("新数据集原始索引： " + result.getRealIndexes());
+    }
+
+    @Test
+    public void test(){
+        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+        FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
+        System.out.println(fdTreeNodeEquivalenceClasses);
+        fdTreeNodeEquivalenceClasses.mergeLeftNode(7, data);
+        System.out.println(fdTreeNodeEquivalenceClasses);
+
     }
 
 }

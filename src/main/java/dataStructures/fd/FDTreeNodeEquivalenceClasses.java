@@ -146,7 +146,7 @@ public class FDTreeNodeEquivalenceClasses{
                         break;
                     }
                 }
-                //发现1对vio-rows
+                //发现3对vio-rows
                 if(rowPairs.size() > 1) break;
                 pre = rear;
                 new_pre = new_rear;
@@ -248,8 +248,7 @@ public class FDTreeNodeEquivalenceClasses{
     @Override
     public String toString() {
         return "FDTreeNodeEquivalenceClasses:{ " +
-                " left: " + left +
-                ", right: " + right + "}";
+                " left: " + left + "}";
     }
 
     public FDTreeNodeEquivalenceClasses deepClone(){

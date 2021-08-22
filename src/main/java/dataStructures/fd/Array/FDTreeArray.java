@@ -1,5 +1,7 @@
 package dataStructures.fd.Array;
 
+import dataStructures.fd.FDTreeNodeEquivalenceClasses;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class FDTreeArray {
 //        public Boolean[] vaildInComplete;
         public List<FDTreeNode> children;
         public List<Integer> vaildRhsInTotal;
+        public FDTreeNodeEquivalenceClasses ecInDataSet;
 
         public FDTreeNode(){}
 
@@ -88,6 +91,10 @@ public class FDTreeArray {
             return fdRight;
         }
 
+        @Override
+        public String toString() {
+            return "attribute: " + (attribute+1);
+        }
     }
 
 }

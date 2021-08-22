@@ -33,7 +33,7 @@ public class Main {
         System.gc();
         Timer timer2 = new Timer();
         Timer timerfd2 = new Timer();
-        List<FDCandidate> fds = new BFSFDDiscovererArray().discoverCandidateRefinementMorePrune(data).fdCandidates;
+        List<FDCandidate> fds = new BFSFDDiscovererArray().discoverCandidateRefinementFromNull(data).fdCandidates;
 //        for(FDCandidate fd:fds){
 //            System.out.println(fd);
 //        }
