@@ -147,7 +147,7 @@ public class FDTreeNodeEquivalenceClasses{
                     }
                 }
                 //发现3对vio-rows
-                if(rowPairs.size() > 1) break;
+                if(rowPairs.size() > 3) break;
                 pre = rear;
                 new_pre = new_rear;
                 rear ++;
@@ -165,25 +165,36 @@ public class FDTreeNodeEquivalenceClasses{
         return choosePairs;
     }
 
-    /**
-     * 有问题
-     * @param leftBegin
-     * @param newLeftBegin
-     * @return
-     */
-    public List<Integer> getVioHelperLessRow( List<Integer> leftBegin, List<Integer> newLeftBegin){
-        List<Integer> rowIndexs = new ArrayList<>();
+    public static List<Integer> getVioHelperLessRow( List<Integer> leftBegin, List<Integer> newLeftBegin){
+        List<Integer> rowPairIndex = new ArrayList<>();
         int pre = 0;
-        int rear = 0;
-        while (pre < leftBegin.size()) {
-            if(leftBegin.get(pre).equals(newLeftBegin.get(rear))){
+        int rear = 1;
+        int new_pre = 0;
+        int new_rear = 1;
+        while (rear < leftBegin.size() && new_rear < newLeftBegin.size()) {
+            if(leftBegin.get(rear).equals(newLeftBegin.get(new_rear))){
                 pre++;
                 rear++;
-            }else break;
+                new_pre++;
+                new_rear++;
+            }else{
+                //找到了leftBegin中被分割了的cluste 并找到该cluster中最后一个分割点
+                while (true){
+                    if(new_rear < newLeftBegin.size() && !leftBegin.get(rear).equals(newLeftBegin.get(new_rear))){
+                        new_rear++;
+                    }else{
+                        int MAX = new_rear-1;
+                        int MIN = new_pre;
+                        rowPairIndex.add(newLeftBegin.get(MIN));
+                        rowPairIndex.add(newLeftBegin.get(MAX));
+                        break;
+                    }
+                }
+            }
+            if(rowPairIndex.size() != 0)
+                break;
         }
-       rowIndexs.add(newLeftBegin.get(rear));
-       rowIndexs.add(newLeftBegin.get(rear-1));
-        return rowIndexs;
+        return rowPairIndex;
     }
 
     /**
@@ -217,16 +228,16 @@ public class FDTreeNodeEquivalenceClasses{
         }
         else{
             result.status = "non-valid";
-//            List<Integer> indexs = getVioHelper(left.clusterBegins, newLeft.clusterBegins);
-//            for(Integer index : indexs){
-//                result.violationRows.add(left.indexes[index]);
-//            }
-            List<Set<Integer>> rowPairs = getVioHelperMoreCluster(left.clusterBegins, newLeft.clusterBegins);
-            for(Set<Integer> pairs : rowPairs){
-                for(Integer row : pairs){
-                    result.violationRows.add(left.indexes[row]);
-                }
+            List<Integer> indexs = getVioHelperLessRow(left.clusterBegins, newLeft.clusterBegins);
+            for(Integer index : indexs){
+                result.violationRows.add(newLeft.indexes[index]);
             }
+//            List<Set<Integer>> rowPairs = getVioHelperMoreCluster(left.clusterBegins, newLeft.clusterBegins);
+//            for(Set<Integer> pairs : rowPairs){
+//                for(Integer row : pairs){
+//                    result.violationRows.add(left.indexes[row]);
+//                }
+//            }
         }
         return result;
    }

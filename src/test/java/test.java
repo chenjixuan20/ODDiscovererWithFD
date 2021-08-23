@@ -4,6 +4,7 @@ import dataStructures.PartialDataFrame;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.FDCandidate;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
+import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
 import discoverer.fd.Array.BFSFDDiscovererArray;
@@ -25,10 +26,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static dataStructures.fd.PLI.FDEquivalenceClass.changeToPLI;
 
 public class test {
     @Test
@@ -171,13 +171,12 @@ public class test {
 //        PrintStream printStream = new PrintStream(fileOutputStream);
 //        System.setOut(printStream);
 //        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
-
-        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+        DataFrame data = DataFrame.fromCsv("Data/bridges-int.csv");
         Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
-        PartialDataFrame result = sampler.sample(data);
-        System.out.println("抽样数据集大小：" + result.getRowsCount());
-        System.out.println("抽样数据集原始索引： " + result.getRealIndexes());
+        PartialDataFrame sampleData = sampler.sample(data);
+        System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
+//        System.out.println("抽样数据集原始索引： " + sampleData.getRealIndexes());
         List<FDCandidate> fds;
         FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
 //        FDIncrementalValidator validator = new FDIncrementalValidator();
@@ -188,11 +187,11 @@ public class test {
             i++;
             System.out.println("第" + i + "轮：");
             if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(sampleData);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }else {
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
+                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(sampleData, reference);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }
@@ -204,8 +203,9 @@ public class test {
                 break;
             }
             System.out.println("违约元组数:" + rows.size());
-            result.addRows(rows);
-            System.out.println("新数据集大小：" + result.getRowCount());
+//            System.out.println("违约元组:" + rows);
+            sampleData.addRows(rows);
+            System.out.println("新数据集大小：" + sampleData.getRowCount());
 //            System.out.println("新数据集原始索引： " + result.getRealIndexes());
         }
         System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
@@ -413,10 +413,67 @@ public class test {
     @Test
     public void test(){
         DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
-        FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
-        System.out.println(fdTreeNodeEquivalenceClasses);
-        fdTreeNodeEquivalenceClasses.mergeLeftNode(7, data);
-        System.out.println(fdTreeNodeEquivalenceClasses);
+        for(int i = 0; i < data.getRowCount(); i++){
+            System.out.println("第" + i +"行:");
+            System.out.println(data.getRow(i));
+        }
+        FDTreeNodeEquivalenceClasses A = new FDTreeNodeEquivalenceClasses();
+        A.mergeLeftNode(6, data);
+        System.out.println(A);
+        List<Integer> begins = A.left.clusterBegins;
+        System.out.println("A PLI: " + changeToPLI(A.left));
+        System.out.println("begins: " + begins);
+
+        System.out.println();
+
+        FDTreeNodeEquivalenceClasses AX = new FDTreeNodeEquivalenceClasses();
+        AX.mergeLeftNode(6, data);
+        AX.mergeLeftNode(11, data);
+        System.out.println(AX);
+        List<Integer> newBegins = AX.left.clusterBegins;
+        System.out.println("AX PLI: " + changeToPLI(AX.left));
+        System.out.println("newBegins: " + newBegins);
+
+        System.out.println();
+
+        List<Integer> rowsIndex = FDTreeNodeEquivalenceClasses.getVioHelperLessRow(begins,newBegins);
+        System.out.println("rowsIndex: " + rowsIndex);
+        List<Integer> rows = new ArrayList<>();
+        for(Integer rowIndex: rowsIndex){
+            rows.add(AX.left.indexes[rowIndex]);
+        }
+        System.out.println("rows: " + rows);
+
+        for(Integer row: rows){
+            System.out.println("第" + row +"行： ");
+            System.out.println(data.getRow(row));
+        }
+
+
+    }
+
+    @Test
+    public void  testS(){
+        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
+        PartialDataFrame sample = sampler.sample(data);
+        System.out.println(sample.getRowCount());
+        System.out.println(sample.getRealIndexes());
+        FDTreeNodeEquivalenceClasses A = new FDTreeNodeEquivalenceClasses();
+        A.mergeLeftNode(6, sample);
+        FDValidationResult fdValidationResult = A.checkFDRefinement(11, sample);
+        System.out.println(fdValidationResult.status);
+
+
+        sample.addRow(90);
+        sample.addRow(122);
+        FDTreeNodeEquivalenceClasses newA = new FDTreeNodeEquivalenceClasses();
+        newA.mergeLeftNode(6, sample);
+        fdValidationResult = newA.checkFDRefinement(11, sample);
+        System.out.println(fdValidationResult.status);
+
+
+
 
     }
 

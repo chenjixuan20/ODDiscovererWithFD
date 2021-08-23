@@ -40,7 +40,10 @@ public class PartialDataFrame extends DataFrame {
 
     public void addRow(int row){
         if(!rowIndexes.contains(row)){
+//            System.out.println("addRow");
             rowIndexes.add(row);
+//            System.out.println("row: " + row);
+//            System.out.println(originalDataFrame.getRow(row));
             data.add(originalDataFrame.getRow(row));
             realIndexes.add(row);
         }

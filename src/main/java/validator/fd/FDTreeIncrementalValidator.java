@@ -14,8 +14,8 @@ public class FDTreeIncrementalValidator extends FDValidator {
     public Set<Integer> validate(List<FDCandidate> fds, DataFrame data) {
         Set<Integer> result =new HashSet<>();
         fds = chooseFDs(fds);
-        System.out.println("被选fds：");
-        System.out.println(fds);
+//        System.out.println("被选fds：");
+//        System.out.println(fds);
         System.out.println("choose FD number: " + fds.size());
         for(FDCandidate fd: fds) {
             FDTreeArray.FDTreeNode node = fd.fdTreeNode;
@@ -34,6 +34,8 @@ public class FDTreeIncrementalValidator extends FDValidator {
 //                System.out.println("n-v");
 //                System.out.println(fdResult.violationRows);
                 result.addAll(fdResult.violationRows);
+                if(result.size() > 100)
+                    break;
             }
         }
         return result;

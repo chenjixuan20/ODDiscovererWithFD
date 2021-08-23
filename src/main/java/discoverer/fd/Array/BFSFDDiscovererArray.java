@@ -8,8 +8,6 @@ import dataStructures.fd.FDValidationResult;
 
 import java.util.*;
 
-import static validator.fd.FDTreeIncrementalValidator.getLeftFromNode;
-
 public class BFSFDDiscovererArray {
     List<FDCandidate> fdCandidates = new ArrayList<>();
     Map<Integer, Boolean[]> attributeToConfirmed = new HashMap<>();
@@ -213,6 +211,8 @@ public class BFSFDDiscovererArray {
         FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
         List<Integer> left;
         Boolean[] parentRHSCandidate;
+        //还原minimal
+        Arrays.fill(node.minimal, false);
         if(isLevel1){
             fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
             left = new ArrayList<>();
@@ -252,12 +252,13 @@ public class BFSFDDiscovererArray {
                 }
             }
         }
-        //第一层的RHS收集到起来，补充剪枝策略1
+
         if(isLevel1) attributeToConfirmed.put(node.attribute, node.RHSCandidate);
         //验证是否为最小
         else {
             node.minimal = checkFDMinimalArray(node, parent, left, fdCandidates, attributeToConfirmed.get(node.attribute));
         }
+
         for(int j = 0; j <  data.getColumnCount(); j++){
             if(node.minimal[j]){
                 fdCandidates.add(new FDCandidate(left, j, node));
@@ -292,10 +293,10 @@ public class BFSFDDiscovererArray {
 
     public boolean hasSubSet(List<Integer> left, int right, List<FDCandidate> fdCandidates){
         boolean result = false;
-        for(int i = 0; i < fdCandidates.size(); i++){
-            if(fdCandidates.get(i).right == right){
-                result = left.containsAll(fdCandidates.get(i).left);
-                if(result) break;
+        for (FDCandidate fdCandidate : fdCandidates) {
+            if (fdCandidate.right == right) {
+                result = left.containsAll(fdCandidate.left);
+                if (result) break;
             }
         }
         return result;
@@ -349,6 +350,7 @@ public class BFSFDDiscovererArray {
         }
         return result;
     }
+
 
     /**
      * 从第一层开始，没有考虑[]->x这类fds
