@@ -9,11 +9,10 @@ import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.FDToODSavingInfo;
 import minimal.ODMinimalChecker;
 import minimal.ODMinimalCheckerBruteForce;
-import util.Timer;
 
 import java.util.*;
 
-public class BFSODDiscovererFull extends ODDiscover {
+public class BFSODDiscovererFull extends ODDiscoverer {
 
     public static List<AttributeAndDirection> cloneAttributeAndDirectionList(List<AttributeAndDirection> list) {
         List<AttributeAndDirection> newList = new ArrayList<>();
@@ -24,8 +23,13 @@ public class BFSODDiscovererFull extends ODDiscover {
     }
 
     @Override
+    public ODTree discover(DataFrame data, ODTree reference) {
+        return null;
+    }
+
+    @Override
     public ODTree discoverFD(DataFrame data, List<FDCandidate> fdCandidates) {
-        Queue<ODDiscoverNodeSavingInfo> queue = new LinkedList<>();
+        Queue<ODDiscovererNodeSavingInfo> queue = new LinkedList<>();
         int attributeCount = data.getColumnCount();
         ODTree reslut = new ODTree(attributeCount);
         ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
@@ -34,11 +38,11 @@ public class BFSODDiscovererFull extends ODDiscover {
         for (int attribute = 0; attribute < attributeCount; attribute++) {
             ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses = new ODTreeNodeEquivalenceClasses();
             odTreeNodeEquivalenceClasses.mergeNode(reslut.getRoot().children[attribute], data);
-            queue.offer(new ODDiscoverNodeSavingInfo(reslut.getRoot().children[attribute], odTreeNodeEquivalenceClasses));
+            queue.offer(new ODDiscovererNodeSavingInfo(reslut.getRoot().children[attribute], odTreeNodeEquivalenceClasses));
         }
 
         while (!queue.isEmpty()) {
-            ODDiscoverNodeSavingInfo info = queue.poll();
+            ODDiscovererNodeSavingInfo info = queue.poll();
             ODTree.ODTreeNode parent = info.nodeInResultTree;
             for (int attribute = 0; attribute < attributeCount * 2; attribute++) {
                 ODTree.ODTreeNode child;
@@ -59,7 +63,7 @@ public class BFSODDiscovererFull extends ODDiscover {
                     odMinimalChecker.insert(childCandidate);
                 }
                 if (child.status != ODTree.ODTreeNodeStatus.SWAP) {
-                    queue.offer(new ODDiscoverNodeSavingInfo(child, odTreeNodeEquivalenceClasses));
+                    queue.offer(new ODDiscovererNodeSavingInfo(child, odTreeNodeEquivalenceClasses));
                 }
             }
         }
@@ -67,7 +71,7 @@ public class BFSODDiscovererFull extends ODDiscover {
     }
 
     public ODTree discover(DataFrame data) {
-        Queue<ODDiscoverNodeSavingInfo> queue = new LinkedList<>();
+        Queue<ODDiscovererNodeSavingInfo> queue = new LinkedList<>();
         int attributeCount = data.getColumnCount();
         ODTree reslut = new ODTree(attributeCount);
         ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
@@ -76,11 +80,11 @@ public class BFSODDiscovererFull extends ODDiscover {
         for (int attribute = 0; attribute < attributeCount; attribute++) {
             ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses = new ODTreeNodeEquivalenceClasses();
             odTreeNodeEquivalenceClasses.mergeNode(reslut.getRoot().children[attribute], data);
-            queue.offer(new ODDiscoverNodeSavingInfo(reslut.getRoot().children[attribute], odTreeNodeEquivalenceClasses));
+            queue.offer(new ODDiscovererNodeSavingInfo(reslut.getRoot().children[attribute], odTreeNodeEquivalenceClasses));
         }
 
         while (!queue.isEmpty()) {
-            ODDiscoverNodeSavingInfo info = queue.poll();
+            ODDiscovererNodeSavingInfo info = queue.poll();
             ODTree.ODTreeNode parent = info.nodeInResultTree;
             for (int attribute = 0; attribute < attributeCount * 2; attribute++) {
                 ODTree.ODTreeNode child;
@@ -101,7 +105,7 @@ public class BFSODDiscovererFull extends ODDiscover {
                     odMinimalChecker.insert(childCandidate);
                 }
                 if (child.status != ODTree.ODTreeNodeStatus.SWAP) {
-                    queue.offer(new ODDiscoverNodeSavingInfo(child, odTreeNodeEquivalenceClasses));
+                    queue.offer(new ODDiscovererNodeSavingInfo(child, odTreeNodeEquivalenceClasses));
                 }
             }
         }
@@ -109,7 +113,7 @@ public class BFSODDiscovererFull extends ODDiscover {
     }
 
     public ODTree discoverFDPlus(DataFrame data, FDToODSavingInfo infoTransfer) {
-        Queue<ODDiscoverNodeSavingInfo> queue = new LinkedList<>();
+        Queue<ODDiscovererNodeSavingInfo> queue = new LinkedList<>();
         int attributeCount = data.getColumnCount();
         ODTree reslut = new ODTree(attributeCount);
         ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
@@ -124,14 +128,14 @@ public class BFSODDiscovererFull extends ODDiscover {
             List<AttributeAndDirection> left = new ArrayList<>();
             List<AttributeAndDirection> right = new ArrayList<>();
             right.add(AttributeAndDirection.getInstance(attribute, AttributeAndDirection.UP));
-            queue.offer(new ODDiscoverNodeSavingInfo(reslut.getRoot().children[attribute],
+            queue.offer(new ODDiscovererNodeSavingInfo(reslut.getRoot().children[attribute],
                     odTreeNodeEquivalenceClasses,
                     left,
                     right));
         }
 
         while (!queue.isEmpty()) {
-            ODDiscoverNodeSavingInfo info = queue.poll();
+            ODDiscovererNodeSavingInfo info = queue.poll();
             ODTree.ODTreeNode parent = info.nodeInResultTree;
             /*
             改动部分
@@ -177,7 +181,7 @@ public class BFSODDiscovererFull extends ODDiscover {
                     odMinimalChecker.insert(childCandidate);
                 }
                 if (child.status != ODTree.ODTreeNodeStatus.SWAP) {
-                    queue.offer(new ODDiscoverNodeSavingInfo(child, odTreeNodeEquivalenceClasses, newLeft, newRight));
+                    queue.offer(new ODDiscovererNodeSavingInfo(child, odTreeNodeEquivalenceClasses, newLeft, newRight));
                 }
             }
         }

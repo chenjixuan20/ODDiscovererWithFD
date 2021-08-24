@@ -77,6 +77,48 @@ public class ODTree {
             return root == this;
         }
 
+        public boolean accessible(){
+            ODTreeNode node=this;
+            while (node.parent!=null){
+                node=node.parent;
+            }
+            return node.isRoot();
+        }
+
+        public void cutChildren(){
+            for (int i = 0; i < countAttribute*2; i++) {
+                if(children[i]!=null){
+                    children[i].parent=null;
+                    children[i]=null;
+                }
+            }
+        }
+
+        public void setStatus(ODTreeNodeStatus status){
+            switch (status){
+                case SWAP:
+                    confirm();
+                    if(this.status!=ODTreeNodeStatus.SWAP)
+                        cutChildren();
+                    break;
+                case SPLIT:
+                    if(this.status==ODTreeNodeStatus.SWAP)
+                        throw new RuntimeException("illegal node status update");
+                    if(this.status!=ODTreeNodeStatus.SPLIT)
+                        cutChildren();
+                    break;
+                case VALID:
+                    if(this.status==ODTreeNodeStatus.SWAP || this.status==ODTreeNodeStatus.SPLIT)
+                        throw new RuntimeException("illegal node status update");
+                    break;
+                case UNKNOWN:
+                    if(this.status!=ODTreeNodeStatus.UNKNOWN)
+                        throw new RuntimeException("illegal node status update");
+                    break;
+            }
+            this.status=status;
+        }
+
         public ODTreeNode(ODTreeNode parent, AttributeAndDirection attribute, ODTreeNodeStatus status){
             this.parent = parent;
             this.status = status;

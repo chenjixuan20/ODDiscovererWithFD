@@ -1,14 +1,14 @@
 package discoverer;
 
 import discoverer.fd.FDDiscoverNodeSavingInfo;
-import discoverer.od.ODDiscoverNodeSavingInfo;
+import discoverer.od.ODDiscovererNodeSavingInfo;
 
 
 public class QueueElement {
     public static final int FD = 0;
     public static final int OD = 1;
     FDDiscoverNodeSavingInfo fdInfo;
-    ODDiscoverNodeSavingInfo odInfo;
+    ODDiscovererNodeSavingInfo odInfo;
     int flag;
 
     public QueueElement(FDDiscoverNodeSavingInfo fdInfo, int flag){
@@ -16,7 +16,7 @@ public class QueueElement {
         this.flag = flag;
     }
 
-    public QueueElement(ODDiscoverNodeSavingInfo odInfo, int flag){
+    public QueueElement(ODDiscovererNodeSavingInfo odInfo, int flag){
         this.odInfo = odInfo;
         this.flag = flag;
     }

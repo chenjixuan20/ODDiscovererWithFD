@@ -9,11 +9,10 @@ import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
 import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.FDDiscoverNodeSavingInfo;
-import discoverer.od.ODDiscoverNodeSavingInfo;
+import discoverer.od.ODDiscovererNodeSavingInfo;
 import minimal.ODMinimalChecker;
 import minimal.ODMinimalCheckerBruteForce;
 import util.Timer;
-
 import java.util.*;
 
 public class BFSTotalDiscoverer {
@@ -81,7 +80,7 @@ public class BFSTotalDiscoverer {
         for(int attribute = 0; attribute < attributeNum; attribute++){
             ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses = new ODTreeNodeEquivalenceClasses();
             odTreeNodeEquivalenceClasses.mergeNode(reslut.getRoot().children[attribute], data);
-            queue.offer(new QueueElement(new ODDiscoverNodeSavingInfo(reslut.getRoot().children[attribute],
+            queue.offer(new QueueElement(new ODDiscovererNodeSavingInfo(reslut.getRoot().children[attribute],
                     odTreeNodeEquivalenceClasses), QueueElement.OD));
         }
 
@@ -111,7 +110,7 @@ public class BFSTotalDiscoverer {
 //                        continue;
                         }else{
                             FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
-                            if(fdResult.status == "non-valid"){
+                            if(fdResult.status.equals("non-valid")){
                                 child.fdRHSCandidate.set(k, false);
                             }
                         }
@@ -131,7 +130,7 @@ public class BFSTotalDiscoverer {
             }
             else{
                 Timer t2 = new Timer();
-                ODDiscoverNodeSavingInfo info = element.odInfo;
+                ODDiscovererNodeSavingInfo info = element.odInfo;
                 ODTree.ODTreeNode parent = info.nodeInResultTree;
                 for(int attribute = 0; attribute < attributeNum * 2; attribute++){
                     ODTree.ODTreeNode child;
@@ -152,7 +151,7 @@ public class BFSTotalDiscoverer {
                         odMinimalChecker.insert(childCandidate);
                     }
                     if(child.status != ODTree.ODTreeNodeStatus.SWAP){
-                        queue.offer(new QueueElement(new ODDiscoverNodeSavingInfo(child, odTreeNodeEquivalenceClasses),
+                        queue.offer(new QueueElement(new ODDiscovererNodeSavingInfo(child, odTreeNodeEquivalenceClasses),
                                 QueueElement.OD));
                     }
                 }
@@ -161,8 +160,6 @@ public class BFSTotalDiscoverer {
         }
         odTree = reslut;
     }
-
-
 
     public static void main(String[] args) {
         DataFrame data = DataFrame.fromCsv("Data/FLI 200.csv");

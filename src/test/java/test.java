@@ -3,6 +3,7 @@ import dataStructures.EquivalenceClass;
 import dataStructures.PartialDataFrame;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.FDCandidate;
+import dataStructures.fd.FDTree;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
 import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
@@ -149,7 +150,7 @@ public class test {
         while (true){
             i++;
             System.out.println("第" + i + "轮：");
-            fds = discoverer.discoverCandidateRefinementFromNull(result).fdCandidates;
+            fds = discoverer.discoverFirstTimes(result).fdCandidates;
             System.out.println(fds);
             System.out.println("发现fd数量： " + fds.size());
 
@@ -171,7 +172,7 @@ public class test {
 //        PrintStream printStream = new PrintStream(fileOutputStream);
 //        System.setOut(printStream);
 //        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
-        DataFrame data = DataFrame.fromCsv("Data/bridges-int.csv");
+        DataFrame data = DataFrame.fromCsv("Data/plista-int.csv");
         Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame sampleData = sampler.sample(data);
@@ -187,11 +188,11 @@ public class test {
             i++;
             System.out.println("第" + i + "轮：");
             if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(sampleData);
+                DiscoverResult discoverResult = discoverer.discoverFirstTimes(sampleData);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }else {
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(sampleData, reference);
+                DiscoverResult discoverResult = discoverer.discoverAfterVaildate(sampleData, reference);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }
@@ -213,14 +214,14 @@ public class test {
 
     @Test
     public void testTotalSample(){
-        DataFrame data = DataFrame.fromCsv("Data/FLI 10K.csv");
+        DataFrame data = DataFrame.fromCsv("Data/plista-int.csv");
         Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame result = sampler.sample(data);
         System.out.println("抽样数据集大小：" + result.getRowsCount());
         List<FDCandidate> fds;
         List<ODCandidate> ods;
-        FDIncrementalValidator validator = new FDIncrementalValidator();
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
         BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
         FDTreeArray reference = null;
         int i = 0;
@@ -228,11 +229,11 @@ public class test {
             i++;
             System.out.println("第" + i + "轮：");
             if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
+                DiscoverResult discoverResult = discoverer.discoverFirstTimes(result);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }else {
-                DiscoverResult discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
+                DiscoverResult discoverResult = discoverer.discoverAfterVaildate(result, reference);
                 fds = discoverResult.fdCandidates;
                 reference = discoverResult.FDTree;
             }
@@ -266,7 +267,8 @@ public class test {
 
     @Test
     public void  testODValidator(){
-        DataFrame data = DataFrame.fromCsv("Data/FLI 1000.csv");
+        DataFrame data = DataFrame.fromCsv("Data/plista-int.csv");
+        Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame result = sampler.sample(data);
         System.out.println("抽样数据集大小：" + result.getRowsCount());
@@ -284,6 +286,7 @@ public class test {
             result.addRows(rows);
             System.out.println("新数据集大小：" + result.getRowCount());
         }
+        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
     }
 
     @Test
@@ -334,7 +337,7 @@ public class test {
         DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
         Timer timer = new Timer();
         BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
-        List<FDCandidate> fds = discoverer.discoverCandidateRefinementFromNull(data).fdCandidates;
+        List<FDCandidate> fds = discoverer.discoverFirstTimes(data).fdCandidates;
         System.out.println(timer.getTimeUsedAndReset() / 1000.0 + "s");
         System.out.println(fds);
         System.out.println(fds.size());
@@ -376,7 +379,7 @@ public class test {
         FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
         BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
         FDTreeArray reference = null;
-        DiscoverResult discoverResult = discoverer.discoverCandidateRefinementFromNull(result);
+        DiscoverResult discoverResult = discoverer.discoverFirstTimes(result);
         fds = discoverResult.fdCandidates;
         reference = discoverResult.FDTree;
         System.out.println(fds);
@@ -398,7 +401,7 @@ public class test {
         System.out.println("-------------------第二轮----------------------");
         System.out.println("-------------------第二轮----------------------");
         System.out.println("-------------------第二轮----------------------");
-        discoverResult = discoverer.discoverCandidateRefinementMorePruneAfterValidate(result, reference);
+        discoverResult = discoverer.discoverAfterVaildate(result, reference);
         fds = discoverResult.fdCandidates;
         reference = discoverResult.FDTree;
         System.out.println(fds);

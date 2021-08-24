@@ -82,10 +82,10 @@ public class GetIntegerData {
 
     public static void main(String[] args) throws IOException {
 
-        List<List<String>> listList = readCSV("Data/hepatitis.csv", false, ",");
+        List<List<String>> listList = readCSV("Data/plista.csv", false, ";");
 
         changeToInt(listList);
 
-        writeCSV(listList, "Data/hepatitis-int.csv");
+        writeCSV(listList, "Data/plista-int.csv");
     }
 }

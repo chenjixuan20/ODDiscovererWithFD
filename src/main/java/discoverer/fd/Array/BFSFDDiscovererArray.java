@@ -14,7 +14,7 @@ public class BFSFDDiscovererArray {
     FDTreeArray result;
     Queue<FDDiscoverNodeSavingInfoArray> queue = new LinkedList<>();
 
-    public DiscoverResult discoverCandidateRefinementFromNull(DataFrame data){
+    public DiscoverResult discoverFirstTimes(DataFrame data){
         fdCandidates.clear();
         result = new FDTreeArray(data.getColumnCount());
         FDTreeArray.FDTreeNode root = result.getRoot();
@@ -30,7 +30,7 @@ public class BFSFDDiscovererArray {
 
         //先手动做第一层的|lhs|=1
         for(int i = 0; i < data.getColumnCount(); i++){
-            FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNodeFromZero(i, data, root, null,
+            FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i, data, root, null,
                     true, null);
             queue.add(infoArray);
         }
@@ -48,7 +48,7 @@ public class BFSFDDiscovererArray {
                     if(hasSubSet(left,i,fdCandidates)){
                         continue;
                     }
-                    FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNodeFromZero(i,data,parent,attributeToConfirmed.get(i),false, info);
+                    FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i,data,parent,attributeToConfirmed.get(i),false, info);
                     queue.offer(infoArray);
                 }
             }
@@ -56,10 +56,56 @@ public class BFSFDDiscovererArray {
         return new DiscoverResult(result, fdCandidates);
     }
 
+    public DiscoverResult discoverAfterVaildate(DataFrame data, FDTreeArray reference){
+        fdCandidates.clear();
+        result = reference;
+        FDTreeArray.FDTreeNode root = result.getRoot();
+        /*处理根节点*/
+        for(int i = 0; i < data.getColumnCount(); i++){
+            if(root.RHSCandidate[i]){
+                //存在[]->x,需要重新检查
+                FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
+                FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i,data);
+                if(fdResult.status.equals("non-valid")){
+                    //结果变为non-valid,子节点中所有rhs[i]变为false
+                    root.RHSCandidate[i] = false;
+                }else {
+                    fdCandidates.add(new FDCandidate(new ArrayList<>(), i, root));
+                }
+            }
+        }
 
-    public FDDiscoverNodeSavingInfoArray newAndTraverseNodeFromZero(int expendInLeft, DataFrame data, FDTreeArray.FDTreeNode parent,
-                                                                    Boolean[] anotherFatherRHSCandidate, boolean isLevel1,
-                                                                    FDDiscoverNodeSavingInfoArray infoArray){
+        /*先手动做第一层，得到map，完善后面的剪枝*/
+        for(FDTreeArray.FDTreeNode child : root.children){
+            FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, root, null, data, true);
+            queue.add(infoArray);
+        }
+
+        while(!queue.isEmpty()){
+            FDDiscoverNodeSavingInfoArray info = queue.poll();
+            FDTreeArray.FDTreeNode parent = info.nodeInResultTree;
+
+            //处理该parent节点中本来就存在的子节点
+            for(FDTreeArray.FDTreeNode child : parent.children){
+                FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, parent, info, data, false);
+                queue.add(infoArray);
+
+            }
+            //在补充并处理需要加上子节点
+            if(info.hasChildren){
+                for(FDTreeArray.FDTreeNode child : info.newChildren){
+                    FDDiscoverNodeSavingInfoArray infoArray= vaildateNode(child,data,info,parent);
+                    queue.offer(infoArray);
+                }
+            }
+
+        }
+        return new DiscoverResult(result, fdCandidates);
+    }
+
+    public FDDiscoverNodeSavingInfoArray newAndTraverseNode(int expendInLeft, DataFrame data, FDTreeArray.FDTreeNode parent,
+                                                            Boolean[] anotherFatherRHSCandidate, boolean isLevel1,
+                                                            FDDiscoverNodeSavingInfoArray infoArray){
         FDTreeArray.FDTreeNode child;
         FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
         List<Integer> left;
@@ -108,53 +154,6 @@ public class BFSFDDiscovererArray {
         }
         parent.children.add(child);
         return new FDDiscoverNodeSavingInfoArray(child, fdTreeNodeEquivalenceClasses, left);
-    }
-
-    public DiscoverResult discoverCandidateRefinementMorePruneAfterValidate(DataFrame data, FDTreeArray reference){
-        fdCandidates.clear();
-        result = reference;
-        FDTreeArray.FDTreeNode root = result.getRoot();
-        /*处理根节点*/
-        for(int i = 0; i < data.getColumnCount(); i++){
-            if(root.RHSCandidate[i]){
-                //存在[]->x,需要重新检查
-                FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
-                FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i,data);
-                if(fdResult.status.equals("non-valid")){
-                    //结果变为non-valid,子节点中所有rhs[i]变为false
-                    root.RHSCandidate[i] = false;
-                }else {
-                    fdCandidates.add(new FDCandidate(new ArrayList<>(), i, root));
-                }
-            }
-        }
-
-        /*先手动做第一层，得到map，完善后面的剪枝*/
-        for(FDTreeArray.FDTreeNode child : root.children){
-            FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, root, null, data, true);
-            queue.add(infoArray);
-        }
-
-        while(!queue.isEmpty()){
-            FDDiscoverNodeSavingInfoArray info = queue.poll();
-            FDTreeArray.FDTreeNode parent = info.nodeInResultTree;
-
-            //处理该parent节点中本来就存在的子节点
-            for(FDTreeArray.FDTreeNode child : parent.children){
-                FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, parent, info, data, false);
-                queue.add(infoArray);
-
-            }
-            //在补充并处理需要加上子节点
-            if(info.hasChildren){
-                for(FDTreeArray.FDTreeNode child : info.newChildren){
-                    FDDiscoverNodeSavingInfoArray infoArray= vaildateNode(child,data,info,parent);
-                    queue.offer(infoArray);
-                }
-            }
-
-        }
-        return new DiscoverResult(result, fdCandidates);
     }
 
     //处理新增的子节点
@@ -350,99 +349,4 @@ public class BFSFDDiscovererArray {
         }
         return result;
     }
-
-
-    /**
-     * 从第一层开始，没有考虑[]->x这类fds
-     * @param data
-     * @param reference
-     * @return
-     */
-//    public FDDiscoverNodeSavingInfoArray newAndTraverseNode(int expendInLeft, DataFrame data, FDTreeArray.FDTreeNode parent,
-//                                                            Boolean[] anotherFatherRHSCandidate, boolean isLevel1,
-//                                                            FDDiscoverNodeSavingInfoArray infoArray){
-//        FDTreeArray.FDTreeNode child;
-//        FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
-//        List<Integer> left;
-//        if(isLevel1){
-//            child = result.new FDTreeNode(parent, expendInLeft, data.getColumnCount(),null);
-//            fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
-//            left = new ArrayList<>();
-//            fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
-//            left.add(expendInLeft);
-//        }else{
-//            child = result.new FDTreeNode(parent, expendInLeft, data.getColumnCount(), anotherFatherRHSCandidate);
-//            fdTreeNodeEquivalenceClasses = infoArray.fdTreeNodeEquivalenceClasses.deepClone();
-//            left = infoArray.listDeepClone(infoArray.left);
-//            fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
-//            left.add(expendInLeft);
-//        }
-//
-//        for(int k = 0; k < data.getColumnCount(); k++){
-//            if(isLevel1 && expendInLeft == k) {
-//                //A->A成立（平凡函数依赖）
-//                child.RHSCandidate[expendInLeft] = true;
-//                continue;
-//            }
-//            if(isLevel1 || !child.RHSCandidate[k]){
-//                FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
-//                if(fdResult.status.equals("non-valid")){
-//                    //右侧为k的fdCandidate无效
-//                    child.RHSCandidate[k] = false;
-//                }else{
-//                    child.RHSCandidate[k] = true;
-//                    if(isLevel1){
-//                        fdCandidates.add(new FDCandidate(left, k, child));
-//                    }
-//                }
-//            }
-//        }
-//
-//        if(isLevel1)
-//            attributeToConfirmed.put(expendInLeft,child.RHSCandidate);
-//        else{
-//            child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, attributeToConfirmed.get(expendInLeft));
-//            for(int j = 0; j < data.getColumnCount(); j++){
-//                if(child.minimal[j]){
-//                    fdCandidates.add(new FDCandidate(left, j, child));
-//                }
-//            }
-//        }
-//        parent.children.add(child);
-//        return new FDDiscoverNodeSavingInfoArray(child, fdTreeNodeEquivalenceClasses, left);
-//    }
-//
-//    public DiscoverResult discoverCandidateRefinementMorePrune(DataFrame data){
-//        fdCandidates.clear();
-//        result = new FDTreeArray(data.getColumnCount());
-//        FDTreeArray.FDTreeNode root = result.getRoot();
-//
-//
-//        //先手动做第一层的|lhs|=1
-//        for(int i = 0; i < data.getColumnCount(); i++){
-//            FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i, data, root, null,
-//                    true, null);
-//            queue.add(infoArray);
-//        }
-//
-//        while (!queue.isEmpty()){
-//            FDDiscoverNodeSavingInfoArray info = queue.poll();
-//            FDTreeArray.FDTreeNode parent = info.nodeInResultTree;
-////            prune规则2  key剪枝
-//            if(trueRHSCounts(parent.RHSCandidate) != data.getColumnCount()){
-////                设attribute set中的attribute升序排列
-////                生成子节点，当parent的attribute一定时，其生成的子节点的attribute从比他大开始（避免重复12，21的情况），比如说当属性为2时，则只生成3，4，5
-//                for(int i = parent.attribute + 1; i < data.getColumnCount(); i++){
-//                    List<Integer> left = info.listDeepClone(info.left);
-////                    prune规则4     XY->Z,则XYZ->M否由XY->M否决定，XY->M成立则不是最小，XY->M不成立则不成立
-//                    if(hasSubSet(left,i,fdCandidates)){
-//                        continue;
-//                    }
-//                    FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i,data,parent,attributeToConfirmed.get(i),false, info);
-//                    queue.offer(infoArray);
-//                }
-//            }
-//        }
-//        return new DiscoverResult(result, fdCandidates);
-//    }
 }
