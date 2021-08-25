@@ -5,6 +5,7 @@ import dataStructures.fd.FDCandidate;
 import dataStructures.od.AttributeAndDirection;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
+import dataStructures.od.ODTree.ODTreeNode;
 import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.FDToODSavingInfo;
 import minimal.ODMinimalChecker;
@@ -24,7 +25,49 @@ public class BFSODDiscovererFull extends ODDiscoverer {
 
     @Override
     public ODTree discover(DataFrame data, ODTree reference) {
-        return null;
+        Queue<ODDiscovererNodeSavingInfo> queue = new LinkedList<>();
+        int attributeCount = data.getColumnCount();
+        ODTree result = new ODTree(attributeCount);
+        ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
+
+        //第二层的所有结点的direction为UP
+        for (int attribute = 0; attribute < attributeCount; attribute++) {
+            if(reference!=null) {
+                copyConfirmNode(result, result.getRoot().children[attribute]
+                        , reference.getRoot().children[attribute]);
+            }
+            ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses = new ODTreeNodeEquivalenceClasses();
+            odTreeNodeEquivalenceClasses.mergeNode(result.getRoot().children[attribute], data);
+            queue.offer(new ODDiscovererNodeSavingInfo(result.getRoot().children[attribute], odTreeNodeEquivalenceClasses));
+        }
+
+        while (!queue.isEmpty()) {
+            ODDiscovererNodeSavingInfo info = queue.poll();
+            ODTree.ODTreeNode parent = info.nodeInResultTree;
+            for (int attribute = 0; attribute < attributeCount * 2; attribute++) {
+                ODTree.ODTreeNode child;
+                if (parent.children[attribute] == null)
+                    child = result.new ODTreeNode(parent, result.getAttributeAndDirectionFromIndex(attribute));
+                else
+                    child = parent.children[attribute];
+                ODCandidate childCandidate = new ODCandidate(child);
+                child.minimal = odMinimalChecker.isCandidateMinimal(childCandidate);
+                if (!child.minimal)
+                    continue;
+                ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses =
+                        info.odTreeNodeEquivalenceClasses.deepClone();
+                odTreeNodeEquivalenceClasses.mergeNode(child, data);
+                if (!child.confirm)
+                    child.status = odTreeNodeEquivalenceClasses.check(data).status;
+                if (child.status == ODTree.ODTreeNodeStatus.VALID) {
+                    odMinimalChecker.insert(childCandidate);
+                }
+                if (child.status != ODTree.ODTreeNodeStatus.SWAP) {
+                    queue.offer(new ODDiscovererNodeSavingInfo(child, odTreeNodeEquivalenceClasses));
+                }
+            }
+        }
+        return result;
     }
 
     @Override
@@ -189,4 +232,15 @@ public class BFSODDiscovererFull extends ODDiscoverer {
     }
 
 
+    private void copyConfirmNode(ODTree resultTree,ODTreeNode resultTreeNode,ODTreeNode referenceTreeNode){
+        for (ODTreeNode referenceChildNode:referenceTreeNode.children) {
+            if(referenceChildNode!=null && referenceChildNode.confirm){
+                ODTreeNode resultChildNode =resultTree.new ODTreeNode
+                        (resultTreeNode,referenceChildNode.attribute);
+                resultChildNode.status=referenceChildNode.status;
+                resultChildNode.confirm();
+                copyConfirmNode(resultTree,resultChildNode,referenceChildNode);
+            }
+        }
+    }
 }

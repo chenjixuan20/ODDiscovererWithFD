@@ -3,11 +3,11 @@ import dataStructures.EquivalenceClass;
 import dataStructures.PartialDataFrame;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.FDCandidate;
-import dataStructures.fd.FDTree;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
 import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
+import discoverer.BFSTotalDiscovererArray;
 import discoverer.fd.Array.BFSFDDiscovererArray;
 import discoverer.fd.Array.DiscoverResult;
 import discoverer.fd.BFSFDDiscovererRefinement;
@@ -19,7 +19,6 @@ import sampler.OneLevelCheckingSampler;
 import sampler.RandomSampler;
 import util.Timer;
 import validator.fd.FDBruteForceFullValidator;
-import validator.fd.FDIncrementalValidator;
 import validator.fd.FDTreeIncrementalValidator;
 import validator.od.ODBruteForceFullValidator;
 
@@ -172,7 +171,7 @@ public class test {
 //        PrintStream printStream = new PrintStream(fileOutputStream);
 //        System.setOut(printStream);
 //        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
-        DataFrame data = DataFrame.fromCsv("Data/plista-int.csv");
+        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
         Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame sampleData = sampler.sample(data);
@@ -291,7 +290,7 @@ public class test {
 
     @Test
     public void  testOD(){
-        DataFrame data = DataFrame.fromCsv("Data/fd 15 1000.csv");
+        DataFrame data = DataFrame.fromCsv("Data/ncv 1000 19-int.csv");
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame result = sampler.sample(data);
         System.out.println("result: " + result.getRowsCount());
@@ -476,8 +475,40 @@ public class test {
         System.out.println(fdValidationResult.status);
 
 
+    }
 
+    @Test
+    public void testt(){
+        Timer timer = new Timer();
+        DataFrame data = DataFrame.fromCsv("Data/ncv 1000 19-int.csv");
+        BFSTotalDiscovererArray discoverer = new BFSTotalDiscovererArray();
+//        BFSTotalDiscoverer discoverer = new BFSTotalDiscoverer();
+        discoverer.discoverFirstTime(data, null);
+        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
 
+        System.out.println(discoverer.fdCandidates.size());
+        System.out.println(discoverer.fdCandidates);
+
+        System.out.println(discoverer.odTree.getAllOdsOrderByBFS().size());
+        System.out.println(discoverer.odTree.getAllOdsOrderByBFS());
+
+        System.out.println(discoverer.fdMap);
+        int num = 0;
+        for(List<List<Integer>> listList : discoverer.fdMap.values()){
+            num += listList.size();
+        }
+        System.out.println("fd数量 map: " + num);
+    }
+
+    @Test
+    public void testMap(){
+        Map<Integer,List<List<Integer>>> fdMap = new HashMap<>();
+        List<List<Integer>> allLeft = new ArrayList<>();
+        List<Integer> left = new ArrayList<>();
+        allLeft.add(left);
+        fdMap.put(14, allLeft);
+        List<List<Integer>> getLeft = fdMap.get(14);
+        System.out.println(getLeft.get(0));
     }
 
 }

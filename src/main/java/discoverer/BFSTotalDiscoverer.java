@@ -7,6 +7,7 @@ import dataStructures.fd.FDTreeNodeEquivalenceClasses;
 import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
+import dataStructures.od.ODTree.ODTreeNode;
 import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.FDDiscoverNodeSavingInfo;
 import discoverer.od.ODDiscovererNodeSavingInfo;
@@ -66,11 +67,11 @@ public class BFSTotalDiscoverer {
         return reslut;
     }
 
-    public void discoverCandidate(DataFrame data){
-        FDTree result = new FDTree(data.getColumnCount());
-        FDTree.FDTreeNode node = result.getRoot();
+    public void discoverCandidate(DataFrame data, ODTree reference){
+        FDTree fdResult = new FDTree(data.getColumnCount());
+        FDTree.FDTreeNode node = fdResult.getRoot();
         int attributeNum = data.getColumnCount();
-        ODTree reslut = new ODTree(attributeNum);
+        ODTree odResult = new ODTree(attributeNum);
         ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
 
         Queue<QueueElement> queue = new LinkedList<>();
@@ -78,9 +79,13 @@ public class BFSTotalDiscoverer {
         queue.offer(new QueueElement(new FDDiscoverNodeSavingInfo(node, fde, new ArrayList<>()),QueueElement.FD));
 
         for(int attribute = 0; attribute < attributeNum; attribute++){
+            if(reference!=null) {
+                copyConfirmNode(odResult, odResult.getRoot().children[attribute]
+                        , reference.getRoot().children[attribute]);
+            }
             ODTreeNodeEquivalenceClasses odTreeNodeEquivalenceClasses = new ODTreeNodeEquivalenceClasses();
-            odTreeNodeEquivalenceClasses.mergeNode(reslut.getRoot().children[attribute], data);
-            queue.offer(new QueueElement(new ODDiscovererNodeSavingInfo(reslut.getRoot().children[attribute],
+            odTreeNodeEquivalenceClasses.mergeNode(odResult.getRoot().children[attribute], data);
+            queue.offer(new QueueElement(new ODDiscovererNodeSavingInfo(odResult.getRoot().children[attribute],
                     odTreeNodeEquivalenceClasses), QueueElement.OD));
         }
 
@@ -93,7 +98,7 @@ public class BFSTotalDiscoverer {
                 //设attribute set中的attribute升序排列
                 //生成子节点，当parent的attribute一定时，其生成的子节点数量一致，比如说当属性为2时，则只生成3，4，5
                 for(int i = parent.attribute + 1; i < attributeNum; i++){
-                    FDTree.FDTreeNode child = result.new FDTreeNode(parent, i, attributeNum);
+                    FDTree.FDTreeNode child = fdResult.new FDTreeNode(parent, i, attributeNum);
                     List<Integer> left = info.listDeepClone(info.left);
                     FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = info.fdTreeNodeEquivalenceClasses.deepClone();
                     fdTreeNodeEquivalenceClasses.mergeLeftNode(i, data);
@@ -109,8 +114,8 @@ public class BFSTotalDiscoverer {
                             child.fdRHSCandidate.set(k, false);
 //                        continue;
                         }else{
-                            FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
-                            if(fdResult.status.equals("non-valid")){
+                            FDValidationResult fdValidationResult= fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
+                            if(fdValidationResult.status.equals("non-valid")){
                                 child.fdRHSCandidate.set(k, false);
                             }
                         }
@@ -131,11 +136,11 @@ public class BFSTotalDiscoverer {
             else{
                 Timer t2 = new Timer();
                 ODDiscovererNodeSavingInfo info = element.odInfo;
-                ODTree.ODTreeNode parent = info.nodeInResultTree;
+                ODTreeNode parent = info.nodeInResultTree;
                 for(int attribute = 0; attribute < attributeNum * 2; attribute++){
-                    ODTree.ODTreeNode child;
+                    ODTreeNode child;
                     if(parent.children[attribute] == null)
-                        child = reslut.new ODTreeNode(parent, reslut.getAttributeAndDirectionFromIndex(attribute));
+                        child = odResult.new ODTreeNode(parent, odResult.getAttributeAndDirectionFromIndex(attribute));
                     else
                         child = parent.children[attribute];
                     ODCandidate childCandidate = new ODCandidate(child);
@@ -158,17 +163,29 @@ public class BFSTotalDiscoverer {
                 odTime += t2.getTimeUsedAndReset();
             }
         }
-        odTree = reslut;
+        odTree = odResult;
+    }
+
+    private void copyConfirmNode(ODTree resultTree,ODTreeNode resultTreeNode,ODTreeNode referenceTreeNode){
+        for (ODTreeNode referenceChildNode:referenceTreeNode.children) {
+            if(referenceChildNode!=null && referenceChildNode.confirm){
+                ODTreeNode resultChildNode =resultTree.new ODTreeNode
+                        (resultTreeNode,referenceChildNode.attribute);
+                resultChildNode.status=referenceChildNode.status;
+                resultChildNode.confirm();
+                copyConfirmNode(resultTree,resultChildNode,referenceChildNode);
+            }
+        }
     }
 
     public static void main(String[] args) {
-        DataFrame data = DataFrame.fromCsv("Data/FLI 200.csv");
+        DataFrame data = DataFrame.fromCsv("Data/ncv 1000 19-int.csv");
 
         System.out.println("refinement方法整体发现：");
         System.gc();
         util.Timer timer = new Timer();
         BFSTotalDiscoverer discoverer = new BFSTotalDiscoverer();
-        discoverer.discoverCandidate(data);
+        discoverer.discoverCandidate(data, null);
         System.out.println(timer.getTimeUsed() / 1000.0 + "s");
 
 //        for(FDCandidate fd: fdCandidates){

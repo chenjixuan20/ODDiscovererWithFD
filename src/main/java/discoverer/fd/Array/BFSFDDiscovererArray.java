@@ -9,17 +9,18 @@ import dataStructures.fd.FDValidationResult;
 import java.util.*;
 
 public class BFSFDDiscovererArray {
-    List<FDCandidate> fdCandidates = new ArrayList<>();
+    public List<FDCandidate> fdCandidates = new ArrayList<>();
     Map<Integer, Boolean[]> attributeToConfirmed = new HashMap<>();
     FDTreeArray result;
     Queue<FDDiscoverNodeSavingInfoArray> queue = new LinkedList<>();
 
     public DiscoverResult discoverFirstTimes(DataFrame data){
         fdCandidates.clear();
-        result = new FDTreeArray(data.getColumnCount());
+        int attributeNum = data.getColumnCount();
+        result = new FDTreeArray(attributeNum);
         FDTreeArray.FDTreeNode root = result.getRoot();
         //手动做第0层
-        for(int i = 0; i < data.getColumnCount(); i++){
+        for(int i = 0; i < attributeNum; i++){
             FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
             FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i,data);
             if(fdResult.status.equals("valid")){
@@ -29,7 +30,7 @@ public class BFSFDDiscovererArray {
         }
 
         //先手动做第一层的|lhs|=1
-        for(int i = 0; i < data.getColumnCount(); i++){
+        for(int i = 0; i < attributeNum; i++){
             FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i, data, root, null,
                     true, null);
             queue.add(infoArray);
@@ -39,10 +40,10 @@ public class BFSFDDiscovererArray {
             FDDiscoverNodeSavingInfoArray info = queue.poll();
             FDTreeArray.FDTreeNode parent = info.nodeInResultTree;
 //            prune规则2  key剪枝
-            if(trueRHSCounts(parent.RHSCandidate) != data.getColumnCount()){
+            if(trueRHSCounts(parent.RHSCandidate) != attributeNum){
 //                设attribute set中的attribute升序排列
 //                生成子节点，当parent的attribute一定时，其生成的子节点的attribute从比他大开始（避免重复12，21的情况），比如说当属性为2时，则只生成3，4，5
-                for(int i = parent.attribute + 1; i < data.getColumnCount(); i++){
+                for(int i = parent.attribute + 1; i < attributeNum; i++){
                     List<Integer> left = info.listDeepClone(info.left);
 //                    prune规则4     XY->Z,则XYZ->M否由XY->M否决定，XY->M成立则不是最小，XY->M不成立则不成立
                     if(hasSubSet(left,i,fdCandidates)){
@@ -59,9 +60,10 @@ public class BFSFDDiscovererArray {
     public DiscoverResult discoverAfterVaildate(DataFrame data, FDTreeArray reference){
         fdCandidates.clear();
         result = reference;
+        int attributeNum = data.getColumnCount();
         FDTreeArray.FDTreeNode root = result.getRoot();
         /*处理根节点*/
-        for(int i = 0; i < data.getColumnCount(); i++){
+        for(int i = 0; i < attributeNum; i++){
             if(root.RHSCandidate[i]){
                 //存在[]->x,需要重新检查
                 FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
@@ -122,8 +124,8 @@ public class BFSFDDiscovererArray {
             fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
             left.add(expendInLeft);
         }
-
-        for(int k = 0; k < data.getColumnCount(); k++){
+        int attributeNum = data.getColumnCount();
+        for(int k = 0; k < attributeNum; k++){
             if(isLevel1 && expendInLeft == k) {
                 //A->A成立（平凡函数依赖）
                 child.RHSCandidate[expendInLeft] = true;
@@ -147,7 +149,7 @@ public class BFSFDDiscovererArray {
         else {
             child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, anotherFatherRHSCandidate);
         }
-        for(int j = 0; j < data.getColumnCount(); j++){
+        for(int j = 0; j < attributeNum; j++){
             if(child.minimal[j]){
                 fdCandidates.add(new FDCandidate(left, j, child));
             }
@@ -176,7 +178,8 @@ public class BFSFDDiscovererArray {
         left.add(lastInLeft);
 //        System.out.println("当前节点的fd左侧：" + left );
         fdTreeNodeEquivalenceClasses.mergeLeftNode(lastInLeft, data);
-        for(int i = 0; i < data.getColumnCount(); i++){
+        int attributeNum = data.getColumnCount();
+        for(int i = 0; i < attributeNum; i++){
             if(!child.RHSCandidate[i]){
                 FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i,data);
                 if(fdResult.status.equals("non-valid")){
@@ -189,7 +192,7 @@ public class BFSFDDiscovererArray {
         }
 //        System.out.println("当前节点需要增加的子节点" + attributeOfNewNodes);
         child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, attributeToConfirmed.get(lastInLeft));
-        for(int j = 0; j < data.getColumnCount(); j++){
+        for(int j = 0; j < attributeNum; j++){
             if(child.minimal[j]){
                 fdCandidates.add(new FDCandidate(left, j, child));
             }
@@ -227,10 +230,11 @@ public class BFSFDDiscovererArray {
         fdTreeNodeEquivalenceClasses.mergeLeftNode(node.attribute, data);
         left.add(node.attribute);
         int lastInLeft = node.attribute;
+        int attributeNum = data.getColumnCount();
 //        System.out.println("当前节点的属性： " + node.attribute);
 //        System.out.println("处理到该节点时fd的左侧： " + left);
         //对这个节点对右侧进行对应的操作
-        for(int i = 0; i < data.getColumnCount(); i++){
+        for(int i = 0; i < attributeNum; i++){
             //若右侧对应的fd之前是成立的 &&
             // 不是平凡函数依赖 &&
             //（其已经在新数据集中处理过的父节点中右侧对应的fd均不成立 || 该节点位于第一层） 理由：若父节点中成立，那么子节点中肯定也成立，就不用验证了
@@ -258,7 +262,7 @@ public class BFSFDDiscovererArray {
             node.minimal = checkFDMinimalArray(node, parent, left, fdCandidates, attributeToConfirmed.get(node.attribute));
         }
 
-        for(int j = 0; j <  data.getColumnCount(); j++){
+        for(int j = 0; j <  attributeNum; j++){
             if(node.minimal[j]){
                 fdCandidates.add(new FDCandidate(left, j, node));
             }

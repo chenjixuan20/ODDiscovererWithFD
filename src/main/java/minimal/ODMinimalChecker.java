@@ -9,6 +9,7 @@ import util.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class ODMinimalChecker {
     public static long odMinimalCheckTime=0;
@@ -19,6 +20,8 @@ public abstract class ODMinimalChecker {
     public abstract boolean isListMinimal(List<AttributeAndDirection> list);
 
     public abstract boolean isListMinimalFD(List<AttributeAndDirection> list, List<FDCandidate> fdCandidates);
+
+    public abstract boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<Integer, List<List<Integer>>> fdMap);
 
     public boolean isCandidateMinimal(ODCandidate candidate){
         Timer timer=new Timer();
@@ -76,6 +79,35 @@ public abstract class ODMinimalChecker {
         }
 
         result = isListMinimalFD(expandSide, fdCandidates);
+        fdMinimalCheckTime+=timer.getTimeUsed();
+        return result;
+    }
+
+    public boolean isCandidateMinimalFDMap(ODCandidate candidate, Map<Integer, List<List<Integer>>> fdMap){
+        Timer timer=new Timer();
+        boolean result;
+        List<AttributeAndDirection> expandSide, otherSide;
+        if(candidate.odByODTreeNode.parent.status == ODTree.ODTreeNodeStatus.VALID){
+            expandSide = candidate.leftAndRightAttributeList.right;
+            otherSide = candidate.leftAndRightAttributeList.left;
+        }else{
+            expandSide = candidate.leftAndRightAttributeList.left;
+            otherSide = candidate.leftAndRightAttributeList.right;
+        }
+        int expandAttribute = expandSide.get(expandSide.size() - 1).attribute;
+
+
+        for(AttributeAndDirection x:otherSide){
+            if(x.attribute == expandAttribute)
+                return false;
+        }
+
+        for (int i = 0; i < expandSide.size()-1; i++) {
+            if(expandAttribute == expandSide.get(i).attribute)
+                return false;
+        }
+
+        result = isListMinimalFDMap(expandSide, fdMap);
         fdMinimalCheckTime+=timer.getTimeUsed();
         return result;
     }

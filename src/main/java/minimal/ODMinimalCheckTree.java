@@ -7,7 +7,7 @@ import dataStructures.od.ODCandidate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class ODMinimalCheckTree extends ODMinimalChecker  {
@@ -104,6 +104,11 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
 
     @Override
     public boolean isListMinimalFD(List<AttributeAndDirection> list, List<FDCandidate> fdCandidates) {
+        return false;
+    }
+
+    @Override
+    public boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<Integer, List<List<Integer>>> fdMap) {
         return false;
     }
 
