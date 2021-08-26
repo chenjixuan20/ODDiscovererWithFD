@@ -163,53 +163,6 @@ public class test {
         System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
     }
 
-    @Test
-    public void  testFDValidatorPro() throws IOException {
-//        File f=new File("out.txt");
-//        f.createNewFile();
-//        FileOutputStream fileOutputStream = new FileOutputStream(f);
-//        PrintStream printStream = new PrintStream(fileOutputStream);
-//        System.setOut(printStream);
-//        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
-        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
-        Timer timer = new Timer();
-        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
-        PartialDataFrame sampleData = sampler.sample(data);
-        System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
-//        System.out.println("抽样数据集原始索引： " + sampleData.getRealIndexes());
-        List<FDCandidate> fds;
-        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
-//        FDIncrementalValidator validator = new FDIncrementalValidator();
-        BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
-        FDTreeArray reference = null;
-        int i = 0;
-        while (true){
-            i++;
-            System.out.println("第" + i + "轮：");
-            if(i == 1){
-                DiscoverResult discoverResult = discoverer.discoverFirstTimes(sampleData);
-                fds = discoverResult.fdCandidates;
-                reference = discoverResult.FDTree;
-            }else {
-                DiscoverResult discoverResult = discoverer.discoverAfterVaildate(sampleData, reference);
-                fds = discoverResult.fdCandidates;
-                reference = discoverResult.FDTree;
-            }
-            System.out.println(fds);
-            System.out.println("发现fd数量： " + fds.size());
-            Set<Integer> rows= validator.validate(fds,data);
-            if(rows.isEmpty()){
-                System.out.println("违约元组数:" + rows.size());
-                break;
-            }
-            System.out.println("违约元组数:" + rows.size());
-//            System.out.println("违约元组:" + rows);
-            sampleData.addRows(rows);
-            System.out.println("新数据集大小：" + sampleData.getRowCount());
-//            System.out.println("新数据集原始索引： " + result.getRealIndexes());
-        }
-        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
-    }
 
     @Test
     public void testTotalSample(){
@@ -254,6 +207,53 @@ public class test {
             //od验证
             ODBruteForceFullValidator ODValidator = new ODBruteForceFullValidator();
             Set<Integer> ODRows = ODValidator.validate(discover,data);
+            if(ODRows.isEmpty() && fdRows.isEmpty())
+                break;
+            System.out.println("od违约元组数:" + ODRows.size());
+            result.addRows(ODRows);
+            System.out.println("增加od违约后新数据集大小：" + result.getRowCount());
+
+        }
+        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
+    }
+
+    @Test
+    public void testTotalSamplePro(){
+        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+        Timer timer = new Timer();
+        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
+        PartialDataFrame result = sampler.sample(data);
+        System.out.println("抽样数据集大小：" + result.getRowsCount());
+        List<FDCandidate> fds;
+        List<ODCandidate> ods;
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
+        BFSTotalDiscovererArray discoverer = new BFSTotalDiscovererArray();
+        FDTreeArray reference = null;
+        int i = 0;
+        while (true){
+            i++;
+            System.out.println("第" + i + "轮：");
+
+            discoverer.discoverFirstTimes(result, null);
+            fds = discoverer.fdCandidates;
+            reference = discoverer.fdTreeArray;
+
+            System.out.println(fds);
+            System.out.println("发现fd数量： " + fds.size());
+
+            ods =  discoverer.odTree.getAllOdsOrderByDFS();
+            System.out.println(ods);
+            System.out.println("发现od数量： " + ods.size());
+
+            //fd验证
+            Set<Integer> fdRows= validator.validate(fds,data);
+            System.out.println("fd违约元组数:" + fdRows.size());
+            result.addRows(fdRows);
+            System.out.println("增加fd违约后新数据集大小：" + result.getRowCount());
+
+            //od验证
+            ODBruteForceFullValidator ODValidator = new ODBruteForceFullValidator();
+            Set<Integer> ODRows = ODValidator.validate(discoverer.odTree,data);
             if(ODRows.isEmpty() && fdRows.isEmpty())
                 break;
             System.out.println("od违约元组数:" + ODRows.size());
@@ -413,103 +413,107 @@ public class test {
     }
 
     @Test
-    public void test(){
-        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
-        for(int i = 0; i < data.getRowCount(); i++){
-            System.out.println("第" + i +"行:");
-            System.out.println(data.getRow(i));
-        }
-        FDTreeNodeEquivalenceClasses A = new FDTreeNodeEquivalenceClasses();
-        A.mergeLeftNode(6, data);
-        System.out.println(A);
-        List<Integer> begins = A.left.clusterBegins;
-        System.out.println("A PLI: " + changeToPLI(A.left));
-        System.out.println("begins: " + begins);
-
-        System.out.println();
-
-        FDTreeNodeEquivalenceClasses AX = new FDTreeNodeEquivalenceClasses();
-        AX.mergeLeftNode(6, data);
-        AX.mergeLeftNode(11, data);
-        System.out.println(AX);
-        List<Integer> newBegins = AX.left.clusterBegins;
-        System.out.println("AX PLI: " + changeToPLI(AX.left));
-        System.out.println("newBegins: " + newBegins);
-
-        System.out.println();
-
-        List<Integer> rowsIndex = FDTreeNodeEquivalenceClasses.getVioHelperLessRow(begins,newBegins);
-        System.out.println("rowsIndex: " + rowsIndex);
-        List<Integer> rows = new ArrayList<>();
-        for(Integer rowIndex: rowsIndex){
-            rows.add(AX.left.indexes[rowIndex]);
-        }
-        System.out.println("rows: " + rows);
-
-        for(Integer row: rows){
-            System.out.println("第" + row +"行： ");
-            System.out.println(data.getRow(row));
-        }
-
-
-    }
-
-    @Test
-    public void  testS(){
-        DataFrame data = DataFrame.fromCsv("Data/echocardiogram-int.csv");
+    public void  testFDValidatorPro() throws IOException {
+//        File f=new File("out.txt");
+//        f.createNewFile();
+//        FileOutputStream fileOutputStream = new FileOutputStream(f);
+//        PrintStream printStream = new PrintStream(fileOutputStream);
+//        System.setOut(printStream);
+//        System.out.println("默认输出到控制台的这一句，输出到了文件 out.txt");
+        DataFrame data = DataFrame.fromCsv("Data/ncv 1000 19-int.csv");
+        Timer timer = new Timer();
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
-        PartialDataFrame sample = sampler.sample(data);
-        System.out.println(sample.getRowCount());
-        System.out.println(sample.getRealIndexes());
-        FDTreeNodeEquivalenceClasses A = new FDTreeNodeEquivalenceClasses();
-        A.mergeLeftNode(6, sample);
-        FDValidationResult fdValidationResult = A.checkFDRefinement(11, sample);
-        System.out.println(fdValidationResult.status);
-
-
-        sample.addRow(90);
-        sample.addRow(122);
-        FDTreeNodeEquivalenceClasses newA = new FDTreeNodeEquivalenceClasses();
-        newA.mergeLeftNode(6, sample);
-        fdValidationResult = newA.checkFDRefinement(11, sample);
-        System.out.println(fdValidationResult.status);
-
-
+        PartialDataFrame sampleData = sampler.sample(data);
+        System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
+        List<FDCandidate> fds;
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
+        BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
+        FDTreeArray reference = null;
+        int i = 0;
+        while (true){
+            i++;
+            System.out.println("第" + i + "轮：");
+            if(i == 1){
+                DiscoverResult discoverResult = discoverer.discoverFirstTimes(sampleData);
+                fds = discoverResult.fdCandidates;
+                reference = discoverResult.FDTree;
+            }else {
+                DiscoverResult discoverResult = discoverer.discoverAfterVaildate(sampleData, reference);
+                fds = discoverResult.fdCandidates;
+                reference = discoverResult.FDTree;
+            }
+            System.out.println(fds);
+            System.out.println("发现fd数量： " + fds.size());
+            Set<Integer> rows= validator.validate(fds,data);
+            if(rows.isEmpty()){
+                System.out.println("违约元组数:" + rows.size());
+                break;
+            }
+            System.out.println("违约元组数:" + rows.size());
+            sampleData.addRows(rows);
+            System.out.println("新数据集大小：" + sampleData.getRowCount());
+        }
+        System.out.println("最终发现fd数量： " + fds.size());
+        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
     }
 
     @Test
     public void testt(){
-        Timer timer = new Timer();
         DataFrame data = DataFrame.fromCsv("Data/ncv 1000 19-int.csv");
+        OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
+        PartialDataFrame sampleData = sampler.sample(data);
+        System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
+
         BFSTotalDiscovererArray discoverer = new BFSTotalDiscovererArray();
-//        BFSTotalDiscoverer discoverer = new BFSTotalDiscoverer();
-        discoverer.discoverFirstTime(data, null);
-        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
+        FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
+        ODBruteForceFullValidator ODValidator = new ODBruteForceFullValidator();
+        List<FDCandidate> fds;
+        List<ODCandidate> ods;
+        ODTree odReference = null;
+        FDTreeArray fdReference = null;
+        int i = 0;
+        Timer timer = new Timer();
+        while (true){
+            i++;
+            System.out.println("第" + i + "轮：");
+            if(i == 1){
+                discoverer.discoverFirstTimes(sampleData, null);
+                odReference = discoverer.odTree;
+                fdReference = discoverer.fdTreeArray;
+                fds = discoverer.fdCandidates;
+                ods = odReference.getAllOdsOrderByBFS();
+            }else {
+                discoverer.discoverAfterValidate(sampleData, odReference, fdReference);
+                odReference = discoverer.odTree;
+                fdReference = discoverer.fdTreeArray;
+                fds = discoverer.fdCandidates;
+                ods = odReference.getAllOdsOrderByBFS();
+            }
 
-        System.out.println(discoverer.fdCandidates.size());
-        System.out.println(discoverer.fdCandidates);
+            System.out.println(fds);
+            System.out.println("发现fd数量： " + fds.size());
+            System.out.println(ods);
+            System.out.println("发现od数量： " + ods.size());
 
-        System.out.println(discoverer.odTree.getAllOdsOrderByBFS().size());
-        System.out.println(discoverer.odTree.getAllOdsOrderByBFS());
+            Set<Integer> fdRows= validator.validate(fds,data);
+            System.out.println("fd违约元组数:" + fdRows.size());
+            sampleData.addRows(fdRows);
+            System.out.println("增加fd违约后新数据集大小：" + sampleData.getRowCount());
 
-        System.out.println(discoverer.fdMap);
-        int num = 0;
-        for(List<List<Integer>> listList : discoverer.fdMap.values()){
-            num += listList.size();
+            Set<Integer> ODRows = ODValidator.validate(odReference,data);
+            if(ODRows.isEmpty() && fdRows.isEmpty()){
+                System.out.println("fd、od违约元组总数:" + 0);
+                break;
+            }
+            System.out.println("od违约元组数:" + ODRows.size());
+            sampleData.addRows(ODRows);
+            System.out.println("增加od违约后新数据集大小：" + sampleData.getRowCount());
         }
-        System.out.println("fd数量 map: " + num);
+        System.out.println("总时间： " + timer.getTimeUsed() /1000.0 + "s");
+        System.out.println("最终发现fd总数：" + fds.size());
+        System.out.println("最终发现od总数：" + ods.size());
     }
 
-    @Test
-    public void testMap(){
-        Map<Integer,List<List<Integer>>> fdMap = new HashMap<>();
-        List<List<Integer>> allLeft = new ArrayList<>();
-        List<Integer> left = new ArrayList<>();
-        allLeft.add(left);
-        fdMap.put(14, allLeft);
-        List<List<Integer>> getLeft = fdMap.get(14);
-        System.out.println(getLeft.get(0));
-    }
 
 }
 

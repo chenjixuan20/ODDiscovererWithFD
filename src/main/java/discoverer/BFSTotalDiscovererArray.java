@@ -4,6 +4,7 @@ import dataStructures.DataFrame;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.Array.FDTreeArray.FDTreeNode;
 import dataStructures.fd.FDCandidate;
+import dataStructures.fd.FDTree;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
 import dataStructures.fd.FDValidationResult;
 import dataStructures.od.ODCandidate;
@@ -11,21 +12,19 @@ import dataStructures.od.ODTree;
 import dataStructures.od.ODTree.ODTreeNode;
 import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.Array.FDDiscoverNodeSavingInfoArray;
+import discoverer.fd.FDDiscoverer;
 import discoverer.od.ODDiscovererNodeSavingInfo;
 import minimal.ODMinimalChecker;
 import minimal.ODMinimalCheckerBruteForce;
 
 import java.util.*;
 
-public class BFSTotalDiscovererArray {
-    public List<FDCandidate> fdCandidates = new ArrayList<>();
+public class BFSTotalDiscovererArray extends FDDiscoverer {
     public Map<Integer,List<List<Integer>>> fdMap = new HashMap<>();
-    Map<Integer, Boolean[]> attributeToConfirmed = new HashMap<>();
-    FDTreeArray fdTreeArray;
     public ODTree odTree;
     Queue<QueueElementArray> queue = new LinkedList<>();
 
-    public void discoverFirstTime(DataFrame data, ODTree reference){
+    public void discoverFirstTimes(DataFrame data, ODTree reference){
         fdCandidates.clear();
         int attributeNum = data.getColumnCount();
         fdTreeArray = new FDTreeArray(attributeNum);
@@ -54,6 +53,48 @@ public class BFSTotalDiscovererArray {
         }
         odTree = odResult;
     }
+
+    public void discoverAfterValidate(DataFrame data, ODTree odReference, FDTreeArray fdReference){
+        fdCandidates.clear();
+        fdMap.clear();
+        int attributeNum = data.getColumnCount();
+        fdTreeArray = fdReference;
+        FDTreeNode fdRoot = fdTreeArray.getRoot();
+        ODTree odResult = new ODTree(attributeNum);
+        ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
+
+        processFDRootAndLevel1AfterValidate(data, fdRoot);
+        //第二层的所有结点的direction为UP
+        addLevel1ODNode(data,odResult,odReference);
+
+        while(!queue.isEmpty()){
+            QueueElementArray element = queue.poll();
+            if(element.flag == QueueElementArray.FD){
+                FDDiscoverNodeSavingInfoArray info = element.fdInfo;
+                FDTreeNode parent = info.nodeInResultTree;
+
+                //处理该parent节点中本来就存在的子节点
+                for(FDTreeNode child : parent.children){
+                    FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, parent, info, data, false);
+                    queue.add(new QueueElementArray(infoArray, QueueElementArray.FD));
+
+                }
+                //在补充并处理需要加上子节点
+                if(info.hasChildren){
+                    for(FDTreeNode child : info.newChildren){
+                        FDDiscoverNodeSavingInfoArray infoArray= vaildateNode(child,data,info,parent);
+                        queue.offer(new QueueElementArray(infoArray, QueueElementArray.FD));
+                    }
+                }
+            }else {
+                ODDiscovererNodeSavingInfo info = element.odInfo;
+                ODTreeNode parent = info.nodeInResultTree;
+                disposeODNode(odResult, parent, data, info, odMinimalChecker);
+            }
+        }
+        odTree = odResult;
+    }
+
 
     public void disposeFDNode(FDTreeNode parent, DataFrame data, FDDiscoverNodeSavingInfoArray info){
         //            prune规则2  key剪枝
@@ -115,7 +156,7 @@ public class BFSTotalDiscovererArray {
         }
     }
 
-    public void processFDRootAndLevel1(DataFrame data, FDTreeArray.FDTreeNode root){
+    public void processFDRootAndLevel1(DataFrame data, FDTreeNode root){
         int attributeNum = data.getColumnCount();
         for(int i = 0; i < attributeNum; i++){
             FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
@@ -136,53 +177,38 @@ public class BFSTotalDiscovererArray {
         }
     }
 
-    public FDDiscoverNodeSavingInfoArray newAndTraverseNode(int expendInLeft, DataFrame data, FDTreeArray.FDTreeNode parent,
-                                                            Boolean[] anotherFatherRHSCandidate, boolean isLevel1,
-                                                            FDDiscoverNodeSavingInfoArray infoArray){
-        FDTreeArray.FDTreeNode child;
-        FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
-        List<Integer> left;
-        if(isLevel1){
-            child = fdTreeArray.new FDTreeNode(parent, expendInLeft, data.getColumnCount(),null);
-            fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
-            left = new ArrayList<>();
-            fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
-            left.add(expendInLeft);
-        }else{
-            child = fdTreeArray.new FDTreeNode(parent, expendInLeft, data.getColumnCount(), anotherFatherRHSCandidate);
-            fdTreeNodeEquivalenceClasses = infoArray.fdTreeNodeEquivalenceClasses.deepClone();
-            left = infoArray.listDeepClone(infoArray.left);
-            fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
-            left.add(expendInLeft);
-        }
-
-        for(int k = 0; k < data.getColumnCount(); k++){
-            if(isLevel1 && expendInLeft == k) {
-                //A->A成立（平凡函数依赖）
-                child.RHSCandidate[expendInLeft] = true;
-                continue;
-            }
-            if(isLevel1 || !child.RHSCandidate[k]){
-                FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
+    public void processFDRootAndLevel1AfterValidate(DataFrame data, FDTreeNode root){
+        int attributeNum = data.getColumnCount();
+        for(int i = 0; i < attributeNum; i++){
+            if(root.RHSCandidate[i]){
+                //存在[]->x,需要重新检查
+                FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
+                FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i,data);
                 if(fdResult.status.equals("non-valid")){
-                    //右侧为k的fdCandidate无效
-                    child.RHSCandidate[k] = false;
-                }else{
-                    child.RHSCandidate[k] = true;
-                    if(isLevel1 && !parent.RHSCandidate[k])
-                        child.minimal[k] = true;
+                    //结果变为non-valid,子节点中所有rhs[i]变为false
+                    root.RHSCandidate[i] = false;
+                }else {
+                    fdCandidates.add(new FDCandidate(new ArrayList<>(), i, root));
+                    List<List<Integer>> allLeft = new ArrayList<>();
+                    List<Integer> nowLeft = new ArrayList<>();
+                    allLeft.add(nowLeft);
+                    fdMap.put(i, allLeft);
                 }
             }
         }
 
-        if(isLevel1)
-            attributeToConfirmed.put(expendInLeft,child.RHSCandidate);
-        else {
-            child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, anotherFatherRHSCandidate);
+        /*先手动做第一层，得到map，完善后面的剪枝*/
+        for(FDTreeNode child : root.children){
+            FDDiscoverNodeSavingInfoArray infoArray = reTraverseNode(child, root, null, data, true);
+            queue.add(new QueueElementArray(infoArray, QueueElementArray.FD));
         }
-        for(int j = 0; j < data.getColumnCount(); j++){
-            if(child.minimal[j]){
-                fdCandidates.add(new FDCandidate(left, j, child));
+    }
+
+    @Override
+    public void addFDCandidate(FDTreeNode node, int attributeNum, List<Integer> left) {
+        for(int j = 0; j < attributeNum; j++){
+            if(node.minimal[j]){
+                fdCandidates.add(new FDCandidate(left, j, node));
                 if(!fdMap.containsKey(j)){
                     List<List<Integer>> allLeft = new ArrayList<>();
                     List<Integer> nowLeft = deepClone(left);
@@ -196,68 +222,6 @@ public class BFSTotalDiscovererArray {
                 }
             }
         }
-        parent.children.add(child);
-        return new FDDiscoverNodeSavingInfoArray(child, fdTreeNodeEquivalenceClasses, left);
-    }
-
-    public boolean hasSubSet(List<Integer> left, int right, List<FDCandidate> fdCandidates){
-        boolean result = false;
-        for (FDCandidate fdCandidate : fdCandidates) {
-            if (fdCandidate.right == right) {
-                result = left.containsAll(fdCandidate.left);
-                if (result) break;
-            }
-        }
-        return result;
-    }
-
-    public Boolean[] checkFDMinimalArray(FDTreeArray.FDTreeNode child, FDTreeArray.FDTreeNode parent,
-                                         List<Integer> left, List<FDCandidate> fdCandidates,
-                                         Boolean[] anotherConfirmed){
-//        List<Integer> fdRightOfParent = new ArrayList<>();
-//        for(int i = 0; i < parent.fdRHSCandidate.length; i++){
-//            if(parent.fdRHSCandidate[i]){
-//                fdRightOfParent.add(i);
-//            }
-//        }
-//        for(int i = 0; i < child.fdRHSCandidate.length; i++){
-//            if(child.fdRHSCandidate[i] && !isValueInList(i,fdRightOfParent)){
-//                child.mininal[i] = true;
-//            }
-//        }
-//        for(int i = 0; i < child.fdRHSCandidate.length; i++){
-//            if(isSubSet(left, i, fdCandidates)){
-//                child.mininal[i] = false;
-//            }
-//        }
-        Boolean[] allParentConfirmed = parent.RHSCandidate.clone();
-        for(int i = 0; i < anotherConfirmed.length; i++){
-            if(anotherConfirmed[i]){
-                allParentConfirmed[i] = true;
-            }
-        }
-//        System.out.println("parent_comfired:");
-//        printArray(allParentConfirmed);
-//        System.out.println("child_comfired:");
-//        printArray(child.confirmed);
-        for(int i = 0; i < child.RHSCandidate.length; i++){
-            if(child.RHSCandidate[i] && !allParentConfirmed[i] &&!hasSubSet(left, i, fdCandidates)){
-                child.minimal[i] = true;
-            }else {
-                child.minimal[i] = false;
-            }
-        }
-//        System.out.println("child_minimal:");
-//        printArray(child.minimal);
-        return child.minimal;
-    }
-
-    public int trueRHSCounts(Boolean[] booleans){
-        int result = 0;
-        for(Boolean b : booleans){
-            if(b) result++;
-        }
-        return result;
     }
 
     private void copyConfirmNode(ODTree resultTree,ODTreeNode resultTreeNode,ODTreeNode referenceTreeNode){
