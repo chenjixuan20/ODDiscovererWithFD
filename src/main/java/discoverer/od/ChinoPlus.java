@@ -13,6 +13,8 @@ import minimal.ODMinimalChecker;
 import sampler.OneLevelCheckingSampler;
 import sampler.Sampler;
 import util.Timer;
+import validator.od.ODBruteForceFullValidator;
+import validator.od.ODPrefixBasedIncrementalValidator;
 import validator.od.ODValidator;
 
 import java.util.List;
@@ -63,8 +65,7 @@ public class ChinoPlus extends ODDiscoverer {
             System.out.println("第"+round+"轮开始");
             Timer roundTimer=new Timer();
             int subRound=0;
-//            odTree=new ODTree(data.getColumnCount());me
-            BFSODDiscovererFull discoverer=new BFSODDiscovererFull();
+            BFSODDiscovererForIteration discoverer=new BFSODDiscovererForIteration();
             while (true){
                 subRound++;
                 System.out.println("\n第"+subRound+"次迭代");
@@ -79,27 +80,37 @@ public class ChinoPlus extends ODDiscoverer {
                 System.out.println("剩余OD数量"+odTree.getAllOdsOrderByBFS().size());
                 dealPartTime();
                 if(violateRowIndexes.size()==0){
+                    if(discoverer.isComplete()){
                         System.out.println("------");
                         System.out.println("第"+round+"轮结束");
                         System.out.println("本轮用时"+roundTimer.getTimeUsed()/1000+"s");
                         System.out.println("新数据集大小"+sampledData.getRowCount());
                         System.out.println("------");
                         System.out.println("-----------------------------------------------------");
-//                            out(odTree);
                         System.out.println("最终统计");
                         System.out.println("用时"+timer.getTimeUsed()/1000.0+"s");
                         System.out.println("OD数量"+odTree.getAllOdsOrderByBFS().size());
                         System.out.println("数据集大小"+sampledData.getRowCount());
                         System.out.println("discover时间:"+totalDiscoverTime/1000.0+"s");
                         System.out.println("validate时间:"+totalValidateTime/1000.0+"s");
-                        System.out.println("");
+
                         System.out.println("check时间:"+totalCheckTime/1000.0+"s");
                         System.out.println("minimal检查时间:"+totalMinimalTime/1000.0+"s");
                         System.out.println("product时间:"+totalProductTime/1000.0+"s");
                         System.out.println("clone时间:"+totalCloneTime/1000.0+"s");
                         System.out.println("-----------------------------------------------------");
                         return odTree;
-                }else {
+                    }else {
+                        System.out.println("violateRow size is 0 && discoverer is not complete");
+                        if (odTree.getAllOdsOrderByDFS().size()>100000){
+                            for (ODCandidate od : odTree.getAllOdsOrderByBFS()) {
+                                System.out.println(od);
+                            }
+                            return odTree;
+                        }
+                    }
+                }
+                else {
                     sampledData.addRows(violateRowIndexes);
                     System.out.println("------");
                     System.out.println("第"+round+"轮结束");
@@ -130,5 +141,18 @@ public class ChinoPlus extends ODDiscoverer {
     @Override
     public ODTree discoverFD(DataFrame data, List<FDCandidate> fdCandidates) {
         return null;
+    }
+
+
+    public static void main(String[] args) {
+        DataFrame dataFrame=DataFrame.fromCsv("Data/FLI 10K.csv");
+        Timer timer=new Timer();
+        ODTree discover = new ChinoPlus(
+                new OneLevelCheckingSampler(),
+                new ODPrefixBasedIncrementalValidator(),
+                true).discover(dataFrame, null);
+        timer.outTimeAndReset();
+        List<ODCandidate> ods = discover.getAllOdsOrderByBFS();
+        System.out.println("od数量:" + ods.size());
     }
 }

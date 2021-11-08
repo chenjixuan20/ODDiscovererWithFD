@@ -93,7 +93,7 @@ public class FDTreeArray {
 
         @Override
         public String toString() {
-            return "attribute: " + (attribute+1);
+            return "attribute: " + (attribute);
         }
     }
 

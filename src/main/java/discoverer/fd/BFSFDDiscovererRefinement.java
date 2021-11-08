@@ -9,7 +9,9 @@ import util.Timer;
 
 
 public class BFSFDDiscovererRefinement {
-    public  long keyPruneTimes = 0;
+    public long keyPruneTimes = 0;
+    DataWareHouse dataWareHouse = DataWareHouse.getInstance();
+
 
     /**
      * 使用refinement方法 check fd
@@ -191,6 +193,7 @@ public class BFSFDDiscovererRefinement {
         System.out.println(result);
         System.out.println(result.size());
 
+
         System.out.println("refinement方法：");
         System.gc();
         Timer timer1 = new Timer();
@@ -198,26 +201,5 @@ public class BFSFDDiscovererRefinement {
         System.out.println(timer1.getTimeUsedAndReset() / 1000.0 + "s");
         System.out.println(result1);
         System.out.println(result1.size());
-
-//        System.out.println("全存：");
-//        System.gc();
-//        FDToODSavingInfo result = new BFSFDDiscoverer().discoverCandidateRefinementPlus(data);
-//        System.out.println(timer.getTimeUsedAndReset() / 1000.0 + "s");
-//        System.out.println(result.attibuteListToEqcMap);
-//        System.out.println(result.attibuteListToEqcMap.size());
-//        System.out.println(result.fdCandidates.size());
-//        List<AttributeAndDirection> list = new ArrayList<>();
-//        list.add(AttributeAndDirection.getInstance(6, AttributeAndDirection.UP));
-//        list.add(AttributeAndDirection.getInstance(4, AttributeAndDirection.DOWN));
-//        ODTreeNodeEquivalenceClasses odt = new ODTreeNodeEquivalenceClasses();
-//        odt.mergeNodeTest(AttributeAndDirection.getInstance(6, AttributeAndDirection.UP), data, ODTree.ODTreeNodeStatus.SPLIT);
-//        odt.mergeNodeTest(AttributeAndDirection.getInstance(4, AttributeAndDirection.DOWN), data, ODTree.ODTreeNodeStatus.SPLIT);
-//        System.out.println(odt);
-//        System.out.println("---");
-//        ODTreeNodeEquivalenceClasses odt2 = new ODTreeNodeEquivalenceClasses();
-//        odt2.findAndHandleEquivalenceClass(result.attibuteListToEqcMap, list, data);
-//        System.out.println(odt2);
-//        System.out.println(odt.left.equals(odt2.left));
-
     }
 }

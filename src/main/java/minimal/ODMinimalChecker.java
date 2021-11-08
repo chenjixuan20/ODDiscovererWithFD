@@ -4,6 +4,7 @@ import dataStructures.fd.FDCandidate;
 import dataStructures.od.AttributeAndDirection;
 import dataStructures.od.ODCandidate;
 import dataStructures.od.ODTree;
+import discoverer.fd.Array.DiscoverResult;
 import discoverer.fd.FDToODSavingInfo;
 import util.Timer;
 
@@ -21,7 +22,7 @@ public abstract class ODMinimalChecker {
 
     public abstract boolean isListMinimalFD(List<AttributeAndDirection> list, List<FDCandidate> fdCandidates);
 
-    public abstract boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<Integer, List<List<Integer>>> fdMap);
+    public abstract boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<String, List<List<Integer>>> fdMap);
 
     public boolean isCandidateMinimal(ODCandidate candidate){
         Timer timer=new Timer();
@@ -83,8 +84,35 @@ public abstract class ODMinimalChecker {
         return result;
     }
 
-    public boolean isCandidateMinimalFDMap(ODCandidate candidate, Map<Integer, List<List<Integer>>> fdMap){
+    public boolean isCandidateMinimalFDMap(ODCandidate candidate, Map<String, List<List<Integer>>> fdMap){
         Timer timer=new Timer();
+        boolean result;
+        List<AttributeAndDirection> expandSide, otherSide;
+        if(candidate.odByODTreeNode.parent.status == ODTree.ODTreeNodeStatus.VALID){
+            expandSide = candidate.leftAndRightAttributeList.right;
+            otherSide = candidate.leftAndRightAttributeList.left;
+        }else{
+            expandSide = candidate.leftAndRightAttributeList.left;
+            otherSide = candidate.leftAndRightAttributeList.right;
+        }
+        int expandAttribute = expandSide.get(expandSide.size() - 1).attribute;
+
+        for(AttributeAndDirection x:otherSide){
+            if(x.attribute == expandAttribute)
+                return false;
+        }
+
+        for (int i = 0; i < expandSide.size()-1; i++) {
+            if(expandAttribute == expandSide.get(i).attribute)
+                return false;
+        }
+
+        result = isListMinimalFDMap(expandSide, fdMap);
+        fdMinimalCheckTime+=timer.getTimeUsed();
+        return result;
+    }
+
+    public boolean isCandidateMinimalFDPlus(ODCandidate candidate, FDToODSavingInfo infoTranfer){
         boolean result;
         List<AttributeAndDirection> expandSide, otherSide;
         if(candidate.odByODTreeNode.parent.status == ODTree.ODTreeNodeStatus.VALID){
@@ -107,12 +135,11 @@ public abstract class ODMinimalChecker {
                 return false;
         }
 
-        result = isListMinimalFDMap(expandSide, fdMap);
-        fdMinimalCheckTime+=timer.getTimeUsed();
+        result = isListMinimalFD(expandSide, infoTranfer.fdCandidates);
         return result;
     }
 
-    public boolean isCandidateMinimalFDPlus(ODCandidate candidate, FDToODSavingInfo infoTranfer){
+    public boolean isCandidateMinimalFDPlusArray(ODCandidate candidate, DiscoverResult infoTranfer){
         boolean result;
         List<AttributeAndDirection> expandSide, otherSide;
         if(candidate.odByODTreeNode.parent.status == ODTree.ODTreeNodeStatus.VALID){

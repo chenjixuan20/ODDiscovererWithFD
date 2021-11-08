@@ -143,11 +143,11 @@ public class DisposeCSV {
 
     public static void main(String[] args) throws IOException {
         //读文件
-        List<List<String>> lists = readCSV("Data/FLI 100K.csv");
+        List<List<String>> lists = readCSV("newdata/flights-int 500K 17.csv");
 
 
         //只保留93w条数据
-        List<List<String>> new_list = getSubList(lists,0,5500, true);
+        List<List<String>> new_list = getSubList(lists,0,50000, true);
 
 
         //删除列
@@ -163,7 +163,7 @@ public class DisposeCSV {
 //        result.add(0, new_title);
 
         //写文件
-        writeCSV(new_list, "Data/FLI 5500.csv");
+        writeCSV(new_list, "newdata/flights-int 50K 17.csv.csv");
     }
 
 

@@ -1,5 +1,6 @@
 package minimal;
 
+import dataStructures.DataFrame;
 import dataStructures.fd.FDCandidate;
 import dataStructures.od.AttributeAndDirection;
 import dataStructures.od.ODCandidate;
@@ -55,15 +56,14 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
                      rightIndex + right.size() == leftIndex){
                 return false;
             }
-
         }
         return true;
     }
 
     public boolean isListMinimalFDMap(List<AttributeAndDirection> expandList,
-                                      Map<Integer, List<List<Integer>>> fdMap){
+                                      Map<String, List<List<Integer>>> fdMap){
         if(expandList.size() == 1) return true;
-        int expandAttribute = expandList.get(expandList.size() - 1).attribute;
+        String expandAttribute = String.valueOf(expandList.get(expandList.size() - 1).attribute);
 
         List<List<Integer>> leftOfExpandRight = fdMap.get(expandAttribute);
 //        System.out.println("right: " + expandAttribute);
@@ -102,7 +102,6 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
                     rightIndex + right.size() == leftIndex){
                 return false;
             }
-
         }
         return true;
     }
@@ -115,10 +114,11 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
 
             int leftIndex = getIndex(list, left), rightIndex = getIndex(list, right);
             if(leftIndex != -1 && rightIndex != -1 &&
-                    (leftIndex < rightIndex || rightIndex + right.size() == leftIndex)){
+                    (leftIndex < rightIndex  //前推后
+                            || rightIndex + right.size() == leftIndex //后推前
+                    )){
                 return false;
             }
-
             list = reverseDirection(list);
             leftIndex = getIndex(list, left);
             rightIndex = getIndex(list, right);
@@ -146,12 +146,12 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
     }
 
     public static boolean m(List<Integer> expandList, List<List<Integer>> leftOfExpandRight){
-
         for (List<Integer> integers : leftOfExpandRight) {
             if (expandList.containsAll(integers))
                 return false;
         }
         return true;
     }
+
 
 }

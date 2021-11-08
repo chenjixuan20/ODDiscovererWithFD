@@ -1,12 +1,19 @@
 package discoverer.fd.Array;
 
 import dataStructures.DataFrame;
+import dataStructures.DataWareHouse;
+import dataStructures.EquivalenceClass;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.Array.FDTreeArray.FDTreeNode;
 import dataStructures.fd.FDCandidate;
 import dataStructures.fd.FDTreeNodeEquivalenceClasses;
 import dataStructures.fd.FDValidationResult;
+import dataStructures.od.ODCandidate;
+import dataStructures.od.ODTree;
 import discoverer.fd.FDDiscoverer;
+import discoverer.od.BFSODDiscovererFull;
+import minimal.ODMinimalCheckerBruteForce;
+import util.Timer;
 
 import java.util.*;
 
@@ -18,6 +25,8 @@ public class BFSFDDiscovererArray extends FDDiscoverer {
         int attributeNum = data.getColumnCount();
         fdTreeArray = new FDTreeArray(attributeNum);
         FDTreeNode root = fdTreeArray.getRoot();
+        HashMap<String, EquivalenceClass> listEcMap = new HashMap<>();
+
         //手动做第0层
         for(int i = 0; i < attributeNum; i++){
             FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
@@ -27,14 +36,13 @@ public class BFSFDDiscovererArray extends FDDiscoverer {
                 fdCandidates.add(new FDCandidate(new ArrayList<>(), i, root));
             }
         }
-
         //先手动做第一层的|lhs|=1
         for(int i = 0; i < attributeNum; i++){
             FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i, data, root, null,
                     true, null);
+            listEcMap.put(infoArray.left.toString(), infoArray.fdTreeNodeEquivalenceClasses.left);
             queue.add(infoArray);
         }
-
         while (!queue.isEmpty()){
             FDDiscoverNodeSavingInfoArray info = queue.poll();
             FDTreeNode parent = info.nodeInResultTree;
@@ -49,11 +57,12 @@ public class BFSFDDiscovererArray extends FDDiscoverer {
                         continue;
                     }
                     FDDiscoverNodeSavingInfoArray infoArray = newAndTraverseNode(i,data,parent,attributeToConfirmed.get(i),false, info);
+                    listEcMap.put(infoArray.left.toString(), infoArray.fdTreeNodeEquivalenceClasses.left);
                     queue.offer(infoArray);
                 }
             }
         }
-        return new DiscoverResult(fdTreeArray, fdCandidates);
+        return new DiscoverResult(fdTreeArray, fdCandidates, listEcMap);
     }
 
     public DiscoverResult discoverAfterVaildate(DataFrame data, FDTreeArray reference){
@@ -104,7 +113,6 @@ public class BFSFDDiscovererArray extends FDDiscoverer {
         return new DiscoverResult(fdTreeArray, fdCandidates);
     }
 
-
     @Override
     public void addFDCandidate(FDTreeNode node, int attributeNum, List<Integer> left) {
         for(int j = 0; j <  attributeNum; j++){
@@ -112,5 +120,28 @@ public class BFSFDDiscovererArray extends FDDiscoverer {
                 fdCandidates.add(new FDCandidate(left, j, node));
             }
         }
+    }
+
+    public static void main(String[] args) {
+        DataFrame data = DataFrame.fromCsv("Data/FLI 1000.csv");
+//        DataFrame data = DataFrame.fromCsv("Data/test.csv");
+
+        Timer time = new Timer();
+        BFSFDDiscovererArray discoverer = new BFSFDDiscovererArray();
+        DiscoverResult result = discoverer.discoverFirstTimes(data);
+        List<FDCandidate> fds = result.fdCandidates;
+        System.out.println(fds);
+        System.out.println(fds.size());
+
+        System.out.println("fdRefinementTime:" +  FDTreeNodeEquivalenceClasses.refinementTime/1000.0+"s");
+        System.out.println("fdMeregeTime:" +  FDTreeNodeEquivalenceClasses.mergeTime/1000.0+"s");
+        System.out.println("fdCloneTime:" +  FDTreeNodeEquivalenceClasses.cloneTime/1000.0+"s");
+        System.out.println("fdMinimalCheckTime:" +  ODMinimalCheckerBruteForce.fdMinimalCheckTime/1000.0+"s");
+
+        ODTree discover = new BFSODDiscovererFull().discoverFDPlusArray(data, result);
+        List<ODCandidate> ods = discover.getAllOdsOrderByBFS();
+        System.out.println(ods);
+        System.out.println(ods.size());
+        System.out.println(time.getTimeUsedAndReset()/1000.0+"s");
     }
 }

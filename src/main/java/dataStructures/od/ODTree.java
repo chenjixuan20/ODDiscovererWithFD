@@ -150,6 +150,11 @@ public class ODTree {
                     child.getAllNodesOrderByDFSRecursion(ods,filter);
             }
         }
+
+        @Override
+        public String toString() {
+            return "attribute: " + attribute;
+        }
     }
 
     public enum ODTreeNodeStatus{

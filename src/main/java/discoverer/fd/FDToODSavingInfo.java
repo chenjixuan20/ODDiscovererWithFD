@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FDToODSavingInfo {
     public List<FDCandidate> fdCandidates;
-    public HashMap<List<Integer>, EquivalenceClass> attibuteListToEqcMap;
+    public HashMap<String, EquivalenceClass> attibuteListToEqcMap;
 
     public FDToODSavingInfo(){
         fdCandidates = new ArrayList<>();
@@ -19,7 +19,7 @@ public class FDToODSavingInfo {
 
 
     public void setListAndEquivalenceClasses(List<Integer> left, EquivalenceClass equivalenceClass){
-       attibuteListToEqcMap.put(left, equivalenceClass);
+       attibuteListToEqcMap.put(left.toString(), equivalenceClass);
     }
 
     public void setFdCandidates(List<FDCandidate> fdCandidates){

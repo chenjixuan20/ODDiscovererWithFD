@@ -38,4 +38,9 @@ public class FDDiscoverNodeSavingInfoArray {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return left + " " +fdTreeNodeEquivalenceClasses;
+    }
 }

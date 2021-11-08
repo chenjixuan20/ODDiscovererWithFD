@@ -123,28 +123,29 @@ public class ODTreeNodeEquivalenceClasses {
     }
 
 
-    public ODTreeNodeEquivalenceClasses findAndHandleEquivalenceClass(ODTree.ODTreeNode node,HashMap<List<Integer>, EquivalenceClass> map,
+    public ODTreeNodeEquivalenceClasses findAndHandleEquivalenceClass(ODTree.ODTreeNode node,HashMap<String, EquivalenceClass> map,
                                               List<AttributeAndDirection> list, DataFrame data){
         List<Integer> attributeList = new ArrayList<>();
         List<Integer> attributeListClone = new ArrayList<>();
         List<Integer> directionList = new ArrayList<>();
         List<List<Integer>> trueEc = new ArrayList<>();
 
-        for(int i = 0; i < list.size(); i++){
-            attributeList.add(list.get(i).attribute);
-            directionList.add(list.get(i).direction);
-            attributeListClone.add(list.get(i).attribute);
+        for (AttributeAndDirection attributeAndDirection : list) {
+            attributeList.add(attributeAndDirection.attribute);
+            directionList.add(attributeAndDirection.direction);
+            attributeListClone.add(attributeAndDirection.attribute);
         }
-        /*当attributeList的顺序和方向变化时，EquivalueClass中每个cluster的内容不变，只有cluster的顺序发生变化
+        /*
+        当attributeList的顺序和方向变化时，EquivalueClass中每个cluster的内容不变，只有cluster的顺序发生变化
         FD中的attributeList是按照升序排序的，要找到OD中的AttributeAndDirection对应的EquivalueClass(FD中计算过)
         则先需要对AttributeAndDirection进行升序排序，得到cluster次序错乱的EquivalueClass
         再按照AttributeAndDirection中的属性顺序和方向进行还原
         */
         Collections.sort(attributeListClone);
-        if(map.get(attributeListClone) == null){
+        if(map.get(attributeListClone.toString()) == null){
             return mergeNode(node, data);
         }else{
-            EquivalenceClass ec = map.get(attributeListClone);
+            EquivalenceClass ec = map.get(attributeListClone.toString());
             int[] indexs = ec.indexes;
             List<Integer> begin = ec.clusterBegins;
             for(int i = 0; i < begin.size() - 1; i++){
@@ -156,25 +157,25 @@ public class ODTreeNodeEquivalenceClasses {
                 }
                 trueEc.add(cluster);
             }
-            Collections.sort(trueEc, new Comparator<List<Integer>>() {
+            trueEc.sort(new Comparator<List<Integer>>() {
                 @Override
                 public int compare(List<Integer> o1, List<Integer> o2) {
                     int sortAttIndex = 0;
                     int sortAtt = attributeList.get(sortAttIndex);
                     int a = data.getCell(o1.get(0), sortAtt);
                     int b = data.getCell(o2.get(0), sortAtt);
-                    if(a != b) {
-                        if(directionList.get(sortAttIndex) == 1)
+                    if (a != b) {
+                        if (directionList.get(sortAttIndex) == 1)
                             return a - b;
                         else return b - a;
-                    }else{
-                        while (a == b && sortAttIndex < attributeList.size()){
+                    } else {
+                        while (a == b && sortAttIndex < attributeList.size()) {
                             sortAttIndex++;
                             sortAtt = attributeList.get(sortAttIndex);
                             a = data.getCell(o1.get(0), sortAtt);
                             b = data.getCell(o2.get(0), sortAtt);
                         }
-                        if(directionList.get(sortAttIndex) == 1)
+                        if (directionList.get(sortAttIndex) == 1)
                             return a - b;
                         else return b - a;
                     }
@@ -186,13 +187,12 @@ public class ODTreeNodeEquivalenceClasses {
             newBegin.add(0);
             int count = 0;
             int beginPoint = 0;
-            for(int i = 0; i < trueEc.size(); i++){
-                List<Integer> cluster = trueEc.get(i);
+            for (List<Integer> cluster : trueEc) {
                 int clusterSize = cluster.size();
                 beginPoint += clusterSize;
                 newBegin.add(beginPoint);
-                for(int j = 0; j < clusterSize; j++){
-                    newIndex[count] = cluster.get(j);
+                for (Integer integer : cluster) {
+                    newIndex[count] = integer;
                     count++;
                 }
             }

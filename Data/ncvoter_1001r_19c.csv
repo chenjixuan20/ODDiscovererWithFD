@@ -1,0 +1,1001 @@
+voter_id,voter_reg_num,first_name,middle_name,last_name,age,street_address,city,state,zip_code,birth_place,register_date,download_month
+0,9.90E+11,rodney,john,glockner,37,1708 pembroke jones dr,wilmington,nc,28405,nj,01/01/1930,11-Oct
+1,9.99E+11,sallie,wilkins,blanchard,111,203 e main st,rose hill,nc,28458,nc,01/01/1930,11-Dec
+2,9.99E+11,john,m,goodson,102,496 white flash rd,mt olive,nc,28365,nc,01/01/1930,11-Dec
+3,9.90E+11,glenda,ware,battle,56,15360 pea bridge rd,laurinburg,nc,28352,,10/01/1930,11-Oct
+4,9.90E+11,michele,koenig,bullock,53,242 northwood dr,whiteville,nc,28472,pa,10/01/1930,11-Oct
+5,824002,clarence,ervin,hunter,43,280 pender rd,spring lake,nc,28390,nc,06/03/1930,11-Oct
+6,9.90E+11,elva,minnie,wright,81,1314 tunnel rd,asheville,nc,28805,,03/04/1930,11-Oct
+7,9.90E+11,adrienne,christine,franks,28,111 king richard ct,jacksonville,nc,28546,va,10/04/1930,11-Oct
+8,9.90E+11,paula,,buckner,65,1140 n main st #210,marshall,nc,28753,nc,04/06/1930,11-Oct
+9,9.90E+11,bryan,terence,peterson,47,164 dogwood cir,burnsville,nc,28714,nc,04/06/1930,11-Oct
+10,9.90E+11,doris,smith,bagley,81,1309 mccarthy blvd #104,new bern,nc,28562,ri,08/09/1930,11-Oct
+11,9.90E+11,rudolf,,kleeb,80,303 windy knoll dr,hendersonville,nc,28739,,11/09/1930,11-Oct
+12,9.90E+11,angelique,nicole,ellington,19,901 n 20th st,morehead city,nc,28557,nj,08/10/1930,11-Oct
+13,9.90E+11,helen,chamblee,driver,81,8778 driver rd,zebulon,nc,27597,nc,02/13/1930,11-Oct
+14,9.90E+11,gregory,dale,hall,49,3362 penland rd,spruce pine,nc,28777,nc,03/17/1930,11-Oct
+15,9.99E+11,catherine,e,smith,81,410 brunswick rd,fayetteville,nc,28303,,07/17/1930,11-Dec
+16,9.99E+11,ruth,bridges,wood,81,1605 crymes cove rd,waynesville,nc,28786,nc,04/18/1930,11-Dec
+17,9.90E+11,kenneth,roland,warren,80,1371 warren rd,faison,nc,28341,nc,12/20/1930,11-Oct
+18,9.90E+11,clarice,clinard,bryant,81,3325 groometown rd #c,greensboro,nc,27407,nc,07/21/1930,11-Oct
+19,9.99E+11,emily,smith,doty,81,302 kenwood ave,wilmington,nc,28405,nc,11/21/1930,11-Dec
+20,9.90E+11,agatha,,squire,81,6466 nc hwy 46,garysburg,nc,27831,nc,04/24/1930,11-Oct
+21,9.90E+11,mildred,,wooten,81,225 gull ave,east flat rock,nc,28726,nc,04/24/1930,11-Oct
+22,9.99E+11,meredith,kae,payne,18,8 reese rd,asheville,nc,28805,nc,07/24/1930,13-Oct
+23,9.90E+11,edward,thomas,hall,79,88 eds ln,sanford,nc,27332,nc,10/26/1930,11-Oct
+24,9.90E+11,kenneth,,mccain,81,2411 thomas ave,new bern,nc,28560,va,06/27/1930,11-Oct
+25,9.99E+11,laura,frances,britt,98,1104 w 24th st,lumberton,nc,28358,,02/28/1930,11-Dec
+26,9.90E+11,louise,anderson,johnson,81,113 gentry st #20,north wilkesboro,nc,28659,nc,05/28/1930,11-Oct
+27,9.90E+11,willie,mae,benton,81,306 woodlake dr,greensboro,nc,27406,nc,03/29/1930,11-Oct
+28,9.90E+11,deborah,fouts,jarrell,57,159 stencil ln,mount airy,nc,27030,il,07/29/1930,11-Oct
+29,9124385,james,hal,spriggs,46,2314 hillford dr,burlington,nc,27217,md,09/29/1930,11-Oct
+30,9.90E+11,diane,tilley,tate,45,5700 seward rd,pfafftown,nc,27040,nc,09/29/1930,11-Oct
+31,9.90E+11,thelma,almon,broady,68,115 s brookwood ave,rockingham,nc,28379,nc,09/29/1930,11-Oct
+32,9.90E+11,theady,earl,james,58,3523 worley st,fayetteville,nc,28311,nc,09/29/1930,11-Oct
+33,9.90E+11,susan,marett,stephenson,42,202 view st #a,black mountain,nc,28711,,09/29/1930,11-Oct
+34,9.90E+11,mildred,irene,schronce,90,906 bryant dr,sanford,nc,27330,nc,10/29/1930,11-Oct
+35,9009911,cecil,lewis,ford,59,3396 rocky ridge rd,newton,nc,28658,nc,11/29/1930,11-Oct
+36,9.90E+11,gwendolyn,andrea,speller-jacobs,61,508 mountain st,windsor,nc,27983,nc,09/30/1930,11-Oct
+37,9.99E+11,kimberly,lynne,muller,21,713 indica ct #101,wilmington,nc,28405,nc,02/01/1931,12-Apr
+38,9.90E+11,hazel,waller,knight,80,350 potts rd,advance,nc,27006,nc,05/01/1931,11-Oct
+39,9.99E+11,dempsey,,clark,80,6805 buttermere dr,fayetteville,nc,28314,ga,01/02/1931,11-Dec
+40,9.99E+11,charles,e,tart,81,8937 ramsey st,linden,nc,28356,,08/03/1931,13-Jun
+41,9.99E+11,maurine,taylor,younce,80,1420 shaire center dr #1,lenoir,nc,28645,nc,08/05/1931,11-Dec
+42,9.90E+11,walter,cline,johnson,80,169 otis brown dr,north wilkesboro,nc,28659,nc,09/05/1931,11-Oct
+43,9.90E+11,janice,stone,miller,63,223 berrymore rd,reidsville,nc,27320,nc,04/08/1931,11-Oct
+44,9.90E+11,doyal,delmer,southerland,79,7118 ryan st,fayetteville,nc,28314,ga,11/08/1931,11-Oct
+45,9.99E+11,francis,c,keel,80,205 n pine st,oak city,nc,27857,,03/15/1931,11-Dec
+46,9.90E+11,nelson,james,alston,80,9744 nc hwy 4,littleton,nc,27850,,04/16/1931,11-Oct
+47,9.90E+11,ralph,,quick,60,22700 bunch rd,laurel hill,nc,28351,nc,12/16/1931,11-Oct
+48,9.99E+11,addie,hoggard,garrett,79,437 hoggard mill rd,windsor,nc,27983,nc,03/17/1931,11-Dec
+49,9.90E+11,fonnie,c,joyner,75,805 colon rd,sanford,nc,27330,nc,04/18/1931,11-Oct
+50,9.99E+11,shirley,anne,books,80,10 ridgebourne way,flat rock,nc,28731,in,07/18/1931,11-Dec
+51,9.99E+11,billy,joe,nelson,79,217 putnam rd,canton,nc,28716,nc,12/18/1931,11-Dec
+52,9.99E+11,katherine,a,waterman,80,2717 dogwood rd,durham,nc,27705,ny,07/20/1931,11-Dec
+53,9.90E+11,betty,a,chaney,80,146 lynnwayne cir,havelock,nc,28532,nc,07/22/1931,11-Oct
+54,9.90E+11,billy,gene,hobbs,80,2813 sikes mill rd,monroe,nc,28110,,08/22/1931,11-Oct
+55,444265,rubye,j,mitchell,79,311 e stack st,st pauls,nc,28384,,10/23/1931,11-Oct
+56,9.90E+11,gay,hartley,andrews,80,10085 s nc hwy 18,boomer,nc,28606,nc,08/26/1931,11-Oct
+57,9.90E+11,james,e,braswell,80,6925 glenmoor dr,charlotte,nc,28214,nc,09/27/1931,11-Oct
+58,9.99E+11,vivian,v,rhone,113,216 sunset ave,fayetteville,nc,28301,,10/28/1931,13-Jun
+59,9.99E+11,betty,,thompson,80,32 buttercup ln,halifax,nc,27839,,08/29/1931,11-Dec
+60,9.90E+11,robert,marshall,johnson,80,24 w fairway dr,etowah,nc,28729,ny,11/29/1931,11-Oct
+61,9.90E+11,josephine,parson,haywood,80,317 chip rd,mt gilead,nc,27306,nc,04/30/1931,11-Oct
+62,9.99E+11,diane,stroupe,smith,63,1700 hedrick st,newton,nc,28658,,07/30/1931,11-Dec
+63,9.90E+11,lucile,pogue,townsend,94,2206 us highway 64 w,mocksville,nc,27028,,08/30/1931,11-Oct
+64,9.90E+11,kenneth,derrel,mcbride,49,69 french cv,waynesville,nc,28785,il,11/30/1931,11-Oct
+65,9.90E+11,susan,b,gaskins,99,10 rural rte 1 rte,coinjock,nc,27923,nc,01/01/1932,11-Oct
+66,9.90E+11,w,colin,doxey,100,209 doxey ln,knotts island,nc,27950,nc,01/01/1932,11-Oct
+67,9.99E+11,esther,curtiss,cates,104,207 east main st,faison,nc,28341,ny,01/01/1932,11-Dec
+68,9.99E+11,edna,mccullen,mccolman,100,139 park cir,faison,nc,28341,,01/01/1932,11-Dec
+69,9.99E+11,lucille,bowden,baugham,106,113 east main st,faison,nc,28341,nc,01/01/1932,11-Dec
+70,9.99E+11,carrie,m,grady,104,776 white flash rd,mt olive,nc,28365,nc,01/01/1932,11-Dec
+71,9.99E+11,gracie,h,kelley,101,229 hanchey rd,wallace,nc,28466,nc,01/01/1932,11-Dec
+72,9.99E+11,nelson,francis,mccolman,101,139 park cir,faison,nc,28341,nc,01/01/1932,11-Dec
+73,9.99E+11,james,patrick,askew,79,2208 governors rd,windsor,nc,27983,nc,06/01/1932,11-Dec
+74,9.90E+11,estella,e,edmonds,79,4463 nc hwy 561,halifax,nc,27839,,05/02/1932,11-Oct
+75,9.90E+11,james,william,brafford,48,4190 rascoe dameron rd,burlington,nc,27217,nc,05/08/1932,11-Oct
+76,7645032,leola,w farris,starr,79,4161 gordon dr,gastonia,nc,28056,,05/12/1932,11-Oct
+77,9.90E+11,norma,jean sales,plattenberger,79,2819 s potter rd,waxhaw,nc,28173,,07/16/1932,11-Oct
+78,9.99E+11,albert,m,cowan,79,100 parkwood ct,new bern,nc,28562,ny,01/18/1932,11-Dec
+79,9.90E+11,rosetta,,simmons,78,741 southview cir,fayetteville,nc,28311,nc,09/18/1932,11-Oct
+80,9.90E+11,hanna,,sturman,79,5112 pinetree ln,new bern,nc,28562,,09/19/1932,11-Oct
+81,9.90E+11,willie,p,johnson,79,104a rhue rd,murfreesboro,nc,27855,nc,10/23/1932,11-Oct
+82,9.90E+11,taft,thomas,phillips,79,1677 n main st,goldston,nc,27252,,10/25/1932,11-Oct
+83,9.90E+11,jessie,w,brown,79,5403 mesa dr,fayetteville,nc,28303,,05/26/1932,11-Oct
+84,9.90E+11,susan,buckner,gallant,78,4125 beckford dr,greensboro,nc,27407,nc,11/27/1932,11-Oct
+85,9.99E+11,vivian,,etheridge,99,1 pout house ln,shawboro,nc,27973,nc,04/30/1932,11-Dec
+86,9.99E+11,john,t,etheridge,101,0 pout house ln,shawboro,nc,27973,nc,04/30/1932,11-Dec
+87,9.90E+11,luvoise,chason,landen,90,152 fire house rd,chinquapin,nc,28521,nc,01/01/1933,11-Oct
+88,9.99E+11,lurlene,wallace,cottle,100,606 n sycamore st,rose hill,nc,28458,nc,01/01/1933,11-Dec
+89,9.90E+11,sharon,taylor,chastain,63,21 horseapple tree ln,otto,nc,28763,ga,01/03/1933,11-Oct
+90,9.90E+11,olivia,j,hempstead,111,2203 lake ave,fayetteville,nc,28301,,06/03/1933,11-Oct
+91,9.90E+11,ruby,madeline,powell,77,301 fairfield rd,fayetteville,nc,28303,md,11/03/1933,11-Oct
+92,9.90E+11,wilbur,eugene,dees,78,2927 middlesex rd,fayetteville,nc,28306,nc,06/04/1933,11-Oct
+93,9.90E+11,melba,collins,brady,77,221 pennsylvania ave,fayetteville,nc,28301,nc,10/10/1933,11-Oct
+94,9.90E+11,con,paul,nowakowski,77,101 east st,waynesville,nc,28786,oh,10/12/1933,11-Oct
+95,9.90E+11,annie,lane,macy,78,5241 baker rd,east bend,nc,27018,nc,02/15/1933,11-Oct
+96,9.99E+11,edith,hammonds,lowery,78,5 aaron rd,pembroke,nc,28372,,04/15/1933,11-Dec
+97,9.99E+11,richard,ernest,mcgrew,77,503 w church st,pikeville,nc,27863,oh,12/21/1933,11-Dec
+98,9.90E+11,isaac,,burton,78,513 hunter creek rd,maysville,nc,28555,nc,04/25/1933,11-Oct
+99,9.99E+11,whitney,hollis,neal,30,400 cambridge blvd,lumberton,nc,28358,,12/29/1933,11-Dec
+100,9.90E+11,charles,robert,supin,78,335 s bald head wynd,bald head island,nc,28461,ny,01/31/1933,11-Dec
+101,9.90E+11,john,d,morrisey,85,1308 warren rd,faison,nc,28341,,01/01/1934,11-Oct
+102,9.99E+11,lena,s,blanchard,97,241 shortcut rd,barco,nc,27917,nc,01/01/1934,11-Dec
+103,9.99E+11,denver,glen,sholar,97,325 angola bay rd,wallace,nc,28466,nc,01/01/1934,11-Dec
+104,9.99E+11,rommie,,bowen,104,2688 sarecta rd,pink hill,nc,28572,nc,01/01/1934,11-Dec
+105,9.99E+11,charles,,cayton,98,2482 tulls creek rd,moyock,nc,27958,nc,01/01/1934,11-Dec
+106,9.90E+11,elmer,mcpherson,butt,77,327 old swamp rd,south mills,nc,27976,,09/06/1934,11-Oct
+107,9.99E+11,kathleen,,gregory,98,491 n gregory rd,shawboro,nc,27973,nc,05/09/1934,11-Dec
+108,667648,joan,harriet,fontaine,77,2417 pickett rd,durham,nc,27705,ny,07/09/1934,11-Oct
+109,9.90E+11,cassie,mcauley,richardson,77,2309 nc 24-87,cameron,nc,28326,nc,01/11/1934,11-Oct
+110,9.90E+11,paul,wade,stroupe,77,414 howard st,lenoir,nc,28645,nc,04/12/1934,11-Oct
+111,9.99E+11,daniel,joe,bryson,72,262 elm st,sylva,nc,28779,nc,03/13/1934,11-Dec
+112,9.90E+11,thelma,gay,boone,76,1992 reeses store rd,halifax,nc,27839,,11/14/1934,11-Oct
+113,9.99E+11,walter,,ferebee,97,875 shawboro rd,shawboro,nc,27973,nc,05/16/1934,11-Dec
+114,9.90E+11,rufus,h,furr,76,3360 bethlehem rd,old fort,nc,28762,nc,10/16/1934,11-Oct
+115,9.90E+11,coreen,,watson,77,900 w dolphin st,siler city,nc,27344,,05/17/1934,11-Oct
+116,9.90E+11,mary,jeanette,macneil,77,20 lochs ln,youngsville,nc,27596,oc,07/17/1934,11-Oct
+117,9.90E+11,frances,e,raeford,77,4455 s nc hwy 87 hwy,fayetteville,nc,28306,nc,09/17/1934,11-Oct
+118,9.99E+11,george,walter,dixon,77,345 sunny ln,leasburg,nc,27291,nc,10/18/1934,11-Dec
+119,9.90E+11,george,robert,hatcher,76,3534 a b carter rd,fayetteville,nc,28312,nc,12/18/1934,11-Oct
+120,9.99E+11,david,m,averill,77,808 b st,bridgeton,nc,28519,ny,01/19/1934,11-Dec
+121,9.99E+11,ann,bacon,hollowell,57,810 big john store rd,seaboard,nc,27876,,09/21/1934,11-Dec
+122,9.90E+11,lawrence,c,lombard,77,1713 po box,cashiers,nc,28717,,03/22/1934,11-Oct
+123,9.90E+11,catherine,bunie,hall,81,325 n cool spring st,fayetteville,nc,28301,nc,10/23/1934,11-Oct
+124,9.99E+11,eartle,d,hammond,77,227 bouquet dr,st pauls,nc,28384,,05/24/1934,11-Dec
+125,9.90E+11,gary,claremont,peterson,77,119 camellia way,hendersonville,nc,28739,il,08/26/1934,11-Oct
+126,9.90E+11,helen,matlock,wike,77,2580 three forks church rd,taylorsville,nc,28681,nc,01/28/1934,11-Oct
+127,9.90E+11,bessie,lou,blanchard,77,74 pressley creek rd,cullowhee,nc,28723,nc,07/28/1934,11-Oct
+128,9.90E+11,doris,,waldrop,76,421 rutledge dr,hendersonville,nc,28739,nc,11/30/1934,11-Oct
+129,9.90E+11,evelyn,l,ledbetter,76,117 ledbetter hailey dr,rockingham,nc,28379,nc,07/01/1935,11-Oct
+130,9.90E+11,doris,davis,tripp,75,269 rest a bit rd,tarboro,nc,27886,,11/01/1935,11-Oct
+131,9.90E+11,joseph,t,cox,76,9 casey rd,new bern,nc,28562,nc,03/06/1935,11-Oct
+131,9.90E+11,joseph,thomas,cox,76,1108 highland ave #22,new bern,nc,28562,nc,03/06/1935,11-Dec
+132,9.90E+11,william,dale,farmer,76,5580 big laurel rd,creston,nc,28615,nc,06/07/1935,11-Oct
+133,9.90E+11,tex,,riddle,63,192 n main st,marshall,nc,28753,nc,04/10/1935,11-Oct
+134,9.90E+11,cleve,hubert,chappell,76,58 middle swamp rd,gates,nc,27937,,05/10/1935,11-Oct
+135,9.99E+11,marrow,,stovall,97,4005 wilson town rd,oxford,nc,27565,nc,05/11/1935,11-Dec
+136,9072397,bernice,lee,summers,75,326 meadowbrook dr,burlington,nc,27215,nc,12/11/1935,11-Oct
+137,9.99E+11,duville,wesley,cuthrell,76,265 roper ln,engelhard,nc,27824,nc,04/13/1935,11-Dec
+138,9.90E+11,colleen,hoyle,curtis,76,104 north main st,granite falls,nc,28630,nc,06/13/1935,11-Oct
+139,9.90E+11,harriett,,mansker,76,5638 junaluska rd,andrews,nc,28901,nc,09/13/1935,11-Oct
+140,9.99E+11,william,,bird,76,6601 snowbird rd,robbinsville,nc,28771,nc,10/13/1935,11-Dec
+141,885823,robert,l,shoemaker,75,4456 back creek church rd,charlotte,nc,28213,ga,11/13/1935,11-Oct
+142,9.90E+11,riccardo,fay,chin,76,547 nc highway 62 e,pleasant garden,nc,27313,,08/28/1935,11-Oct
+143,9.90E+11,phyllis,loretta,hollowell,76,10 fort island rd,eure,nc,27935,,09/28/1935,11-Oct
+144,9.99E+11,john,harold,chapek,76,1589 country club dr,maggie valley,nc,28751,nj,04/29/1935,11-Dec
+145,99985485,ashley,juanita,scott,23,1315 oakwood ave,raleigh,nc,27610,md,01/01/1936,11-Oct
+146,9.90E+11,rachel,frederick,baars,97,315 e hill st,warsaw,nc,28398,nc,01/01/1936,11-Oct
+147,9.90E+11,vernell,quinn,dixon,79,212 e george st,warsaw,nc,28398,nc,01/01/1936,11-Oct
+148,9.99E+11,elizabeth,p,fields,100,220 n college st,wallace,nc,28466,nc,01/01/1936,11-Dec
+149,9.99E+11,nettie,lanier,sloan,98,1754 s nc 111 hwy,chinquapin,nc,28521,nc,01/01/1936,11-Dec
+150,9.99E+11,boyce,best,fussell,96,1650 w charity rd,rose hill,nc,28458,nc,01/01/1936,11-Dec
+151,9.99E+11,vivian,katzoff,kramer,100,616 e murphy st,wallace,nc,28466,sc,01/01/1936,11-Dec
+152,9.99E+11,albert,,manning,96,937 back swamp rd,richlands,nc,28574,nc,01/01/1936,11-Dec
+153,9.99E+11,ethel,,bowden,104,522 w goshen st,faison,nc,28341,,01/01/1936,11-Dec
+154,9.99E+11,paul,w,spry,97,215 worth guard rd,coinjock,nc,27923,nc,01/01/1936,11-Dec
+155,9.99E+11,james,m,smith,99,4645 s nc 50 hwy,chinquapin,nc,28521,,01/01/1936,11-Dec
+156,9.99E+11,elizabeth,s,grady,98,133 paul grady ln,albertson,nc,28508,nc,01/01/1936,11-Dec
+157,9.99E+11,thomas,jefferson,outlaw,100,253 jeff outlaw rd,mt olive,nc,28365,nc,01/01/1936,11-Dec
+158,9.99E+11,mary,elizabeth,lanier,96,313 w southerland st,wallace,nc,28466,nc,01/01/1936,11-Dec
+159,9.99E+11,elsie,woods,coggins,89,497 martin rd,whittier,nc,28789,nc,01/02/1936,11-Dec
+160,9.99E+11,lorena,s,blinson,111,917 joyner st,clayton,nc,27520,,05/04/1936,11-Dec
+161,9.90E+11,james,joseph,devlin,75,1038 braemar ct,high point,nc,27265,nj,03/06/1936,11-Oct
+162,9.90E+11,jo-anne,sutton,britt,75,1921 wilmington hwy,fayetteville,nc,28306,sc,07/08/1936,11-Oct
+163,9.90E+11,annie,hall,lawson,72,603 radar rd,ararat,nc,27007,nc,04/11/1936,11-Oct
+164,1154927,carole,l,kaloz,75,4813 alexander valley dr #102,charlotte,nc,28270,oh,10/12/1936,11-Oct
+165,9.99E+11,john,william,rikard,73,501 pebble hill ln #22,east flat rock,nc,28726,nc,10/12/1936,11-Dec
+166,9.90E+11,george,thomas,manley,75,519 w 1st st,weldon,nc,27890,,02/15/1936,11-Oct
+167,9.99E+11,peggy,bragg,floyd,75,2844 us hwy 158,jackson,nc,27845,nc,06/15/1936,11-Dec
+168,9.90E+11,franklin,a,fortner,75,1506 laurel st,new bern,nc,28562,nc,01/16/1936,11-Oct
+169,9.90E+11,edward,,roberts,96,264 n indiantown rd,shawboro,nc,27973,nc,05/16/1936,11-Oct
+170,9.90E+11,joann,y,reeves,75,972 pleasant home church rd,millers creek,nc,28651,nc,09/17/1936,11-Oct
+171,9.99E+11,charles,lee,thomas,74,202 berkshire rd,greenville,nc,27858,wv,10/18/1936,11-Dec
+172,9.90E+11,drucilla,garner,miles,75,169 clanton garner trl,gaston,nc,27832,,08/20/1936,11-Oct
+173,9.90E+11,leland,d,ray,65,304 bumpass ln,roxboro,nc,27573,nc,02/22/1936,11-Oct
+174,9.90E+11,alice,rickman,cathey,92,29 riley trull rd,canton,nc,28716,nc,08/23/1936,11-Oct
+175,9.99E+11,eula,w,hargett,75,4504 wentworth ct,new bern,nc,28562,nc,11/26/1936,11-Dec
+176,9.90E+11,alton,lane,godley,54,4745 old tar rd,winterville,nc,28590,nc,08/28/1936,11-Oct
+177,9.99E+11,edmond,l,white,95,177 cason point rd,knotts island,nc,27950,nc,01/01/1937,11-Dec
+178,66062529,vicky,,musselwhite,55,5605 duncan st,hope mills,nc,28348,nc,02/01/1937,11-Oct
+179,9.90E+11,lena,claretta,johnson,73,1088 graham rd,riegelwood,nc,28456,nc,09/03/1937,11-Oct
+180,9.90E+11,kezzie,ree mrs,stutts,74,105 fieldstone dr,salisbury,nc,28146,,10/05/1937,11-Oct
+181,9.90E+11,dorothy,odessa,mckoy,111,2753 blossom rd,hope mills,nc,28348,nc,02/06/1937,11-Oct
+182,9.90E+11,addie,high,alston,73,204 williams rd,spring hope,nc,27882,nc,04/06/1937,11-Oct
+183,9.99E+11,flora,bottoms,parks,94,216 robbins farm rd,hamptonville,nc,27020,nc,10/06/1937,11-Dec
+184,9.90E+11,mary,lee oneal,register,74,419 henley rd,sanford,nc,27330,nc,08/09/1937,11-Oct
+185,663786,larry,knight,jenkins,73,3201 appling way,durham,nc,27703,wv,11/09/1937,11-Oct
+186,9.90E+11,betty,j,cobb,74,2247 sharp point rd,fountain,nc,27829,nc,07/13/1937,11-Oct
+187,9.90E+11,mary,t,robinson,73,234 kenneth blvd,havelock,nc,28532,ma,08/13/1937,11-Oct
+188,9.90E+11,annetta,d,wilson,74,110 apple orchard rd,robbinsville,nc,28771,nc,09/23/1937,11-Oct
+189,9.90E+11,marcia,ann,mcvey,74,105 fir st,hendersonville,nc,28791,ne,01/24/1937,11-Oct
+190,9.90E+11,lee,e,hudson,73,4772 hilton lake rd,kannapolis,nc,28083,nc,11/25/1937,11-Oct
+191,9.90E+11,lillie,cooper,perry,74,1202 mitchell dr,elizabeth city,nc,27909,nc,03/30/1937,11-Oct
+192,9.90E+11,roy,e,merrell,96,5940 caratoke hwy,poplar branch,nc,27965,nc,01/01/1938,11-Oct
+193,9.90E+11,ruby,fields,whitfield,96,599 garner chapel rd,mt olive,nc,28365,,01/01/1938,11-Oct
+194,9.90E+11,gladys,,rhodes,95,1795 n nc 111 hwy,pink hill,nc,28572,nc,01/01/1938,11-Oct
+195,9.90E+11,annie,dixon,rawls,85,938 pasture branch rd,rose hill,nc,28458,nc,01/01/1938,11-Oct
+196,9.90E+11,dorothy,,rollins,94,311 walnut st,warsaw,nc,28398,nc,01/01/1938,11-Oct
+197,9.90E+11,elma,kornegay,thigpen,99,361 rones chapel rd,mt olive,nc,28365,nc,01/01/1938,11-Oct
+198,9.99E+11,william,h,browder,94,651 e southerland st,wallace,nc,28466,nc,01/01/1938,11-Dec
+199,9.99E+11,remus,jennings,outlaw,95,1067 white flash rd,mt olive,nc,28365,nc,01/01/1938,11-Dec
+200,9.99E+11,george,henry,best,94,609 e chelly st,warsaw,nc,28398,nc,01/01/1938,11-Dec
+201,9.99E+11,milton,a,walker,96,3479 caratoke hwy,maple,nc,27956,nc,01/01/1938,11-Dec
+202,9.99E+11,gladys,m,taylor,95,157 courthouse rd,currituck,nc,27929,nc,01/01/1938,11-Dec
+203,9.99E+11,grace,horne,carr,96,216 w main st,rose hill,nc,28458,,01/01/1938,11-Dec
+204,9.99E+11,o,c,murray,89,1095 pasture branch rd,rose hill,nc,28458,nc,01/01/1938,11-Dec
+205,9.99E+11,verdia,r,thomas,94,205 lyman rd,beulaville,nc,28518,nc,01/01/1938,11-Dec
+206,9.90E+11,mciva,,evans,68,96 fox grape dr,burnsville,nc,28714,nc,04/01/1938,11-Oct
+207,9.90E+11,raymond,alexander,vincent,86,119 solomon dr,henrico,nc,27842,,05/03/1938,11-Oct
+208,9.99E+11,virginia,mae,eason,81,402 olive st,woodland,nc,27897,nc,05/03/1938,11-Dec
+209,9.90E+11,shelby,a,reeves,73,1290 pleasant home church rd,millers creek,nc,28651,nc,05/04/1938,11-Oct
+210,9.90E+11,winnie,west,humphries,94,228 shingle landing rd,moyock,nc,27958,nc,06/04/1938,11-Oct
+211,9.90E+11,shirley,r,worley,73,109 gilbert rd,leicester,nc,28748,,09/04/1938,11-Oct
+212,668248,kay,johnson,sloan,72,110 kingsley wood cir,durham,nc,27703,nc,12/04/1938,11-Oct
+213,9.99E+11,ernestine,,white,98,200 beauty st,stovall,nc,27582,nc,03/06/1938,11-Dec
+214,9.90E+11,robert,francis,edwards,65,4484 dicks mill rd,mcleansville,nc,27301,nc,09/07/1938,11-Oct
+215,9.90E+11,hazel,denise,price,41,748 crusoe island rd,whiteville,nc,28472,nc,02/08/1938,11-Oct
+216,9.99E+11,james,venson,alston,73,1250 duncan st,fayetteville,nc,28303,nc,05/09/1938,11-Dec
+217,9.99E+11,r,d,wilkerson,95,300 cedar ln,stovall,nc,27582,nc,05/11/1938,11-Dec
+218,9.99E+11,mildred,,gardner,95,132 east ridge rd,moyock,nc,27958,nc,10/11/1938,11-Dec
+219,9.90E+11,nettie,exum,smith,73,2635 joel ln,wilson,nc,27896,nc,06/12/1938,11-Oct
+220,9.90E+11,erma,byrd,ford,72,220 stephens st,roanoke rapids,nc,27870,,10/12/1938,11-Oct
+221,9.90E+11,florence,,weatherman,93,8769 buckeye hollow rd,jonas ridge,nc,28641,,04/13/1938,11-Oct
+222,1073096,edward,rudolph,lewis,73,286 stonehenge dr,dunn,nc,28334,nc,05/15/1938,11-Oct
+223,9.90E+11,maggie,s,gay,96,403 s main st,seaboard,nc,27876,nc,10/15/1938,11-Oct
+224,9.99E+11,howard,,vaughan,99,165 lassiter mill rd,woodland,nc,27897,,10/15/1938,11-Dec
+225,9.99E+11,mae,,collier,94,104 church st,lasker,nc,27845,nc,10/15/1938,11-Dec
+226,9.99E+11,c,b,taylor,102,1017 horne rd,pendleton,nc,27862,nc,10/15/1938,11-Dec
+227,9.99E+11,leroy,clifton,mcswain,96,1008 lemmond dr,sanford,nc,27330,va,05/17/1938,11-Dec
+228,9.90E+11,patricia,j,raybon,78,7888 n c 39 hwy s,zebulon,nc,27597,nc,04/18/1938,11-Oct
+229,9.90E+11,robert,grady,nelon,73,113 seibert rd,waynesville,nc,28786,nc,04/18/1938,11-Oct
+230,9.90E+11,sallie,sykes,anderson,73,593 viking pl sw,concord,nc,28025,,06/18/1938,11-Oct
+231,9.90E+11,hattie,mae,deloatch,89,956 fire tower rd,jackson,nc,27845,,10/18/1938,11-Oct
+232,9.99E+11,louise,l,taylor,98,107 w church st,seaboard,nc,27876,nc,10/18/1938,11-Dec
+233,9.99E+11,elizabeth,,bullock,102,215 central st,seaboard,nc,27876,nc,10/18/1938,11-Dec
+234,9.90E+11,annie,baucom,greene,73,73 tara ln,nebo,nc,28761,nc,06/19/1938,11-Oct
+235,726150,j,d,kaylor,74,188 hudson cajah mtn rd,hudson,nc,28638,nc,10/19/1938,11-Oct
+236,9.90E+11,mary,barrow,burgwyn,99,112 e calhoun st,jackson,nc,27845,,10/19/1938,11-Oct
+237,9.90E+11,nell,h,gay,93,105 n washington st,seaboard,nc,27876,nc,10/19/1938,11-Dec
+238,9.99E+11,alma,d,brittle,94,405 s church st,conway,nc,27820,,10/19/1938,11-Dec
+239,9.99E+11,alice,m,warrick,92,116 e jefferson st,jackson,nc,27845,nc,10/19/1938,11-Dec
+240,1564000,wilson,lee,raynor,71,7712 us 301 hwy s,four oaks,nc,27524,,04/20/1938,11-Oct
+241,9.90E+11,annie,thomas,jones,92,515 ashe st,reidsville,nc,27320,nc,04/20/1938,11-Oct
+242,9.90E+11,w,s,creecy,98,810 roberts rd,rich square,nc,27869,nc,10/20/1938,11-Oct
+243,9.99E+11,judith,,chappell,94,414 w jackson st,rich square,nc,27869,nc,10/20/1938,11-Dec
+244,9.90E+11,sallie,b,futrell,97,9802 us hwy 258,murfreesboro,nc,27855,nc,10/21/1938,11-Oct
+245,9.99E+11,rea,s,futrell,97,3384 ashleys grove rd,conway,nc,27820,,10/21/1938,11-Dec
+246,9.99E+11,doris,s,askew,98,2827 ashleys grove rd,conway,nc,27820,,10/21/1938,11-Dec
+247,9.99E+11,herbert,,futrell,96,9802 us hwy 258,murfreesboro,nc,27855,nc,10/21/1938,11-Dec
+248,9.90E+11,rita,s,moskowitz,73,1902 tennyson dr,greensboro,nc,27410,ny,07/22/1938,11-Oct
+249,9.90E+11,lillie,mae,grant,102,5957 nc hwy 46,garysburg,nc,27831,nc,10/22/1938,11-Oct
+250,9.90E+11,estelle,thompson,clements,99,705 gaston st,gaston,nc,27832,,10/22/1938,11-Oct
+251,9.99E+11,ollie,,eure,97,8487 us hwy 158,seaboard,nc,27876,nc,10/22/1938,11-Dec
+252,9.99E+11,grizzie,b,britton,105,311 tower rd,margarettsville,nc,27853,,10/22/1938,11-Dec
+253,9.90E+11,patricia,truelove,pemberton,72,318 traveller ln,sanford,nc,27332,nc,12/23/1938,11-Oct
+254,9.90E+11,shirley,mclaurin,ward,72,2115 leona dr,greensboro,nc,27406,nc,10/24/1938,11-Oct
+255,9.90E+11,melvin,r,baird,96,109 mitchell st,gaston,nc,27832,nc,10/24/1938,11-Oct
+256,9.90E+11,elizabeth,gilliam,parker,94,6403 us hwy 258,woodland,nc,27897,nc,10/24/1938,11-Oct
+257,9.99E+11,c,l,joyner,93,207 hill st,garysburg,nc,27831,,10/24/1938,11-Dec
+258,9.99E+11,dorothy,b,powell,95,407 spruce st,woodland,nc,27897,nc,10/24/1938,11-Dec
+259,9.90E+11,joyce,t,griggs,73,428 poplar branch rd,poplar branch,nc,27965,nc,04/25/1938,11-Oct
+260,9.90E+11,donald,h,mcrorie,75,812 basilwild dr,wadesboro,nc,28170,nc,10/25/1938,11-Oct
+261,9.99E+11,nancy,s,timberlake,93,6188 us hwy 258,woodland,nc,27897,nc,10/25/1938,11-Dec
+262,9.99E+11,w,m,taylor,100,205 maple ave,conway,nc,27820,,10/25/1938,11-Dec
+263,9.99E+11,philip,l,daniel,97,1250 bethel church rd,pleasant hill,nc,27866,nc,10/26/1938,11-Dec
+264,9.99E+11,charlotte,d,cox,94,407 conwell rd,pleasant hill,nc,27866,,10/26/1938,11-Dec
+265,9.99E+11,w,jennings,johnson,97,11957 us hwy 158,conway,nc,27820,,10/26/1938,11-Dec
+266,9.99E+11,a,m,futrell,101,7837 us hwy 258,woodland,nc,27897,nc,10/26/1938,11-Dec
+267,9.99E+11,willie,scott,lucas,101,3276 us hwy 258,rich square,nc,27869,nc,10/27/1938,11-Dec
+268,9.90E+11,ella,mae,watson,98,1405 ashleys grove rd,conway,nc,27820,,10/28/1938,11-Oct
+269,9.90E+11,arline,,bridgers,96,401 s church st,conway,nc,27820,nc,10/29/1938,11-Oct
+270,9.90E+11,ernest,t,branch,94,313 pine st,rich square,nc,27869,nc,10/29/1938,11-Oct
+271,9.90E+11,sarah,c,bell,95,232 shingle landing rd,moyock,nc,27958,nc,10/29/1938,11-Oct
+272,9.90E+11,clyde,fenton,johnson,94,8944 us hwy 158,conway,nc,27820,,10/29/1938,11-Oct
+273,9.99E+11,nina,m w,ricks,110,699 fire tower rd,jackson,nc,27845,,10/29/1938,11-Dec
+274,9.99E+11,willie,mabel,davis,97,1568 dusty hill rd,conway,nc,27820,nc,10/29/1938,11-Dec
+275,9.99E+11,inez,glysta,massey,100,30005 nc hwy 48,gaston,nc,27832,,10/29/1938,11-Dec
+276,9.99E+11,w,k,gay,96,110 elm st,seaboard,nc,27876,nc,10/29/1938,11-Dec
+277,9.90E+11,robert,dennis,setzer,80,206 merrywood dr,lenoir,nc,28645,,03/30/1938,11-Oct
+278,9.90E+11,janet,sue,southern,73,431 forest oaks dr,dobson,nc,27017,mi,08/30/1938,11-Oct
+279,9.99E+11,leila,gray,flagg,27,201 nc hwy 54 byp #628,carrboro,nc,27510,,08/30/1938,11-Dec
+280,9.90E+11,margie,louise,cannon,72,1321 fayetteville rd,rockingham,nc,28379,dc,10/30/1938,11-Oct
+281,9.99E+11,hulon,,welch,92,1410 jim latta rd,rougemont,nc,27572,nc,02/01/1939,11-Dec
+282,9.99E+11,james,w,bryant,72,7755 us hwy 17,pollocksville,nc,28573,nc,03/01/1939,11-Dec
+283,9.90E+11,hazel,liles,bridgers,72,300 hamilton st,roanoke rapids,nc,27870,,02/02/1939,11-Oct
+284,709377,patricia,lynn,mason,72,600 w markham ave,durham,nc,27701,nj,04/04/1939,11-Oct
+285,9.90E+11,alice,pauline,steele-lehn,72,2402 independence trl,morganton,nc,28655,nc,04/04/1939,11-Oct
+286,9.90E+11,sonia,lugo,rodriguez,71,316 w holt st,burlington,nc,27217,pr,10/04/1939,11-Oct
+287,9.90E+11,earl,h,cissel,72,753 ashbrook rd,fayetteville,nc,28314,ok,09/05/1939,11-Oct
+288,9.99E+11,donald,blain,stewart,72,2409 lourance blvd,greensboro,nc,27407,,10/06/1939,11-Dec
+289,9.99E+11,marion,patricia,hudson,72,1135 hamilton st,roanoke rapids,nc,27870,,09/08/1939,11-Dec
+290,9.90E+11,bertha,m,denitson,72,3331 marathon ave,castle hayne,nc,28429,,04/09/1939,11-Oct
+291,9.90E+11,katherine,pridgen,davis,63,4837 sapony creek dr,nashville,nc,27856,,04/09/1939,11-Oct
+292,1230928,matthew,a,hubacher,36,848 big indian loop,mooresville,nc,28117,wi,07/10/1939,11-Dec
+293,9.90E+11,myrtle,luffman,horne,72,1866 pleasant ridge rd,state road,nc,28676,nc,02/11/1939,11-Oct
+294,9.90E+11,jerry,lee,howell,72,434 clearview ln,taylorsville,nc,28681,nc,06/11/1939,11-Oct
+295,9.99E+11,joyce,f,newton,93,2029 herbert akins rd,fuquay varina,nc,27526,nc,09/13/1939,11-Dec
+296,9.99E+11,howard,lee,webb,72,30005 lebanon church rd,gaston,nc,27832,,11/15/1939,11-Dec
+297,9.90E+11,charles,linwood,little,72,109 silo dr,chocowinity,nc,27817,nc,06/16/1939,11-Oct
+298,9.90E+11,nellie,lawyer,ferguson,72,311 diamond city dr,harkers island,nc,28531,nj,04/17/1939,11-Oct
+299,9.90E+11,caroleen,inscore,barker,72,524 bagley springs rd,ronda,nc,28670,nc,04/17/1939,11-Oct
+300,9.99E+11,harold,leslie,craig,72,806 elm st,eden,nc,27288,pa,09/19/1939,11-Dec
+301,9.90E+11,marshall,clifton,perry,72,1000 skyway dr,kannapolis,nc,28083,sc,03/20/1939,11-Oct
+302,9.90E+11,linda,lowe,cole,71,280 hookers gap rd,candler,nc,28715,,10/20/1939,11-Oct
+303,9.99E+11,ginger,f,adams,72,4581 virsalli loop,hope mills,nc,28348,nc,06/22/1939,11-Dec
+304,9.90E+11,shelia,wilhoit,lambert,62,18621 pebble stone cir,locust,nc,28097,,10/22/1939,11-Oct
+305,706865,sylvia,karen,novinsky,43,7114 montibillo pkwy,durham,nc,27713,ny,12/23/1939,11-Oct
+306,9.90E+11,ethel,j,cobb,72,1809 fairfax rd #d,greensboro,nc,27407,nc,09/25/1939,11-Oct
+307,9.99E+11,ethel,johnson,cobb,73,2538 16th st #d,greensboro,nc,27405,nc,09/25/1939,13-Feb
+308,9461221,helen,poggemann,meyer,72,1190 quail hollow rd,kernersville,nc,27284,oh,09/26/1939,11-Oct
+309,9.90E+11,amos,mancel,crisp,71,105 s seventh st,pinetops,nc,27864,,12/28/1939,11-Oct
+310,9.90E+11,hayden,thomas,bishop,73,255 monroe herman rd,banner elk,nc,28604,,10/29/1939,11-Oct
+311,9.90E+11,margaret,s,strickland,89,212 meadowbrook ln,warsaw,nc,28398,,01/01/1940,11-Oct
+312,9.90E+11,elbert,,whitman,97,287 beautancus rd,mt olive,nc,28365,nc,01/01/1940,11-Oct
+313,9.90E+11,eveline,,dail,89,3567 fountaintown rd,chinquapin,nc,28521,nc,01/01/1940,11-Oct
+314,9.90E+11,lawrence,,kelly,92,385 kelly rd,mt olive,nc,28365,nc,01/01/1940,11-Oct
+315,9.90E+11,thelma,k,kornegay,92,919 woodland church rd,albertson,nc,28508,nc,01/01/1940,11-Oct
+316,99866708,nell,m,aycock,92,3483 caratoke hwy,maple,nc,27956,va,01/01/1940,11-Dec
+317,9.99E+11,dorothy,fussell,hall,93,405 e cliff st,wallace,nc,28466,nc,01/01/1940,11-Dec
+318,9.99E+11,leighton,,hall,88,289 leighton hall rd,wallace,nc,28466,nc,01/01/1940,11-Dec
+319,9.99E+11,james,edward,westbrook,94,230 woodland church rd,albertson,nc,28508,nc,01/01/1940,11-Dec
+320,9.99E+11,robert,f,boone,99,213 s cumberland st,wallace,nc,28466,,01/01/1940,11-Dec
+321,9.99E+11,wilton,franklin,aycock,91,109 cypress creek rd,chinquapin,nc,28521,nc,01/01/1940,11-Dec
+322,9.99E+11,jimmy,,sanderson,74,237 dill sanderson ln,mt olive,nc,28365,,01/01/1940,11-Dec
+323,9.99E+11,helen,,farrior,92,301 w main st,wallace,nc,28466,nc,01/01/1940,11-Dec
+324,9.99E+11,glendora,,lanier,92,104 eneas lanier rd,chinquapin,nc,28521,,01/01/1940,11-Dec
+325,9.99E+11,beulah,c,rivenbark,106,209 beasley st,kenansville,nc,28349,,01/01/1940,11-Dec
+326,9.99E+11,edward,w,holmes,96,2289 garner chapel rd,mt olive,nc,28365,nc,01/01/1940,11-Dec
+327,9.99E+11,louise,brinson,brown,111,163 rainbow rd,warsaw,nc,28398,nc,01/01/1940,11-Dec
+328,9.99E+11,percy,elmore,thigpen,93,409 edwards rd,beulaville,nc,28518,nc,01/01/1940,11-Dec
+329,9.99E+11,virginia,cavenaugh,hanchey,93,416 northeast rd,wallace,nc,28466,nc,01/01/1940,11-Dec
+330,9.99E+11,marjorie,m,west,100,2658 caratoke hwy,currituck,nc,27929,nc,01/01/1940,11-Dec
+331,9.99E+11,dessie,taylor,summerlin,96,407 washboard ave,mt olive,nc,28365,,01/01/1940,11-Dec
+332,9.99E+11,rachel,j,ward,92,1209 w main st,williamston,nc,27892,,01/01/1940,11-Dec
+333,9.99E+11,erma,,twiford,93,7678 caratoke hwy,powells point,nc,27966,nc,01/01/1940,11-Dec
+334,9.99E+11,irene,brinson,miller,93,119 john miller rd,beulaville,nc,28518,nc,01/01/1940,11-Dec
+335,9.99E+11,james,norwood,raynor,95,503 edmund brinson rd,beulaville,nc,28518,nc,01/01/1940,11-Dec
+336,3082920,r,m,graves,111,403 gralin st,kernersville,nc,27284,nc,05/01/1940,11-Oct
+337,4684600,beulah,sykes,moon,97,616 n carr st,mebane,nc,27302,nc,05/01/1940,11-Oct
+338,7307400,opal,vest,wicker,94,7345 ruralview rd,liberty,nc,27298,nc,05/01/1940,11-Oct
+339,9.90E+11,george,crawford,amick,95,4808 forest lake dr,mebane,nc,27302,tn,05/01/1940,11-Oct
+340,9.90E+11,lee,,jones,104,1734 price rd,williamston,nc,27892,,05/01/1940,11-Oct
+341,9.90E+11,vida,h,edmondson,94,2920 fire dept rd,williamston,nc,27892,nc,05/01/1940,11-Oct
+342,9.90E+11,a,woodrow,tayloe,96,307 s commerce st,aulander,nc,27805,nc,05/01/1940,11-Oct
+343,9.90E+11,mary,c,griffin,100,826 east blvd #27,williamston,nc,27892,,05/01/1940,11-Oct
+344,9.90E+11,marjorie,p,hines,89,4416 harrison phelps rd,la grange,nc,28551,nc,05/01/1940,11-Oct
+345,9.90E+11,lucy,w,billingsley,95,519 billingsley rd,peachland,nc,28133,nc,05/01/1940,11-Oct
+346,9.99E+11,elizabeth,f,gillam,93,207 s king st,windsor,nc,27983,nc,05/01/1940,11-Dec
+347,9.99E+11,melissa,,roberson,103,1020 nathan roberson rd,williamston,nc,27892,,05/01/1940,11-Dec
+348,9.99E+11,myrtle,s,lilley,97,2302 fire dept rd,williamston,nc,27892,nc,05/01/1940,11-Dec
+349,9.99E+11,edith,,brown,94,220 roanoke ave,littleton,nc,27850,,05/01/1940,11-Dec
+350,9.99E+11,millie,,stocks,95,1141 republican rd,windsor,nc,27983,nc,05/01/1940,11-Dec
+351,9.99E+11,louise,m,gurkin,93,1022 maple grove church rd,williamston,nc,27892,nc,05/01/1940,11-Dec
+352,9.99E+11,wilson,,jernigan,94,252 mt olive rd,windsor,nc,27983,nc,05/01/1940,11-Dec
+353,9.99E+11,veona,r,griffin,95,4355 fire dept rd,williamston,nc,27892,nc,05/01/1940,11-Dec
+354,9.99E+11,mamie,clyde,griffin,92,1995 yarrell creek rd,williamston,nc,27892,nc,05/01/1940,11-Dec
+355,9.99E+11,oscar,e,roberson,98,201 s roberson st,robersonville,nc,27871,,05/01/1940,11-Dec
+356,9.99E+11,erma,,tice,96,1050 piney grove church rd,williamston,nc,27892,,05/01/1940,11-Dec
+357,9.99E+11,gertrude,n,carstarphen,108,201 e grace st,williamston,nc,27892,oh,05/01/1940,11-Dec
+358,9.99E+11,sarah,s,sutton,96,402 s king st,windsor,nc,27983,nc,05/01/1940,11-Dec
+359,9.99E+11,w,f,askew,95,3315 us highway 13 n,ahoskie,nc,27910,nc,05/01/1940,11-Dec
+360,9.99E+11,daisy,,harrington,92,9150 nc highway 171,williamston,nc,27892,,10/01/1940,11-Dec
+361,9.90E+11,dorothy,kay,hawk,70,108 clipper ct,new bern,nc,28562,dc,12/01/1940,11-Oct
+362,2228760,gladys,conrad,doub,103,5940 glad acres rd,pfafftown,nc,27040,nc,05/02/1940,11-Oct
+363,4063200,willie,perman,long,95,1937 lower hopedale rd,burlington,nc,27217,nc,05/02/1940,11-Oct
+364,9.90E+11,sadie,m,blackwell,98,2014 sam blackwell rd,oxford,nc,27565,,05/02/1940,11-Oct
+365,9.90E+11,annie,c,matthews,95,3740 herbert faucette rd,bullock,nc,27507,nc,05/02/1940,11-Oct
+366,9.90E+11,clyde,r,davidson,92,320 n commerce st,aulander,nc,27805,nc,05/02/1940,11-Oct
+367,9.99E+11,thurman,c,wynne,93,2853 everetts rd,williamston,nc,27892,nc,05/02/1940,11-Dec
+368,9.99E+11,grace,victoria,ragland,97,250 hopkins rd #b-7,kernersville,nc,27284,nc,05/02/1940,11-Dec
+369,9.99E+11,irene,wright,payne,102,5401 indiana ave #d-12,winston salem,nc,27106,nc,05/02/1940,11-Dec
+370,9.99E+11,minnie,h,everett,93,201 ayers st,everetts,nc,27825,,05/02/1940,11-Dec
+371,9.99E+11,melvin,o,crisp,94,306 w commerce st,oak city,nc,27857,,05/02/1940,11-Dec
+372,9.99E+11,letha,mae,purvis,99,301 n railroad st,hamilton,nc,27840,nc,05/02/1940,11-Dec
+373,9.99E+11,alma,eakes,yancey,92,9611 dave winston rd,bullock,nc,27507,nc,05/02/1940,11-Dec
+374,9.99E+11,eloise,h,croom,94,4084 nc hwy 55 w,kinston,nc,28504,nc,05/02/1940,11-Dec
+375,9.99E+11,viola,c,sides,109,1840 darwick rd,winston salem,nc,27127,nc,05/02/1940,11-Dec
+376,9.99E+11,mary,cornelius,phillips,100,3222 turnberry ct,winston salem,nc,27104,nc,05/02/1940,11-Dec
+377,9.99E+11,maude,fogleman,murray,108,7358 s nc hwy 49,snow camp,nc,27349,nc,05/02/1940,11-Dec
+378,9.99E+11,j,harmon,linville,111,311 salisbury st #3,kernersville,nc,27284,nc,05/02/1940,11-Dec
+379,9.99E+11,charles,thomas,young,94,821 burlington ave #8005,gibsonville,nc,27249,nc,05/02/1940,11-Dec
+380,9.90E+11,rena,,hardy,87,1011 smith grady rd,seven springs,nc,28578,nc,08/02/1940,11-Oct
+381,7659419,lois,lorraine,wolfe,86,2785 lake front dr,belmont,nc,28012,,09/02/1940,11-Oct
+382,3419760,j,h,harris,111,6131 university pkwy,winston salem,nc,27105,nc,05/03/1940,11-Oct
+383,6252960,mary,m,pardue,94,230 hopkins rd #a110,kernersville,nc,27284,nc,05/03/1940,11-Oct
+384,9.90E+11,sarah,w,roberts,92,324 n indiantown rd,shawboro,nc,27973,nc,05/03/1940,11-Oct
+385,9.90E+11,allie,e,ward,93,304 s main st,robersonville,nc,27871,nc,05/03/1940,11-Oct
+386,9.99E+11,ralph,carmen,foster,105,500 meadow st #21,gibsonville,nc,27249,nc,05/03/1940,11-Dec
+387,9.99E+11,alida,,tyler,101,306 s broad st,robersonville,nc,27871,,05/03/1940,11-Dec
+388,9.99E+11,margaret,page,clayton,108,5075 salemtowne dr,winston salem,nc,27106,nc,05/03/1940,11-Dec
+389,9.99E+11,sion,lawrence,boone,99,2494 ossipee front st,elon,nc,27244,nc,05/03/1940,11-Dec
+390,9.99E+11,w,c,motsinger,111,1360 piney grove rd,kernersville,nc,27284,nc,05/03/1940,11-Dec
+391,9.99E+11,t,gordon,roberson,95,306 s main st,robersonville,nc,27871,,05/03/1940,11-Dec
+392,9.99E+11,oscar,,robbins,96,328 robbins rd,winston salem,nc,27107,nc,05/03/1940,11-Dec
+393,9.90E+11,nancy,lee,albright,71,2 peaceful ln,fletcher,nc,28732,nc,10/03/1940,11-Oct
+394,9.90E+11,wallace,l,kendrick,70,8819 leasburg rd,leasburg,nc,27291,nc,01/04/1940,11-Oct
+395,31280284,robert,charleton,miller,39,215 wilmot dr,raleigh,nc,27606,il,02/04/1940,11-Oct
+396,9.99E+11,elizabeth,fluck,holt,97,1880 brookwood ave #403,burlington,nc,27215,nc,04/04/1940,11-Dec
+397,9.99E+11,avic,huffines,greeson,99,744 burlington ave #a,gibsonville,nc,27249,nc,04/04/1940,11-Dec
+398,565200,c,a,boggs,95,2110 carolina mill rd,burlington,nc,27217,nc,05/04/1940,11-Oct
+399,1654080,mildred,conrad,conrad,94,5197 fleetwood cir,winston salem,nc,27106,nc,05/04/1940,11-Oct
+400,1668480,weldon,mrs,conrad,111,2323 spicewood dr,winston salem,nc,27106,nc,05/04/1940,11-Oct
+401,4447920,william,l,jones,111,207 e clemmonsville rd,winston salem,nc,27107,nc,05/04/1940,11-Oct
+402,5169840,howard,,macy,111,904 tulane dr,kernersville,nc,27284,nc,05/04/1940,11-Oct
+403,7184500,mary,whitesell,welborn,93,206 ferris st,haw river,nc,27258,nc,05/04/1940,11-Oct
+404,8437320,noble,o,tucker,111,4170 high point rd,winston salem,nc,27107,nc,05/04/1940,11-Oct
+405,9.90E+11,gladys,jones,wright,96,937 gold mine ext,peachland,nc,28133,nc,05/04/1940,11-Oct
+406,9.90E+11,joe,worth,guthrie,93,8351 s nc hwy 87,snow camp,nc,27349,nc,05/04/1940,11-Oct
+407,9.90E+11,dorine,n,harper,94,1007 black harper rd,kinston,nc,28504,nc,05/04/1940,11-Oct
+408,9.90E+11,mary,t,parker,92,107 n main st,kelford,nc,27847,nc,05/04/1940,11-Oct
+409,9.90E+11,ella,mae,futrell,94,12979 us hwy 158,conway,nc,27820,,05/04/1940,11-Oct
+410,9.90E+11,garland,j,weaver,99,4984 allensville rd,roxboro,nc,27574,nc,05/04/1940,11-Oct
+411,9.90E+11,louise,bass,eason,94,13 n king st,halifax,nc,27839,,05/04/1940,11-Oct
+412,9.90E+11,w,e,bach,111,906 oaklawn ave,winston salem,nc,27104,va,05/04/1940,11-Oct
+413,9.90E+11,mary,keel,wynne,93,119 w academy st,williamston,nc,27892,nc,05/04/1940,11-Oct
+414,9.90E+11,joe,fred,kirk,83,75 old route 74 w,polkton,nc,28135,nc,05/04/1940,11-Oct
+415,9.90E+11,viola,d,martin,92,4184 nc hwy 35,conway,nc,27820,nc,05/04/1940,11-Oct
+416,9.90E+11,p,hoffman,suitt,93,812 lewis st,oxford,nc,27565,nc,05/04/1940,11-Oct
+417,9.90E+11,katie,conner,broadway,92,2975 grainger station rd,kinston,nc,28501,nc,05/04/1940,11-Oct
+418,9.90E+11,norman,f,perry,92,512 e river st,colerain,nc,27924,nc,05/04/1940,11-Oct
+419,9.90E+11,john,h,sanford,84,122 maluli dr,oxford,nc,27565,nc,05/04/1940,11-Oct
+420,9.90E+11,fleet,,foster,97,3615 mine creek rd,burlington,nc,27217,nc,05/04/1940,11-Oct
+421,9.90E+11,vivian,edwards,jones,99,2278 mineral springs ch rd,polkton,nc,28135,nc,05/04/1940,11-Oct
+422,9.90E+11,lizzie,,currin,98,4521 nc hwy 96 s,oxford,nc,27565,nc,05/04/1940,11-Oct
+423,9.90E+11,lagray,,askew,94,304 n main st,colerain,nc,27924,nc,05/04/1940,11-Oct
+424,9.90E+11,lee,,campbell,97,0 us hwy 15 n,bullock,nc,27507,nc,05/04/1940,11-Oct
+425,9.90E+11,virginia,waddell,martin,92,2097 martin rd,wadesboro,nc,28170,nc,05/04/1940,11-Oct
+426,9.90E+11,carlene,,massey,96,2434 carolina rd,burlington,nc,27217,nc,05/04/1940,11-Oct
+427,9.90E+11,susie,kythia,vaughn,94,10404 nc 742 s,morven,nc,28119,nc,05/04/1940,11-Oct
+428,9.90E+11,josephine,j,cochran,94,309 s broad st,robersonville,nc,27871,nc,05/04/1940,11-Oct
+429,9.90E+11,rufus,,dickens,96,2382 piney grove church rd,littleton,nc,27850,,05/04/1940,11-Oct
+430,9.90E+11,j,e,northcott,100,210 quebec rd,colerain,nc,27924,nc,05/04/1940,11-Oct
+431,9.90E+11,margaret,g,savage,93,65 woodland dr,polkton,nc,28135,nc,05/04/1940,11-Oct
+432,9.99E+11,glenn,william,welborn,97,779 woody dr,graham,nc,27253,nc,05/04/1940,11-Dec
+433,9.99E+11,louise,martha,buckner,101,231 s marshall st,graham,nc,27253,nc,05/04/1940,11-Dec
+434,9.99E+11,albert,ashel,tew,96,912 douglas rd,haw river,nc,27258,nc,05/04/1940,11-Dec
+435,9.99E+11,charles,wesley,knowles,92,148 knowles ln,windsor,nc,27983,nc,05/04/1940,11-Dec
+436,9.99E+11,joseph,herbert,cullipher,92,8007 w main st,williamston,nc,27892,nc,05/04/1940,11-Dec
+437,9.99E+11,sarah,thompson,rich,97,302 albright ave,graham,nc,27253,nc,05/04/1940,11-Dec
+438,9.99E+11,joan,m,canning,71,5209 sycamore ln,kitty hawk,nc,27949,,05/04/1940,11-Dec
+439,9.99E+11,elmer,thomas,sutton,93,742 tyree rd,kinston,nc,28504,nc,05/04/1940,11-Dec
+440,9.99E+11,barbara,euliss,johnson,98,6155 kimesville rd,liberty,nc,27298,nc,05/04/1940,11-Dec
+441,9.99E+11,william,dowd,staley,94,1331 burlingate pl,burlington,nc,27215,nc,05/04/1940,11-Dec
+442,9.99E+11,r,g,jenkins,100,80 us hwy 158,roanoke rapids,nc,27870,,05/04/1940,11-Dec
+443,9.99E+11,herman,,hughes,96,3003 wakelon rd,colerain,nc,27924,nc,05/04/1940,11-Dec
+444,9.99E+11,thelma,m,read,97,321 king st,halifax,nc,27839,,05/04/1940,11-Dec
+445,9.99E+11,jesse,m,croom,94,183 s croom bland rd,kinston,nc,28504,nc,05/04/1940,11-Dec
+446,9.99E+11,roy,,blackwell,101,7505 nc hwy 96,oxford,nc,27565,nc,05/04/1940,11-Dec
+447,9.99E+11,mertice,,wright,99,685 us hwy 158 hwy,roanoke rapids,nc,27870,,05/04/1940,11-Dec
+448,9.99E+11,vera,king,futrell,93,12569 us hwy 158,conway,nc,27820,,05/04/1940,11-Dec
+449,9.99E+11,james,worth,rich,100,302 albright ave,graham,nc,27253,nc,05/04/1940,11-Dec
+450,9.99E+11,robert,blain,tucker,96,4130 high point rd,winston salem,nc,27107,nc,05/04/1940,11-Dec
+451,9.99E+11,william,,liles,94,21930 justice branch rd,littleton,nc,27850,,05/04/1940,11-Dec
+452,9.99E+11,d,m,campbell,92,366 prussia st,halifax,nc,27839,,05/04/1940,11-Dec
+453,9.99E+11,josie,guthrie,ivey,103,1508 darrell dr #5,graham,nc,27253,nc,05/04/1940,11-Dec
+454,9.99E+11,viola,m,martin,94,1793 main st,jamesville,nc,27846,,05/04/1940,11-Dec
+455,9.99E+11,joe,daniel,hunt,93,2112 tommie daniel rd,oxford,nc,27565,nc,05/04/1940,11-Dec
+456,9.99E+11,dorothy,webster,faucette,99,431 edgewood church rd,mebane,nc,27302,nc,05/04/1940,11-Dec
+457,9.99E+11,florence,w,willard,95,826 east blvd,williamston,nc,27892,nc,05/04/1940,11-Dec
+458,9.99E+11,mildred,b,page,111,219 rural rte 2 rte,halifax,nc,27839,,05/04/1940,11-Dec
+459,9.99E+11,mildred,harrod,wagoner,95,715 s williamson ave,elon,nc,27244,ms,05/04/1940,11-Dec
+460,9.99E+11,hilda,allen,forrester,94,609 everett st,burlington,nc,27215,nc,05/04/1940,11-Dec
+461,9.99E+11,earle,f,bailey,111,10781 nc hwy 903,halifax,nc,27839,,05/04/1940,11-Dec
+462,9.99E+11,jeff,davis,pritchett,93,4107 n nc hwy 119,mebane,nc,27302,nc,05/04/1940,11-Dec
+463,9.99E+11,helen,brooks,long,98,3727 wade coble dr,burlington,nc,27215,nc,05/04/1940,11-Dec
+464,9.99E+11,albert,ramair,johnson,96,6155 kimesville rd,liberty,nc,27298,nc,05/04/1940,11-Dec
+465,9.99E+11,james,wilson,tatum,98,108 baxter st,kernersville,nc,27284,nc,05/04/1940,11-Dec
+466,9.99E+11,annie,,loftin,110,2459 lightwood knot rd,kinston,nc,28504,nc,05/04/1940,11-Dec
+467,9.99E+11,helen,,gordon,93,4105 rocky ford ln,winston salem,nc,27101,nc,05/04/1940,11-Dec
+468,9.99E+11,mary,edna,edwards,94,0 hough rd,ansonville,nc,28007,nc,05/04/1940,11-Dec
+469,9.99E+11,irene,,butts,94,2185 wayman church rd,littleton,nc,27850,,05/04/1940,11-Dec
+470,9.99E+11,josie,h,fairless,93,148 buncomb rd,colerain,nc,27924,nc,05/04/1940,11-Dec
+471,9.99E+11,c,s,harkey,97,1247 northside rd,creedmoor,nc,27522,va,05/04/1940,11-Dec
+472,9.99E+11,ruth,,rowland,98,3081 grapevine rd,halifax,nc,27839,,05/04/1940,11-Dec
+473,9.99E+11,thaddeus,jones,turner,94,301 n kinston blvd,pink hill,nc,28572,nc,05/04/1940,11-Dec
+474,9.99E+11,ruth,lee,edwards,88,6000 ansonville polkton rd,wadesboro,nc,28170,nc,05/04/1940,11-Dec
+475,9.90E+11,sherry,king,dula,51,4627 rock barn rd,claremont,nc,28610,nc,08/04/1940,11-Oct
+476,31294773,justin,scott,pusczak,25,3131 quinley pl,raleigh,nc,27604,nc,10/04/1940,11-Oct
+477,9.90E+11,elton,,harrison,94,1028 bull hill rd,windsor,nc,27983,nc,10/04/1940,11-Oct
+478,9.99E+11,justin,scott,pusczak,26,10206 padgham ln,cary,nc,27518,il,10/04/1940,13-Feb
+479,9.90E+11,rodney,w,kight,56,4097 caratoke hwy,barco,nc,27917,nc,04/05/1940,11-Oct
+480,6716600,doris,burke,thompson,91,2502 s nc hwy 119,mebane,nc,27302,nc,11/05/1940,11-Oct
+481,9.99E+11,haywood,l,hamill,111,25560 nc hwy 561,enfield,nc,27823,,11/05/1940,11-Dec
+482,704000,edith,ruth,brannock,93,4 poplar,elon,nc,27244,nc,05/06/1940,11-Oct
+483,2192400,mary,hinkle,doby,95,4213 old lexington rd,winston salem,nc,27107,nc,05/06/1940,11-Oct
+484,5636600,odessa,,richmond,94,721 s fifth st,mebane,nc,27302,nc,05/06/1940,11-Oct
+485,5769120,philip,h,mock,95,1145 sequoia dr,lewisville,nc,27023,nc,05/06/1940,11-Oct
+486,6639000,josephine,walker,terrell,93,911 w davis st,burlington,nc,27215,nc,05/06/1940,11-Oct
+487,8410920,nell,,trivette,111,6700 shallowford rd,lewisville,nc,27023,nc,05/06/1940,11-Oct
+488,9.90E+11,wincy,lee,meachum,95,270 mayesville rd,morven,nc,28119,nc,05/06/1940,11-Oct
+489,9.90E+11,effie,,harper,98,309 woodlandhurst rd,littleton,nc,27850,,05/06/1940,11-Oct
+490,9.90E+11,jesse,james,rice,98,412 n first st,mebane,nc,27302,nc,05/06/1940,11-Oct
+491,9.90E+11,mary,jane,winfree,88,2274 pinkston river rd,wadesboro,nc,28170,nc,05/06/1940,11-Oct
+492,9.90E+11,mildred,buck,fulk,111,150 w highway 65 #bx 14,rural hall,nc,27045,nc,05/06/1940,11-Oct
+493,9.99E+11,hazel,madrid,harden,98,421 n main st,graham,nc,27253,nc,05/06/1940,11-Dec
+494,9.99E+11,george,hughey,pritchett,96,3243 n nc hwy 87,elon,nc,27244,nc,05/06/1940,11-Dec
+495,9.99E+11,kendall,mcbride,rich,96,100 wade coble dr,burlington,nc,27215,nc,05/06/1940,11-Dec
+496,9.99E+11,hezekiah,k,dowdy,94,501 manning ave,elon,nc,27244,nc,05/06/1940,11-Dec
+497,9.99E+11,mary,tucker,williard,94,6110 salemtowne dr,winston salem,nc,27106,nc,05/06/1940,11-Dec
+498,9.99E+11,j,m,cook,96,14484 nc hwy 48,littleton,nc,27850,,05/06/1940,11-Dec
+499,9.99E+11,courtney,,patterson,94,1113 patterson rd,kinston,nc,28504,nc,05/06/1940,11-Dec
+500,9.99E+11,virginia,w,hardison,92,106 e pitt st,windsor,nc,27983,nc,05/06/1940,11-Dec
+501,9.99E+11,alice,mae,bazemore,92,214 w 10th st,scotland neck,nc,27874,,05/06/1940,11-Dec
+502,9.99E+11,e,l,stokes,93,201 w river st,colerain,nc,27924,nc,05/06/1940,11-Dec
+503,9.99E+11,zaner,luther,sykes,99,409 s fifth st,mebane,nc,27302,nc,05/06/1940,11-Dec
+504,9.99E+11,dorothy,sink,allred,94,402 n second st,mebane,nc,27302,nc,05/06/1940,11-Dec
+505,9.99E+11,james,harold,smith,98,2407 oakwood dr,burlington,nc,27215,nc,05/06/1940,11-Dec
+506,9.99E+11,george,donald,williard,95,6110 salemtowne dr,winston salem,nc,27106,nc,05/06/1940,11-Dec
+507,9.90E+11,martha,s,hardy,87,4469 davis hardy rd,kinston,nc,28504,nc,09/06/1940,11-Oct
+508,1706640,anna,lena,cooper,91,3735 clemmons rd,clemmons,nc,27012,nc,05/07/1940,11-Oct
+509,2862600,fannie,jane,hayes,97,902 plaid st,burlington,nc,27215,nc,05/07/1940,11-Oct
+510,3503760,doris,s,hauser,92,6670 shallowford rd,lewisville,nc,27023,nc,05/07/1940,11-Oct
+511,3741960,a,l,hill,111,9225 styers ferry rd,clemmons,nc,27012,nc,05/07/1940,11-Oct
+512,3759240,lucile,j,hill,97,9225 styers ferry rd,clemmons,nc,27012,nc,05/07/1940,11-Oct
+513,4539700,ruth,fitch,mebane,100,1462 mebane oaks rd,mebane,nc,27302,nc,05/07/1940,11-Oct
+514,5985120,hubert,mrs,myers,111,3368 transou rd,pfafftown,nc,27040,nc,05/07/1940,11-Oct
+515,7979760,maxine,pitts,stewart,92,602 rock garden cir,winston salem,nc,27104,nc,05/07/1940,11-Oct
+516,9414960,bessie,l,young,111,4620 abbotts creek church rd,kernersville,nc,27284,nc,05/07/1940,11-Oct
+517,9.90E+11,gertrude,lovett,harrington,93,877 haileys ferry rd,lilesville,nc,28091,nc,05/07/1940,11-Oct
+518,9.90E+11,sudie,mae,bonds,99,23874 nc highway 125,williamston,nc,27892,,05/07/1940,11-Oct
+519,9.90E+11,horace,c,dilday,96,702 center grove rd,ahoskie,nc,27910,nc,05/07/1940,11-Oct
+520,9.90E+11,myrtle,rudd,rimmer,101,731 s broad st,burlington,nc,27215,nc,05/07/1940,11-Oct
+521,9.90E+11,doris,suggs,taylor,97,875 taylor spence rd,kinston,nc,28504,nc,05/07/1940,11-Oct
+522,9.90E+11,bartialette,braxton,thompson,92,209 w gilbreath st,graham,nc,27253,nc,05/07/1940,11-Oct
+523,9.90E+11,william,dillard,cross,94,414 piedmont way,burlington,nc,27217,nc,05/07/1940,11-Oct
+524,9.90E+11,melvin,reaves,stratton,99,1334 graham st,burlington,nc,27217,va,05/07/1940,11-Oct
+525,9.90E+11,annie,louise,knotts,83,4736 us hwy 74 w,polkton,nc,28135,nc,05/07/1940,11-Oct
+526,9.90E+11,frances,nance,allen,95,2926 boy wood rd,graham,nc,27253,nc,05/07/1940,11-Oct
+527,9.90E+11,alma,w,cooke,90,392 nc hwy 481,halifax,nc,27839,,05/07/1940,11-Oct
+528,9.90E+11,edna,crawford,harden,97,1880 brookwood ave #211,burlington,nc,27215,nc,05/07/1940,11-Oct
+529,9.99E+11,george,e,loftin,92,1395 nc hwy 58 s,kinston,nc,28504,nc,05/07/1940,11-Dec
+530,9.99E+11,leila,self,bennett,103,402 w wade st,wadesboro,nc,28170,nc,05/07/1940,11-Dec
+531,9.99E+11,melvin,boyd,perry,95,1827 s main st,graham,nc,27253,nc,05/07/1940,11-Dec
+532,9.99E+11,henry,glenn,wilkins,93,2151 wilkins rd,burlington,nc,27217,nc,05/07/1940,11-Dec
+533,9.99E+11,merle,clayton,king,103,403 w crawford st,mebane,nc,27302,nc,05/07/1940,11-Dec
+534,9.99E+11,lorraine,lindley,hornaday,95,2609 pleasant hill-liberty rd,liberty,nc,27298,nc,05/07/1940,11-Dec
+535,9.99E+11,margaret,w,clark,102,105 s broad st,everetts,nc,27825,,05/07/1940,11-Dec
+536,9.99E+11,iva,sloan,hart,93,615 grace ave,burlington,nc,27217,nc,05/07/1940,11-Dec
+537,9.99E+11,stella,,wilson,94,1336 weavers chapel rd,littleton,nc,27850,,05/07/1940,11-Dec
+538,9.99E+11,florin,evron,daffron,100,2912 timber ridge lake rd,liberty,nc,27298,nc,05/07/1940,11-Dec
+539,9.99E+11,dale,,idol,93,1705 bunker hill sandy ridge rd,kernersville,nc,27284,nc,05/07/1940,11-Dec
+540,9.99E+11,helen,claude,transou,105,3238 reynolda rd,winston salem,nc,27106,nc,05/07/1940,11-Dec
+541,9.99E+11,lucy,lee,ross,96,205 ross wright rd,polkton,nc,28135,nc,05/07/1940,11-Dec
+542,9.99E+11,grace,albright,pike,101,416 green st,graham,nc,27253,nc,05/07/1940,11-Dec
+543,9.99E+11,j,dodd,linker,111,3765 clemmons rd,clemmons,nc,27012,nc,05/07/1940,11-Dec
+544,9.99E+11,george,t,britton,94,107 pierce st,lewiston woodville,nc,27849,nc,05/07/1940,11-Dec
+545,9.99E+11,lillian,v,beroth,97,6601 yadkinville rd,pfafftown,nc,27040,nc,05/07/1940,11-Dec
+546,9.99E+11,agnes,fogleman,smith,94,3949 s nc hwy 62,burlington,nc,27215,nc,05/07/1940,11-Dec
+547,9.99E+11,daisy,m,barber,110,3011 barber rd,jamesville,nc,27846,,05/07/1940,11-Dec
+548,9.99E+11,marie,g,cobb,92,1060 dixie trl,williamston,nc,27892,,05/07/1940,11-Dec
+549,9.99E+11,clayton,,crofton,95,24427 nc highway 125,williamston,nc,27892,nc,05/07/1940,11-Dec
+550,9.99E+11,pauline,jones,macomson,95,1531 sherwood dr,burlington,nc,27215,nc,05/07/1940,11-Dec
+551,9.99E+11,ellen,clore,martin,94,3812 forrestgate dr #202,winston salem,nc,27103,nc,05/07/1940,11-Dec
+552,9.99E+11,pauline,staley,loy,93,1206 durham st,burlington,nc,27217,nc,05/07/1940,11-Dec
+553,9.99E+11,hazel,c,johnson,97,20029 nc highway 903,robersonville,nc,27871,nc,05/07/1940,11-Dec
+554,9.90E+11,raymond,alvin,hayes,69,130 spruce pine ln,north wilkesboro,nc,28659,va,04/08/1940,11-Oct
+555,3296400,eunice,lee,ingle,95,519 laurel hill dr,burlington,nc,27215,nc,05/08/1940,11-Oct
+556,3975625,zelma,wiggins,lewis,93,2110 wiggins st,burlington,nc,27215,nc,05/08/1940,11-Oct
+557,9.90E+11,louise,m,reynolds,111,203 sonata dr,lewisville,nc,27023,nc,05/08/1940,11-Oct
+558,9.90E+11,flora,nelle,johnson,94,464 mclendon rd,morven,nc,28119,sc,05/08/1940,11-Oct
+559,9.90E+11,joe,idaho,carpenter,93,687 jacks branch rd,wadesboro,nc,28170,nc,05/08/1940,11-Oct
+560,9.90E+11,naomi,,harris,96,342 kyle rd,littleton,nc,27850,,05/08/1940,11-Oct
+561,9.90E+11,evelyn,f,daniels,100,504 s haughton st,williamston,nc,27892,,05/08/1940,11-Oct
+562,9.90E+11,j,c,burton,111,5856 old rural hall rd,winston salem,nc,27105,nc,05/08/1940,11-Oct
+563,9.90E+11,george,houston,hildreth,91,32 old us 52 w,wadesboro,nc,28170,nc,05/08/1940,11-Oct
+564,9.90E+11,florentine,,cook,105,0 gardner dr,gaston,nc,27832,nc,05/08/1940,11-Oct
+565,9.90E+11,lofton,d,sharpe,93,6362 mt hermon-rock creek rd,snow camp,nc,27349,nc,05/08/1940,11-Oct
+566,9.90E+11,ruth,catherine,clark,87,310 godfrey ave,ansonville,nc,28007,nc,05/08/1940,11-Oct
+567,9.99E+11,l,e,masten,97,2718 country club rd,winston salem,nc,27104,nc,05/08/1940,11-Dec
+568,9.99E+11,gertrude,h,daniel,95,1216 satterwhite rd,oxford,nc,27565,nc,05/08/1940,11-Dec
+569,9.99E+11,eugenia,r,rook,94,2593 thelma rd,roanoke rapids,nc,27870,,05/08/1940,11-Dec
+570,9.99E+11,estelle,jordan,thompson,97,2405 trail five,burlington,nc,27215,nc,05/08/1940,11-Dec
+571,9.99E+11,charles,brantley,mayse,100,0 parson grove church rd,lilesville,nc,28091,nc,05/08/1940,11-Dec
+572,9.99E+11,jim,jackson,hanna,102,0 hannah rd,wadesboro,nc,28170,nc,05/08/1940,11-Dec
+573,9.99E+11,mildred,davis,turner,95,300 w broadway st,pink hill,nc,28572,nc,05/08/1940,11-Dec
+574,9.99E+11,lyda,lee,miller,99,1880 brookwood ave,burlington,nc,27215,nc,05/08/1940,11-Dec
+575,9.99E+11,forrest,,rook,95,1416 thelma rd,roanoke rapids,nc,27870,,05/08/1940,11-Dec
+576,9.99E+11,jessie,c,milton,98,6101 old roxboro rd,oxford,nc,27565,nc,05/08/1940,11-Dec
+577,9.99E+11,ruth,b,albright,93,231 s marshall st,graham,nc,27253,nc,05/08/1940,11-Dec
+578,9.99E+11,annie,brown,cook,100,108 green st,elon,nc,27244,nc,05/08/1940,11-Dec
+579,9.99E+11,eugene,a,moore,95,22290 nc hwy 125 hwy,scotland neck,nc,27874,,05/08/1940,11-Dec
+580,9.99E+11,opal,marlette,snipes,94,2309 swepsonville rd,graham,nc,27253,nc,05/08/1940,11-Dec
+581,9.99E+11,edna,j,robinson,93,301 n railroad st,hamilton,nc,27840,,05/08/1940,11-Dec
+582,9.99E+11,wesley,austin,faulkner,96,650 upper white store rd,peachland,nc,28133,sc,05/08/1940,11-Dec
+583,9.99E+11,janice,saunders,jilcott,99,207 main st,lewiston woodville,nc,27849,nc,05/08/1940,11-Dec
+584,9.99E+11,pattie,elizabeth,transou,108,3238 reynolda rd,winston salem,nc,27106,nc,05/08/1940,11-Dec
+585,9.99E+11,sue,c,stem,94,117 eighth st,oxford,nc,27565,nc,05/08/1940,11-Dec
+586,9.90E+11,paul,gregory,drake,26,3318 arthur minnis rd,hillsborough,nc,27278,tn,08/08/1940,11-Oct
+587,9.99E+11,martha,mcgee,hagar,71,1706 greene park ter,new bern,nc,28560,nc,04/09/1940,11-Dec
+588,689640,norris,l,bodenhamer,95,6207 salemtowne dr,winston salem,nc,27106,nc,05/09/1940,11-Oct
+589,3778560,e,n,hine,111,3060 ridgewood rd,winston salem,nc,27107,nc,05/09/1940,11-Oct
+590,3787680,p,p,hines,111,3411 country club rd,winston salem,nc,27104,nc,05/09/1940,11-Oct
+591,4374960,clifton,,jones,94,2475 union cross rd,winston salem,nc,27107,nc,05/09/1940,11-Oct
+592,4641600,s,e,kinnaman,111,1253 teague rd,winston salem,nc,27107,nc,05/09/1940,11-Oct
+593,4920480,n,h,lewis,111,7376 belews creek rd,belews creek,nc,27009,nc,05/09/1940,11-Oct
+594,5813520,gray,mrs,moore,111,9255 moore rd,tobaccoville,nc,27050,nc,05/09/1940,11-Oct
+595,8693880,j r,mrs,wall,95,3364 country club rd,winston salem,nc,27104,nc,05/09/1940,11-Oct
+596,8722920,terry,l,walser,96,161 hartley st,winston salem,nc,27107,nc,05/09/1940,11-Oct
+597,9.90E+11,beryl,mcpherson,moser,100,1724 bellemont-alamance rd,burlington,nc,27215,nc,05/09/1940,11-Oct
+598,9.90E+11,david,r,blackwell,92,8136 dick blackwell rd,oxford,nc,27565,,05/09/1940,11-Oct
+599,9.90E+11,mary,coble,sharpe,95,3129 bellemont-mt hermon rd,burlington,nc,27215,nc,05/09/1940,11-Oct
+600,9.90E+11,mildred,f,grizzard,102,507 downing dr,scotland neck,nc,27874,,05/09/1940,11-Oct
+601,9.90E+11,marion,,rouse,92,4275 rouse loop rd,la grange,nc,28551,nc,05/09/1940,11-Oct
+602,9.90E+11,killian,efird,tucker,90,2539 nc 218,polkton,nc,28135,nc,05/09/1940,11-Oct
+603,9.90E+11,leamon,,taylor,110,2675 joe mobley rd,williamston,nc,27892,,05/09/1940,11-Oct
+604,9.90E+11,christine,c,davenport,92,1710 matthews rd,robersonville,nc,27871,nc,05/09/1940,11-Oct
+605,9.90E+11,catherine,m,overton,94,108 w tally ho rd,stem,nc,27581,nc,05/09/1940,11-Oct
+606,9.90E+11,jimmy,nichols,martin,92,507 e main st,woodland,nc,27897,,05/09/1940,11-Oct
+607,9.90E+11,alethia,j,green,97,1739 main st,scotland neck,nc,27874,,05/09/1940,11-Oct
+608,9.90E+11,louise,heavener,previtte,98,909 n green st,wadesboro,nc,28170,nc,05/09/1940,11-Oct
+609,9.90E+11,k,f,woolard,104,1102 n east ave,hassell,nc,27841,,05/09/1940,11-Oct
+610,9.90E+11,s,e,miller,97,1305 meadow rd,colerain,nc,27924,nc,05/09/1940,11-Oct
+611,9.90E+11,lessie,d,strother,100,3548 nc hwy 56 e,creedmoor,nc,27522,nc,05/09/1940,11-Oct
+612,9.99E+11,odessa,stanley,teer,96,2502 s nc hwy 119,mebane,nc,27302,va,05/09/1940,11-Dec
+613,9.99E+11,lena,b,snyder,103,4000 hampton rd,clemmons,nc,27012,nc,05/09/1940,11-Dec
+614,9.99E+11,evelyn,s,perkins,93,103 w second st,robersonville,nc,27871,,05/09/1940,11-Dec
+615,9.99E+11,j,e,davenport,95,1710 matthews rd,robersonville,nc,27871,nc,05/09/1940,11-Dec
+616,9.99E+11,betty,reavis,house,93,4341 nc hwy 54,graham,nc,27253,nc,05/09/1940,11-Dec
+617,9.99E+11,wilhelmina,,whicker,104,4524 old winston rd,kernersville,nc,27284,nc,05/09/1940,11-Dec
+618,9.99E+11,burgess,u,griffin,61,602 s main st,lewiston woodville,nc,27849,nc,05/09/1940,11-Dec
+619,9.99E+11,veronia,p,robertson,93,304 n biggs st,williamston,nc,27892,,05/09/1940,11-Dec
+620,9.99E+11,jack,calvin,caudle,90,717 high st,polkton,nc,28135,nc,05/09/1940,11-Dec
+621,9.99E+11,e,l,preddy,99,2507 grove hill rd,franklinton,nc,27525,nc,05/09/1940,11-Dec
+622,9.99E+11,dallie,ursal,boswell,94,2502 s nc hwy 119,mebane,nc,27302,nc,05/09/1940,11-Dec
+623,9.99E+11,w,clyde,griffin,98,301 railroad st,hamilton,nc,27840,,05/09/1940,11-Dec
+624,9.99E+11,jessie,morris,andrews,100,624 oak st,burlington,nc,27215,nc,05/09/1940,11-Dec
+625,9.99E+11,brice,rankin,whitesell,95,4825 whitesell brothers rd,elon,nc,27244,nc,05/09/1940,11-Dec
+626,9.99E+11,laura,,miller,109,501 bill smith rd,kinston,nc,28501,nc,05/09/1940,11-Dec
+627,9.99E+11,james,r,morris,92,4373 oxford rd,roxboro,nc,27574,nc,03/10/1940,11-Dec
+628,2213520,lois,c,dorsett,92,4268 thomasville rd,winston salem,nc,27107,nc,05/10/1940,11-Oct
+629,3184000,alton,brown,howle,93,4304 hickory nut pt,burlington,nc,27217,nc,05/10/1940,11-Oct
+630,4676400,margie,marshall,montgomery,97,3615 s mebane st #18,burlington,nc,27215,nc,05/10/1940,11-Oct
+631,9.90E+11,lenorma,,waters,82,104 w byrd st,windsor,nc,27983,nc,05/10/1940,11-Oct
+632,9.90E+11,patricia,,rhodes,94,706 bertie ave,windsor,nc,27983,nc,05/10/1940,11-Oct
+633,9.90E+11,lester,,harrell,93,3564 david brown rd,oak city,nc,27857,,05/10/1940,11-Oct
+634,9.90E+11,corrie,rowena,odom,86,214 wheeler st,wadesboro,nc,28170,sc,05/10/1940,11-Oct
+635,9.90E+11,martha,r,gillam,82,203 s king st,windsor,nc,27983,nc,05/10/1940,11-Oct
+636,9.90E+11,marina,,perry,95,28980 us highway 64,jamesville,nc,27846,,05/10/1940,11-Oct
+637,9.90E+11,leslie,herman,collier,93,718 warner bridge rd,garysburg,nc,27831,,05/10/1940,11-Oct
+638,9.90E+11,arthur,conwell,harrell,95,1354 meadow rd,colerain,nc,27924,nc,05/10/1940,11-Oct
+639,9.90E+11,charlie,edward,hall,95,704 burlington ave #7502,gibsonville,nc,27249,nc,05/10/1940,11-Oct
+640,9.90E+11,celia,lassiter,congleton,94,505 harmon st,aulander,nc,27805,nc,05/10/1940,11-Oct
+641,9.90E+11,clyde,c,harden,86,701 pecan st,windsor,nc,27983,nc,05/10/1940,11-Oct
+642,9.90E+11,g,t,davis,90,706 winwood dr,windsor,nc,27983,nc,05/10/1940,11-Oct
+643,9.90E+11,minnie,daniel,frazier,105,2153 mountain creek rd,oxford,nc,27565,nc,05/10/1940,11-Oct
+644,9.90E+11,dewey,,johnson,87,5099 ansonville polkton rd,ansonville,nc,28007,nc,05/10/1940,11-Oct
+645,9.90E+11,john,ernest,garrison,96,4133 burch bridge rd,burlington,nc,27217,nc,05/10/1940,11-Oct
+646,9.90E+11,raymond,,spence,97,313 sherry dr,kinston,nc,28504,nc,05/10/1940,11-Oct
+647,9.90E+11,elsie,,pittard,93,7123 nc hwy 903,roanoke rapids,nc,27870,,05/10/1940,11-Oct
+648,9.90E+11,edgar,,harris,98,101 e carroll st,windsor,nc,27983,nc,05/10/1940,11-Oct
+649,9.90E+11,j,r,adkins,111,88 kyle rd,littleton,nc,27850,,05/10/1940,11-Oct
+650,9.90E+11,nannie,j,newby,94,9005 us hwy 15 n,bullock,nc,27507,va,05/10/1940,11-Oct
+651,9.90E+11,viola,p,diggs,93,0 goldmine rd,wadesboro,nc,28170,nc,05/10/1940,11-Oct
+652,9.90E+11,joseph,alexander,albright,96,824 indian valley dr,burlington,nc,27217,nc,05/10/1940,11-Oct
+653,9.99E+11,lina,copeland,white,101,127 e askewville st,windsor,nc,27983,nc,05/10/1940,11-Dec
+654,9.99E+11,edith,,moore,95,403 winston ln,windsor,nc,27983,al,05/10/1940,11-Dec
+655,9.99E+11,ethel,york,kiker,93,620 west ave,wadesboro,nc,28170,nc,05/10/1940,11-Dec
+656,9.99E+11,william,linwood,albright,93,2041 s nc hwy 119,mebane,nc,27302,nc,05/10/1940,11-Dec
+657,9.99E+11,essie,,warren,109,105 south st,lasker,nc,27845,,05/10/1940,11-Dec
+658,9.99E+11,lee,,marshall,111,719 carter st,kernersville,nc,27284,va,05/10/1940,11-Dec
+659,9.99E+11,helen,clark,hobgood,100,1248 us hwy 158 w,oxford,nc,27565,nc,05/10/1940,11-Dec
+660,9.99E+11,maxine,sharpe,parrish,94,118 alamance rd,burlington,nc,27215,va,05/10/1940,11-Dec
+661,9.99E+11,rembert,,malloy,98,2020 new walkertown rd,winston salem,nc,27101,va,05/10/1940,11-Dec
+662,9.99E+11,aubrey,williams,turner,92,100 w lynwood ave,pink hill,nc,28572,nc,05/10/1940,11-Dec
+663,9.99E+11,marguerite,l,gatling,100,202 e water st,windsor,nc,27983,nc,05/10/1940,11-Dec
+664,9.99E+11,rufus,,james,95,1579 s highway 66,kernersville,nc,27284,nc,05/10/1940,11-Dec
+665,9.99E+11,mamie,t,slade,92,100 woodlawn dr,williamston,nc,27892,,05/10/1940,11-Dec
+666,9.99E+11,nannie,turner,bradshaw,98,1987 hilton rd,burlington,nc,27217,nc,05/10/1940,11-Dec
+667,9.99E+11,floyd,vernon,thompson,96,2405 trail five,burlington,nc,27215,nc,05/10/1940,11-Dec
+668,9.99E+11,agnes,clark,parrish,111,250 hopkins rd #a-10,kernersville,nc,27284,nc,05/10/1940,11-Dec
+669,9.99E+11,mary,virginia,gillam,96,212 w gray st,windsor,nc,27983,nc,05/10/1940,11-Dec
+670,9.99E+11,myrtle,foushee,wilson,100,1840 brookwood ave #236,burlington,nc,27215,nc,05/10/1940,11-Dec
+671,9.99E+11,william,mcgregor,bell,94,127 n shore dr,merry hill,nc,27957,nc,05/10/1940,11-Dec
+672,9.90E+11,edward,,green,90,901 ridge rd,roxboro,nc,27573,,08/10/1940,11-Oct
+673,9.99E+11,gladys,,laws,95,812 n main st,roxboro,nc,27573,nc,08/10/1940,11-Dec
+674,9.99E+11,geneva,,owen,93,812 n main st,roxboro,nc,27573,nc,08/10/1940,11-Dec
+675,9.99E+11,w,henry,davis,96,5921 nc hwy 55 w,kinston,nc,28504,nc,08/10/1940,11-Dec
+676,9.90E+11,margaret,louise,nogy,70,6107 trevor simpson dr,indian trail,nc,28079,,10/10/1940,11-Oct
+677,9.99E+11,eula belle,faulkner,caudle,98,10309 us hwy 74 w,peachland,nc,28133,sc,04/11/1940,11-Dec
+678,543960,virgil,,beroth,95,3565 beroth cir,pfafftown,nc,27040,nc,05/11/1940,11-Oct
+679,1928640,mabel,smith,culler,111,2151 s hawthorne rd,winston salem,nc,27103,nc,05/11/1940,11-Oct
+680,1957800,lillian,wells,euliss,97,3732 timber ridge lake rd,liberty,nc,27298,nc,05/11/1940,11-Oct
+681,2836600,nell,marie,harviel,92,1880 brookwood ave #119,burlington,nc,27215,nc,05/11/1940,11-Oct
+682,2954400,christine,phillips,hicks,99,1153 e main st,graham,nc,27253,nc,05/11/1940,11-Oct
+683,3692640,john,m,hester,111,6450 belews creek rd,belews creek,nc,27009,nc,05/11/1940,11-Oct
+684,3718000,kyle,clifton,kimball,93,7913 sylvan rd,liberty,nc,27298,nc,05/11/1940,11-Oct
+685,4064500,annie,lee,longest,94,1118 rogers rd,graham,nc,27253,nc,05/11/1940,11-Oct
+686,4116360,j,clarence,idol,111,665 walkertown guthrie rd,winston salem,nc,27101,nc,05/11/1940,11-Oct
+687,5735125,margaret,caudle,robinson,93,2510 russell-mcpherson rd,burlington,nc,27215,nc,05/11/1940,11-Oct
+688,6176600,clarence,edward,smith,96,5533 kimesville rd,liberty,nc,27298,nc,05/11/1940,11-Oct
+689,6722520,frank,e,raper,96,208 aldersgate dr,winston salem,nc,27104,nc,05/11/1940,11-Oct
+690,7338500,annie,mae gill,wilkinson,93,113 n sixth st,mebane,nc,27302,nc,05/11/1940,11-Oct
+691,7440600,r,l,shutt,111,917 w clemmonsville rd,winston salem,nc,27127,nc,05/11/1940,11-Oct
+692,7454400,roscoe,,sides,92,2240 w clemmonsville rd,winston salem,nc,27127,nc,05/11/1940,11-Oct
+693,7691520,c,h,smitherman,111,8181 reynolda rd,pfafftown,nc,27040,nc,05/11/1940,11-Oct
+694,7775640,ruth,t,spach,94,1510 jonestown rd,winston salem,nc,27103,nc,05/11/1940,11-Oct
+695,8028240,alene,,stonestreet,95,2118 konnoak dr,winston salem,nc,27127,nc,05/11/1940,11-Oct
+696,8765160,pauline,mrs,warren,111,116 nelson st,kernersville,nc,27284,nc,05/11/1940,11-Oct
+697,9.90E+11,tamara,palce,green,46,3081 e thollie green rd,stem,nc,27581,tx,05/11/1940,11-Oct
+698,9.90E+11,mae,powell,yancey,93,2663 golf course rd,oxford,nc,27565,nc,05/11/1940,11-Oct
+699,9.90E+11,mattie,lou,horne,92,1528 lower white store rd,polkton,nc,28135,nc,05/11/1940,11-Oct
+700,9.90E+11,katharine,morrow,woody,97,6553 stockard rd,graham,nc,27253,nc,05/11/1940,11-Oct
+701,9.90E+11,betty,parker,davidson,98,917 central ave,burlington,nc,27215,va,05/11/1940,11-Oct
+702,9.90E+11,nell,mrs,marshall,111,719 carter st,kernersville,nc,27284,nc,05/11/1940,11-Oct
+703,9.90E+11,alene,euliss,dorsett,97,3531 euliss rd,burlington,nc,27215,nc,05/11/1940,11-Oct
+704,9.90E+11,william,stanley,alston,93,144 pollocks rd,windsor,nc,27983,nc,05/11/1940,11-Oct
+705,9.90E+11,evelyn,m,howell,90,208 lee st,williamston,nc,27892,,05/11/1940,11-Oct
+706,9.90E+11,bertha,,allen,96,522 us hwy 158,roanoke rapids,nc,27870,,05/11/1940,11-Oct
+707,9.90E+11,bertha,starling,clayton,94,225 graham rd,graham,nc,27253,nc,05/11/1940,11-Oct
+708,9.90E+11,m,h,holcomb,111,117 wedgefield ave,winston salem,nc,27106,nc,05/11/1940,11-Oct
+709,9.90E+11,vera,,walker,94,4712 roper springs rd,littleton,nc,27850,,05/11/1940,11-Oct
+710,9.90E+11,j,b,smithwick,92,622 avoca farm rd,merry hill,nc,27957,nc,05/11/1940,11-Oct
+711,9.90E+11,ann,moody,shepherd,94,1421 tarleton ave,burlington,nc,27215,nc,05/11/1940,11-Oct
+712,9.90E+11,naomi,gilliam,sadler,93,3767 wade coble dr #202a,burlington,nc,27215,nc,05/11/1940,11-Oct
+713,9.90E+11,mitchell,jeffreys,allen,91,2527 us hwy 15 s,creedmoor,nc,27522,nc,05/11/1940,11-Oct
+714,9.90E+11,e,r,baker,94,608 bakertown rd,windsor,nc,27983,nc,05/11/1940,11-Oct
+715,9.90E+11,faye,,fields,94,1452 hugo rd,kinston,nc,28501,nc,05/11/1940,11-Oct
+716,9.90E+11,marion,b,morris,102,203 oak dr,murfreesboro,nc,27855,,05/11/1940,11-Oct
+717,9.90E+11,ida,webster,cheek,96,1731 e webb ave,burlington,nc,27217,nc,05/11/1940,11-Oct
+718,9.90E+11,sallie,b,gaines,95,1038 saint andrews st,jamesville,nc,27846,,05/11/1940,11-Oct
+719,9.90E+11,christine,mary,tucker,94,7343 us hwy 74 e,lilesville,nc,28091,nc,05/11/1940,11-Oct
+720,9.90E+11,robert,edward,boone,98,124 rolling rd,burlington,nc,27217,nc,05/11/1940,11-Oct
+721,9.90E+11,bertha,,barnacascel,103,1927 cooper hill rd,windsor,nc,27983,nc,05/11/1940,11-Oct
+722,9.90E+11,joseph,r,norris,97,384 walnut grove church rd,hurdle mills,nc,27541,nc,05/11/1940,11-Oct
+723,9.90E+11,laura,frances,brower,92,370 nc 742 s,wadesboro,nc,28170,nc,05/11/1940,11-Oct
+724,9.90E+11,william,alexander,garris,95,477 diggs rd,wadesboro,nc,28170,nc,05/11/1940,11-Oct
+725,9.90E+11,lila,griffith,morris,94,500 w jefferson st,jackson,nc,27845,,05/11/1940,11-Oct
+726,9.90E+11,julia,d,aiken,101,607 pine st,creedmoor,nc,27522,nc,05/11/1940,11-Oct
+727,9.90E+11,helen,mcdaniel,joyner,97,201 n linden st,woodland,nc,27897,nc,05/11/1940,11-Oct
+728,9.90E+11,georgie,anna,ricketts,97,2344 mcrae ave,wadesboro,nc,28170,nc,05/11/1940,11-Oct
+729,9.90E+11,louise,g,adcock,94,200 coventry dr,oxford,nc,27565,nc,05/11/1940,11-Oct
+730,9.90E+11,beverly,lineberry,andrews,95,815 tillman st,burlington,nc,27217,nc,05/11/1940,11-Oct
+731,9.90E+11,alene,thomas,garrison,94,858 stoney creek church rd,burlington,nc,27217,nc,05/11/1940,11-Oct
+732,9.90E+11,sam,sidney,anderson,94,1809 n nc hwy 49,green level,nc,27217,nc,05/11/1940,11-Oct
+733,9.90E+11,p,w,longmire,111,4036 gray rock rd,kittrell,nc,27544,nc,05/11/1940,11-Oct
+734,9.90E+11,christine,boone,fonville,96,1308 w davis st,burlington,nc,27215,nc,05/11/1940,11-Oct
+735,9.90E+11,j,p,spencer,93,418 s main st,seaboard,nc,27876,nc,05/11/1940,11-Oct
+736,9.90E+11,ethel,barrow,loftin,89,841 westminister ln,kinston,nc,28501,nc,05/11/1940,11-Oct
+737,9.90E+11,bessie,matkins,gilliam,100,402 chapel hill rd,burlington,nc,27215,nc,05/11/1940,11-Oct
+738,9.90E+11,william,carey,horne,94,1528 lower white store rd,polkton,nc,28135,nc,05/11/1940,11-Oct
+739,9.90E+11,betty,t hicks,bragg,101,3538 cannady mill rd,kittrell,nc,27544,nc,05/11/1940,11-Oct
+740,9.90E+11,allie,v,clark,97,109 hancock st,lewiston woodville,nc,27849,nc,05/11/1940,11-Oct
+741,100033163,lottie,l,cullipher,95,2324 nc highway 45 n,colerain,nc,27924,nc,05/11/1940,11-Dec
+742,9.99E+11,marie,r,fleming,99,103 mangum st,creedmoor,nc,27522,nc,05/11/1940,11-Dec
+743,9.99E+11,howard,t,suitt,100,716 n durham ave,creedmoor,nc,27522,nc,05/11/1940,11-Dec
+744,9.99E+11,robert,e,brewer,111,4290 hampton rd,clemmons,nc,27012,nc,05/11/1940,11-Dec
+745,9.99E+11,james,everett,brown,92,2276 nc hwy 305,rich square,nc,27869,,05/11/1940,11-Dec
+746,9.99E+11,d,clyde,pfaff,111,1119 n peace haven rd,winston salem,nc,27104,nc,05/11/1940,11-Dec
+747,9.99E+11,max,(nmn),euliss,92,8207 charlie euliss rd,snow camp,nc,27349,nc,05/11/1940,11-Dec
+748,9.99E+11,d,g,fleming,102,103 mangum st,creedmoor,nc,27522,nc,05/11/1940,11-Dec
+749,9.99E+11,frances,,blowe,94,801 us hwy 158 hwy,roanoke rapids,nc,27870,,05/11/1940,11-Dec
+750,9.99E+11,lila,,piper,97,4316 old nc 75,oxford,nc,27565,nc,05/11/1940,11-Dec
+751,9.99E+11,christine,roberson,hurst,92,106 w purvis st,robersonville,nc,27871,nc,05/11/1940,11-Dec
+752,9.99E+11,grant,asa,danieley,95,1925 robin hood dr,burlington,nc,27217,nc,05/11/1940,11-Dec
+753,9.99E+11,elizabeth,thompson,burke,99,300 e elm st,graham,nc,27253,nc,05/11/1940,11-Dec
+754,9.99E+11,alda,smith,tatum,98,108 baxter st,kernersville,nc,27284,nc,05/11/1940,11-Dec
+755,9.99E+11,effie,davis,massey,92,1626 morningside dr #h-52,burlington,nc,27217,nc,05/11/1940,11-Dec
+756,9.99E+11,james,ernest,crabtree,95,5433 mt hermon-rock creek rd,burlington,nc,27215,nc,05/11/1940,11-Dec
+757,9.99E+11,robert,olin,beauchamp,93,331 beauchamp rd,winston salem,nc,27106,nc,05/11/1940,11-Dec
+758,9.99E+11,orene,thomas,caudle,100,877 cappadocia church rd,peachland,nc,28133,nc,05/11/1940,11-Dec
+759,9.99E+11,john,atwood,bowden,94,1123 edgewood ave,burlington,nc,27215,nc,05/11/1940,11-Dec
+760,9.99E+11,edna,mrs,hine,111,4811 high point rd,kernersville,nc,27284,nc,05/11/1940,11-Dec
+761,9.99E+11,p,l,woodlief,95,2542 nc hwy 96,franklinton,nc,27525,nc,05/11/1940,11-Dec
+762,9.99E+11,alta,c,harrington,93,118 n watts st,williamston,nc,27892,nc,05/11/1940,11-Dec
+763,9.99E+11,edward,kerr,freshwater,93,1837 kimrey rd,haw river,nc,27258,nc,05/11/1940,11-Dec
+764,9.99E+11,gwyn,m,jennings,104,171 lewisville vienna rd,lewisville,nc,27023,va,05/11/1940,11-Dec
+765,9.99E+11,mary,rosa,fleming,92,1662 turner rd,mebane,nc,27302,nc,05/11/1940,11-Dec
+766,9.99E+11,margaret,holt,brown,103,118 alamance rd #218,burlington,nc,27215,nc,05/11/1940,11-Dec
+767,9.99E+11,odice,lee,curlee,92,680 curlee rd,polkton,nc,28135,nc,05/11/1940,11-Dec
+768,9.99E+11,luther,whitmell,powell,93,203 hofler st,windsor,nc,27983,nc,05/11/1940,11-Dec
+769,9.99E+11,thomas,w,griffin,93,606 jack branch rd,lewiston woodville,nc,27849,nc,05/11/1940,11-Dec
+770,9.99E+11,d,g,chance,105,305 n outerbridge st,robersonville,nc,27871,nc,05/11/1940,11-Dec
+771,9.99E+11,r,w,needham,98,4314 reidsville rd,winston salem,nc,27101,ga,05/11/1940,11-Dec
+772,9.99E+11,mildred,gattis,allen,92,108 roxboro st,haw river,nc,27258,nc,05/11/1940,11-Dec
+773,9.99E+11,allie,mae,hester,93,1001 kilby st,burlington,nc,27215,nc,05/11/1940,11-Dec
+774,9.99E+11,f,aldine,ebert,96,4108 salemtowne dr,winston salem,nc,27106,nc,05/11/1940,11-Dec
+775,9.99E+11,sara,rogers,compton,98,1232 rogers rd,graham,nc,27253,nc,05/11/1940,11-Dec
+776,9.99E+11,maletha,g,clark,111,1215 n main st,scotland neck,nc,27874,,05/11/1940,11-Dec
+777,9.99E+11,janie,page,wilson,94,440 e harden st,graham,nc,27253,nc,05/11/1940,11-Dec
+778,9.99E+11,virginia,moore,king,95,209 pinecrest st,burlington,nc,27215,nc,05/11/1940,11-Dec
+779,9.99E+11,van,thomas,wood,97,218 lawrenceville rd,gaston,nc,27832,,05/11/1940,11-Dec
+780,9.99E+11,harry,mason,clark,93,3727 wade coble dr #212,burlington,nc,27215,sc,05/11/1940,11-Dec
+781,9.99E+11,john,h,gurganus,95,306 e liberty st,williamston,nc,27892,nc,05/11/1940,11-Dec
+782,9.99E+11,robert,pinkey,smith,94,203 roma rd,haw river,nc,27258,nc,05/11/1940,11-Dec
+783,9.99E+11,annette,preslar,parker,95,956 olive branch rd,polkton,nc,28135,nc,05/11/1940,11-Dec
+784,9.99E+11,james,hubert,kiker,94,7 hwy 742 n,polkton,nc,28135,nc,05/11/1940,11-Dec
+785,9.99E+11,t,j,culler,93,2151 s hawthorne rd,winston salem,nc,27103,nc,05/11/1940,11-Dec
+786,9.99E+11,g,s,coltrane,97,1323 union cross rd,kernersville,nc,27284,nc,05/11/1940,11-Dec
+787,9.99E+11,sam,t.,brown,111,583 thelma rd,roanoke rapids,nc,27870,,05/11/1940,11-Dec
+788,9.99E+11,dorothea,s,beroth,93,3565 beroth cir,pfafftown,nc,27040,nc,05/11/1940,11-Dec
+789,9.99E+11,lonnie,eugene,thompson,94,2733 s nc hwy 87,graham,nc,27253,nc,05/11/1940,11-Dec
+790,9.99E+11,lonnie,b,green,98,2190 lonnie b green rd,roanoke rapids,nc,27870,,05/11/1940,11-Dec
+791,9.99E+11,tom,bennett,collins,94,308 e fifth st,burlington,nc,27215,sc,05/11/1940,11-Dec
+792,9.99E+11,margaret,e,harrison,99,116 n haughton st,williamston,nc,27892,nc,05/11/1940,11-Dec
+793,9.99E+11,frances,kiser,bunn,92,3812 forrestgate dr #111,winston salem,nc,27103,nc,05/11/1940,11-Dec
+794,9.99E+11,doris,glosson,davis,94,1716 n mebane st,burlington,nc,27217,nc,05/11/1940,11-Dec
+795,9.99E+11,mabel,richardson,cheek,92,1736 maple ave,burlington,nc,27215,nc,05/11/1940,11-Dec
+796,9.99E+11,ruby,sykes,davis,99,2285 davis rd,haw river,nc,27258,nc,05/11/1940,11-Dec
+797,9.99E+11,t,r,smith,93,604 salisbury st,kernersville,nc,27284,nc,05/11/1940,11-Dec
+798,9.99E+11,mozelle,baker,mcpherson,98,632 roxboro st,haw river,nc,27258,nc,05/11/1940,11-Dec
+799,9.99E+11,goldie,f,wade,100,3277 nc hwy 35,woodland,nc,27897,nc,05/11/1940,11-Dec
+800,9.99E+11,samuel,durant,faucette,94,2541 us hwy 70,mebane,nc,27302,nc,05/11/1940,11-Dec
+801,9.99E+11,nellie,,elmore,93,1036 elmore farms rd,kinston,nc,28501,nc,05/11/1940,11-Dec
+802,9.99E+11,myrtle,williams,huffman,98,2932 midway church rd,elon,nc,27244,nc,05/11/1940,11-Dec
+803,9.99E+11,clara,,inscoe,96,1140 inscoe rd,littleton,nc,27850,,05/11/1940,11-Dec
+804,9.99E+11,nannie,fields,hall,103,3459 harold hall rd,kinston,nc,28501,nc,05/11/1940,11-Dec
+805,9.99E+11,eva,,miller,93,522 farless rd,merry hill,nc,27957,nc,05/11/1940,11-Dec
+806,9.99E+11,charles,ernest,york,93,9275 s nc hwy 49,liberty,nc,27298,nc,05/11/1940,11-Dec
+807,9.99E+11,robert,gilmore,carpenter,96,6543 ansonville polkton rd,polkton,nc,28135,nc,05/11/1940,11-Dec
+808,9.99E+11,marie,d,ingram,96,326 lake ridge dr,kernersville,nc,27284,nc,05/11/1940,11-Dec
+809,9.99E+11,ann,,meads,92,164 meads rd,shawboro,nc,27973,nc,05/11/1940,11-Dec
+810,9.99E+11,henry,bright,glosson,94,521 tarleton ave,burlington,nc,27215,nc,05/11/1940,11-Dec
+811,9.99E+11,willard,,grady,93,4373 nc hwy 11 s,deep run,nc,28525,nc,05/11/1940,11-Dec
+812,9.99E+11,mary,elizabeth,harrison,93,211 ferris st,haw river,nc,27258,va,05/11/1940,11-Dec
+813,9.99E+11,gilbert,,stanley,94,2511 stanley rd,deep run,nc,28525,nc,05/11/1940,11-Dec
+814,9.99E+11,j,c,white,93,100 w liberty st,williamston,nc,27892,,05/11/1940,11-Dec
+815,9.99E+11,clyde,attwood,whittemore,93,961 whittemore rd,graham,nc,27253,nc,05/11/1940,11-Dec
+816,9.99E+11,c,r,warren,111,116 nelson st,kernersville,nc,27284,nc,05/11/1940,11-Dec
+817,9.99E+11,fincher,baxter,kiker,93,1159 hopewell church rd,peachland,nc,28133,nc,05/11/1940,11-Dec
+818,9.99E+11,bessie,garrison,rollins,96,2465 carolina rd,burlington,nc,27217,nc,05/11/1940,11-Dec
+819,9.99E+11,hazeline,patton,tickle,94,3570 bason rd,mebane,nc,27302,nc,05/11/1940,11-Dec
+820,9.99E+11,ralph,e,zimmerman,111,4236 sabrina lake rd,winston salem,nc,27127,nc,05/11/1940,11-Dec
+821,9.99E+11,irene,p,hairston,98,6895 yadkinville rd,pfafftown,nc,27040,nc,05/11/1940,11-Dec
+822,9.99E+11,marvin,morrow,newlin,96,5249 thom rd,mebane,nc,27302,nc,05/11/1940,11-Dec
+823,9.99E+11,earl,allen,edwards,95,91 marsh ave,wadesboro,nc,28170,nc,05/11/1940,11-Dec
+824,9.99E+11,l,m,petty,96,518 oakland dr,burlington,nc,27215,nc,05/11/1940,11-Dec
+825,9.99E+11,f,l,wilson,90,512 w lake rd,creedmoor,nc,27522,nc,05/11/1940,11-Dec
+826,9.99E+11,george,w,alkins,91,1459 country club rd,roxboro,nc,27574,nc,05/11/1940,11-Dec
+827,9.99E+11,dorothy,,brewer,93,4290 hampton rd,clemmons,nc,27012,nc,05/11/1940,11-Dec
+828,9.99E+11,agnes,threadgill,horne,98,110 lowery st,peachland,nc,28133,nc,05/11/1940,11-Dec
+829,9.99E+11,grace,burch,fuqua,101,703 s beaumont ave,burlington,nc,27217,sc,05/11/1940,11-Dec
+830,9.99E+11,myrtle,,white,96,910 n king st,windsor,nc,27983,nc,05/11/1940,11-Dec
+831,9.99E+11,claude,d,inscoe,112,1140 inscoe rd,littleton,nc,27850,,05/11/1940,12-Feb
+832,9.99E+11,charles,,motsinger,112,3955 idlewild rd,kernersville,nc,27284,nc,05/11/1940,12-Feb
+833,9.99E+11,nell,,marshall,112,1731 tredegar rd,kernersville,nc,27284,nc,05/11/1940,12-Apr
+834,9.90E+11,marianne,m,burris,71,44 weeping willow ln,canton,nc,28716,oc,03/12/1940,11-Oct
+835,9.90E+11,hattie,mae,mizelle,89,547 elm grove rd,colerain,nc,27924,nc,05/12/1940,11-Oct
+836,9.99E+11,j,m,robinson,92,3989 valley ct #c,winston salem,nc,27106,nc,05/12/1940,11-Dec
+837,9.99E+11,aubrey,l,mizelle,87,547 elm grove rd,colerain,nc,27924,nc,05/12/1940,11-Dec
+838,5767920,lizzie,s,mock,35,6426 shallowford rd,lewisville,nc,27023,nc,10/12/1940,11-Oct
+839,8020920,c,a,stone,111,500 salisbury st,kernersville,nc,27284,nc,10/12/1940,11-Oct
+840,9.90E+11,h,s,overton,92,912 hexlena rd,ahoskie,nc,27910,nc,10/12/1940,11-Oct
+841,9.90E+11,waddell,w,breeze,92,9900 hurdle mills rd,hurdle mills,nc,27541,nc,10/12/1940,11-Oct
+842,9.90E+11,carrie,l,phelps,98,1615 w main st,williamston,nc,27892,,10/12/1940,11-Oct
+843,9.90E+11,inez,beach,mcrae,101,177 n clinton ave,peachland,nc,28133,nc,10/12/1940,11-Oct
+844,9.90E+11,g,alvis,allen,96,2091 nc hwy 96,creedmoor,nc,27522,nc,10/12/1940,11-Oct
+845,9.99E+11,josie,loy,huey,104,1750 power line rd,elon,nc,27244,nc,10/12/1940,11-Dec
+846,9.99E+11,s,b,byerly,111,4364 northampton dr,winston salem,nc,27105,nc,10/12/1940,11-Dec
+847,9.90E+11,grace,dawson,newman,93,6161 nc hwy 55 w,kinston,nc,28504,nc,03/13/1940,11-Dec
+848,9.90E+11,dorothy,k,britton,96,105 mitchell st,lewiston woodville,nc,27849,nc,05/13/1940,11-Oct
+849,9.90E+11,rachel,a,wynne,89,2161 five cent rd,williamston,nc,27892,nc,05/13/1940,11-Oct
+850,9.99E+11,henry,louis,jordan,92,1255 oak grove church rd,gaston,nc,27832,,05/13/1940,11-Dec
+851,9.99E+11,violet,allen,jordan,87,1255 oak grove church rd,gaston,nc,27832,va,10/13/1940,11-Dec
+852,9.99E+11,braxton,,newman,96,6161 nc hwy 55 w,kinston,nc,28504,nc,04/14/1940,11-Dec
+853,9.90E+11,robert,l,sinclair,98,4147 red hill mt vernon rd,wadesboro,nc,28170,nc,05/15/1940,11-Oct
+854,773870,richard,nelson,craft,97,849 baxter rd,cherryville,nc,28021,nc,02/16/1940,11-Oct
+855,9.90E+11,joseph,l,hester,71,1081 mill inn rd,williamston,nc,27892,nc,05/16/1940,11-Oct
+856,9.90E+11,matdnell,thomas,edwards,92,1524 thomas rd,polkton,nc,28135,nc,05/16/1940,11-Oct
+857,9.90E+11,ada,taylor,wright,92,446 george wright rd,polkton,nc,28135,nc,05/16/1940,11-Oct
+858,9.99E+11,jake,,herring,90,5320 pauls path rd,la grange,nc,28551,nc,05/16/1940,11-Dec
+859,9.99E+11,pauline,w,woody,93,5569 virgilina rd,roxboro,nc,27574,,05/16/1940,11-Dec
+860,9.99E+11,jasper,wyatt,bowman,97,3068 pond rd,burlington,nc,27215,nc,05/16/1940,11-Dec
+861,9.90E+11,diane,viola,craig,63,519 n main st,mt gilead,nc,27306,ny,09/16/1940,11-Oct
+862,9.90E+11,louise,watson,shepherd,92,2242 gulledge rd,wadesboro,nc,28170,nc,05/17/1940,11-Oct
+863,876689,wayne,a,andersen,71,5200 weaver mill ln,charlotte,nc,28226,il,09/17/1940,11-Oct
+864,9.90E+11,madge,hargrove,braxton,96,7519b lindley mill rd,graham,nc,27253,nc,10/17/1940,11-Oct
+865,9.99E+11,herndon,,newman,94,502 hardy bridge rd,kinston,nc,28504,nc,10/17/1940,11-Dec
+866,9.99E+11,h,gerard,hardy,98,4506 davis hardy rd,seven springs,nc,28578,nc,12/17/1940,11-Dec
+867,9.90E+11,cindy,elliott,poovey,61,1541 williams st,claremont,nc,28610,,10/18/1940,11-Oct
+868,9.90E+11,vernell,,byrum,85,809 bethany church rd,colerain,nc,27924,nc,10/18/1940,11-Oct
+869,9.99E+11,fannie,baber,howle,93,4304 hickory nut pt,burlington,nc,27217,nc,10/18/1940,11-Dec
+870,9.99E+11,drudie,cook,porter,99,5079 silas creek rd,winston salem,nc,27103,nc,10/18/1940,11-Dec
+871,9.99E+11,lelia,w,stutz,98,429 w jackson st,rich square,nc,27869,nc,10/18/1940,11-Dec
+872,9.90E+11,lillie,mae,askew,98,2359 horne rd,pendleton,nc,27862,nc,05/19/1940,11-Oct
+873,9.99E+11,dora,lee,colston,92,230 roanoke rapids rd,gaston,nc,27832,nc,05/19/1940,11-Dec
+874,9.99E+11,cecil,,jones,88,545 charlie herring rd,kinston,nc,28504,nc,06/19/1940,11-Dec
+875,2754600,homer,sharpe,hargis,96,3962 bellemont-mt hermon rd,burlington,nc,27215,nc,10/19/1940,11-Oct
+876,4114080,mary,f,idol,93,1705 bunker hill sandy ridge rd,kernersville,nc,27284,nc,10/19/1940,11-Oct
+877,4423900,dorothy,may,mcdaries,98,1987 hilton rd,burlington,nc,27217,nc,10/19/1940,11-Oct
+878,7438080,fannie,maude,shutt,98,339 weisner st,winston salem,nc,27127,nc,10/19/1940,11-Oct
+879,7775520,roy,,spach,111,1510 jonestown rd,winston salem,nc,27103,nc,10/19/1940,11-Oct
+880,9.90E+11,minnie,c,nelson,111,505 w mountain st,kernersville,nc,27284,nc,10/19/1940,11-Oct
+881,9.90E+11,lynwood,o,hockaday,94,3586 horseshoe rd,creedmoor,nc,27522,nc,10/19/1940,11-Oct
+882,9.90E+11,kathleen,,robinson,101,779 woody dr,graham,nc,27253,nc,10/19/1940,11-Oct
+883,9.90E+11,norman,bobbie,lambe,92,10543 s nc hwy 49,liberty,nc,27298,nc,10/19/1940,11-Dec
+884,9.99E+11,b,j,martin,92,4184 nc hwy 35,conway,nc,27820,nc,10/19/1940,11-Dec
+885,9.99E+11,opal,b,wilson,97,3750 harper rd,clemmons,nc,27012,nc,10/19/1940,11-Dec
+886,9.99E+11,hazel,moore,hargis,94,3962 bellemont-mt hermon rd,burlington,nc,27215,nc,10/19/1940,11-Dec
+887,9.99E+11,roy,,hopkins,94,120 tally ho rd,stem,nc,27581,nc,10/19/1940,11-Dec
+888,9.99E+11,h,l,terry,94,605 broad st,aulander,nc,27805,nc,10/19/1940,11-Dec
+889,9.99E+11,r,h,midyette,111,3747 konnoak dr,winston salem,nc,27127,nc,10/19/1940,11-Dec
+890,9.99E+11,r,f,thompson,111,2371 westfield ave,winston salem,nc,27103,nc,10/19/1940,11-Dec
+891,2668320,r,e,foltz,111,136 lawndale dr,winston salem,nc,27104,,08/20/1940,11-Oct
+892,9.90E+11,phyllis,sears,brock,43,1952 memorial church rd,fremont,nc,27830,al,10/20/1940,11-Oct
+893,9.90E+11,carole,yvonne,mcintyre,71,519 worth st,randleman,nc,27317,wv,04/21/1940,11-Oct
+894,9.90E+11,doris,e,roebuck,95,103 s outterbridge st,robersonville,nc,27871,,05/21/1940,11-Oct
+895,9.99E+11,mildred,f,gurganus,92,114 marshall ave,williamston,nc,27892,,05/21/1940,11-Dec
+896,9.99E+11,ralph,morgan,loy,95,791 boone station dr,burlington,nc,27215,nc,09/21/1940,11-Dec
+897,5293000,cleodora,,phillips,103,321 cedar st,graham,nc,27253,nc,10/21/1940,11-Oct
+898,9.90E+11,horace,,davis,93,720 bland howell rd,kinston,nc,28504,nc,10/21/1940,11-Oct
+899,9.99E+11,george,conrad,parker,99,6403 us hwy 258,woodland,nc,27897,nc,10/21/1940,11-Dec
+900,9.99E+11,harvey,,shoffner,93,412 shoffner st,graham,nc,27253,nc,10/21/1940,11-Dec
+901,9.99E+11,earl,,barwick,93,5621 liddell rd,seven springs,nc,28578,nc,02/22/1940,11-Dec
+902,6064975,mildred,whitesell,shoffner,95,1408 st mark's church rd,burlington,nc,27215,nc,10/22/1940,11-Oct
+903,9.90E+11,ellen,,cooke,111,311 salisbury st #1,kernersville,nc,27284,nc,10/22/1940,11-Oct
+904,9.90E+11,richard,lamar,ledford,70,54 wooten holw,andrews,nc,28901,nc,10/22/1940,11-Oct
+905,1602400,margaret,whitesell,curtis,97,815 e joyner st #2311,gibsonville,nc,27249,nc,10/23/1940,11-Oct
+906,7350600,avery,william,williams,96,2466k barber rd,elon,nc,27244,nc,10/23/1940,11-Oct
+907,9.90E+11,louise,lowery,williams,97,2024 us hwy 258 s,kinston,nc,28504,nc,10/23/1940,11-Oct
+908,9.90E+11,ross,lee,smith,93,4944 pagetown rd,burlington,nc,27217,nc,10/23/1940,11-Oct
+909,9.99E+11,grover,mrs,fishel,111,3703 konnoak dr,winston salem,nc,27127,nc,10/23/1940,11-Dec
+910,9.99E+11,clifford,,krites,98,740 w clemmonsville rd,winston salem,nc,27127,nc,10/23/1940,11-Dec
+911,9.99E+11,bernice,n,woodard,97,425 e main st,conway,nc,27820,,10/23/1940,11-Dec
+912,9.99E+11,w,g,nail,111,4559 country club rd,winston salem,nc,27104,nc,10/23/1940,11-Dec
+913,9.99E+11,mildred,best,cates,94,533 e main st,haw river,nc,27258,nc,10/23/1940,11-Dec
+914,9.99E+11,francis,sam,long,92,275 fishel rd,winston salem,nc,27127,nc,10/23/1940,11-Dec
+915,9.99E+11,albert,,johnson,94,381 nc hwy 58 s,kinston,nc,28504,nc,04/24/1940,11-Dec
+916,4384400,evelyn,robertson,mccall,100,501 manning ave,elon,nc,27244,nc,10/24/1940,11-Oct
+917,4890720,mary,southern,leonard,94,2709 pilgrim ct,winston salem,nc,27106,nc,10/24/1940,11-Oct
+918,5942400,r,h,mullis,111,3151 old salisbury rd,winston salem,nc,27127,ga,10/24/1940,11-Oct
+919,7390920,carl,mrs,shore,111,333 e devonshire st,winston salem,nc,27127,nc,10/24/1940,11-Oct
+920,9.90E+11,dorice,,bradford,72,470 j r pate rd,burnsville,nc,28714,nc,10/24/1940,11-Oct
+921,9.90E+11,mary,ann,edwards,64,2055 hardscrabble rd,burnsville,nc,28714,nc,10/24/1940,11-Oct
+922,9.99E+11,woodrow,edison,smith,94,922 e haggard ave,elon,nc,27244,nc,10/24/1940,11-Dec
+923,9.99E+11,annie,e,pearson,71,265 n windsor dr,fayetteville,nc,28301,,10/24/1940,11-Dec
+924,9.99E+11,glenn,d,burch,95,206 paynes tavern rd,roxboro,nc,27574,nc,05/25/1940,11-Dec
+925,9.99E+11,frederick,james,stephenson,105,314 s ireland st,burlington,nc,27217,ri,09/25/1940,11-Dec
+926,3457080,j,f,hartgrove,111,5000 hauser dr,pfafftown,nc,27040,nc,10/25/1940,11-Oct
+927,3926200,irene,gerringer,lee,95,3448 hub mill rd,elon,nc,27244,nc,10/25/1940,11-Oct
+928,4997280,carmel,,livengood,93,2101 homestead hills dr #320,winston salem,nc,27103,nc,10/25/1940,11-Oct
+929,9.99E+11,elery,odell,copeland,93,3111 viewmont dr,graham,nc,27253,nc,10/25/1940,11-Dec
+930,9.99E+11,helen,boone,lanier,92,1111 nchs east rd,conway,nc,27820,,10/25/1940,11-Dec
+931,9.99E+11,treva,r,kimball,97,1204 neva ln,winston salem,nc,27107,nc,10/25/1940,11-Dec
+932,9.99E+11,nell,mustin,coley,92,1240 arbor rd #411,winston salem,nc,27104,nc,10/25/1940,11-Dec
+933,9.99E+11,alice,w,jenkins,93,503 e main st,aulander,nc,27805,nc,05/26/1940,11-Dec
+934,1132800,john,c,burton,111,5856 old rural hall rd,winston salem,nc,27105,nc,10/26/1940,11-Oct
+935,2780160,w,s,frye,111,3666 hege st,winston salem,nc,27127,nc,10/26/1940,11-Oct
+936,2988000,willis,mccoy,gobble,92,2345 griffith rd,winston salem,nc,27103,nc,10/26/1940,11-Oct
+937,3393120,margaret,marie,harper,69,7572 bullard rd,clemmons,nc,27012,nc,10/26/1940,11-Oct
+938,3827100,helen,allred,lamar,89,2129 wrenn st,burlington,nc,27215,nc,10/26/1940,11-Oct
+939,4210920,novella,,james,111,175 woodland trl,kernersville,nc,27284,nc,10/26/1940,11-Oct
+940,4377800,mamie,reed,mcbride,99,107 roma rd,haw river,nc,27258,nc,10/26/1940,11-Oct
+941,4416720,mamie,p,jones,98,120 reid acres ln,lewisville,nc,27023,nc,10/26/1940,11-Oct
+942,4711440,v,c,krites,111,902 w clemmonsville rd,winston salem,nc,27127,nc,10/26/1940,11-Oct
+943,5514000,addie,d,mckaughan,111,600 salisbury st,kernersville,nc,27284,nc,10/26/1940,11-Oct
+944,6936840,era,mrs,roberson,111,4106 old hollow rd,kernersville,nc,27284,nc,10/26/1940,11-Oct
+945,7015440,nell,rose,rogers,111,425 n peace haven rd,winston salem,nc,27104,nc,10/26/1940,11-Oct
+946,7729080,f,g,snyder,111,3733 old lexington rd,winston salem,nc,27107,nc,10/26/1940,11-Oct
+947,8236850,esther,faw,tesh,111,4377 farris rd,winston salem,nc,27127,nc,10/26/1940,11-Oct
+948,8564160,cora,mrs,veach,111,4805 old hollow rd,kernersville,nc,27284,nc,10/26/1940,11-Oct
+949,8923440,t,b,westmoreland,111,4835 old belews creek rd,winston salem,nc,27101,nc,10/26/1940,11-Oct
+950,9.90E+11,hazel,r,evans,92,1853 claude green rd,robersonville,nc,27871,nc,10/26/1940,11-Oct
+951,9.90E+11,raymond,r,robbins,111,1028 pisgah view dr,kernersville,nc,27284,nc,10/26/1940,11-Oct
+952,9.90E+11,margaret,,snuggs,108,2145 bellemont-alamance rd,burlington,nc,27215,nc,10/26/1940,11-Oct
+953,9.90E+11,w,j,lakey,111,1450 fairfield dr,winston salem,nc,27127,nc,10/26/1940,11-Oct
+954,9.90E+11,rachel,virginia,griffith,93,1244 arbor rd #509,winston salem,nc,27104,nc,10/26/1940,11-Oct
+955,9.90E+11,betty,,coulbourn,93,606 taylor st,windsor,nc,27983,va,10/26/1940,11-Oct
+956,9.90E+11,sarah,albright,adams,93,211 s marshall st,graham,nc,27253,nc,10/26/1940,11-Oct
+957,9.90E+11,d,e,wall,111,310 buick st,winston salem,nc,27101,nc,10/26/1940,11-Oct
+958,9.90E+11,nell,thompson,ray,94,210 ferris st,haw river,nc,27258,nc,10/26/1940,11-Oct
+959,9.90E+11,mary,,joyner,90,207 hill st,garysburg,nc,27831,,10/26/1940,11-Oct
+960,9.90E+11,charles,robert,helsabeck,95,1199 hayes forest dr,winston salem,nc,27106,nc,10/26/1940,11-Oct
+961,9.90E+11,dare,,griffin,95,410 spruce st,woodland,nc,27897,nc,10/26/1940,11-Oct
+962,9.90E+11,margaret,plonk,isley,98,1880 brookwood ave #102,burlington,nc,27215,nc,10/26/1940,11-Oct
+963,9.90E+11,thelma,modlin,bright,93,953 w old glencoe rd,burlington,nc,27217,nc,10/26/1940,11-Oct
+964,9.90E+11,george,allen,turner,92,2491 durham st ext,burlington,nc,27217,nc,10/26/1940,11-Oct
+965,9.90E+11,elizabeth,,phelps,97,2006 us highway 17 n,merry hill,nc,27957,nc,10/26/1940,11-Oct
+966,9.90E+11,james,vernon,myers,84,1821 doc wyatt rd,lilesville,nc,28091,nc,10/26/1940,11-Oct
+967,9.90E+11,robert,jenkins,graham,92,216 graham rd,graham,nc,27253,nc,10/26/1940,11-Oct
+968,9.99E+11,phoebe,roach,pike,104,1119 e willowbrook dr,burlington,nc,27215,nc,10/26/1940,11-Dec
+969,9.99E+11,u,f,coulbourn,95,606 taylor st,windsor,nc,27983,va,10/26/1940,11-Dec
+970,9.99E+11,helen,,oakley,93,404 e forest st,mebane,nc,27302,va,10/26/1940,11-Dec
+971,9.99E+11,walter,alvin,taylor,98,1115 bowers rd,peachland,nc,28133,nc,10/26/1940,11-Dec
+972,9.99E+11,john,haskin,smith,97,2502 s nc hwy 119,mebane,nc,27302,nc,10/26/1940,11-Dec
+973,9.99E+11,c,e,dixon,111,2809 reynolds dr,winston salem,nc,27104,nc,10/26/1940,11-Dec
+974,9.99E+11,ruth,webster,allen,93,107 w greensboro-chapel hill rd,snow camp,nc,27349,nc,10/26/1940,11-Dec
+975,9.99E+11,charlie,brady,hauser,94,2072 k court ave,winston salem,nc,27105,nc,10/26/1940,11-Dec
+976,9.99E+11,lewis,,carter,102,752 woodard rd,windsor,nc,27983,nc,10/26/1940,11-Dec
+977,9.99E+11,hope,surratt,fox,97,321 hillcrest ave,burlington,nc,27215,nc,10/26/1940,11-Dec
+978,9.99E+11,mozelle,albright,vincent,95,1938 long dairy rd,graham,nc,27253,nc,10/26/1940,11-Dec
+979,9.99E+11,george,w,barnes,97,535 barnes rd,winston salem,nc,27107,nc,10/26/1940,11-Dec
+980,9.99E+11,evola,mrs,hepler,111,1932 harper rd,clemmons,nc,27012,nc,10/26/1940,11-Dec
+981,9.99E+11,mary,h,williard,95,2401 old salisbury rd,winston salem,nc,27127,nc,10/26/1940,11-Dec
+982,9.99E+11,grace,t,whitfield,95,319 north nc 125,oak city,nc,27857,,10/26/1940,11-Dec
+983,9.99E+11,maida,mrs,waggoner,111,2335 union cross rd,winston salem,nc,27107,nc,10/26/1940,11-Dec
+984,9.99E+11,broadie,graham,riley,92,718 hopedale rd,burlington,nc,27217,nc,10/26/1940,11-Dec
+985,9.99E+11,nell,campbell,isley,100,1011 n church st,burlington,nc,27217,nc,10/26/1940,11-Dec
+986,9.99E+11,ethel,ened,guye,97,779 woody dr,graham,nc,27253,nc,10/26/1940,11-Dec
+987,9.99E+11,ruth,smith,coyner,97,216 baxter st,kernersville,nc,27284,nc,10/26/1940,11-Dec
+988,9.99E+11,mary,s,snyder,111,3733 old lexington rd,winston salem,nc,27107,nc,10/26/1940,11-Dec
+989,9.99E+11,mary,griffith,tesh,93,3750 harper rd,clemmons,nc,27012,nc,10/26/1940,11-Dec
+990,9.99E+11,lillian,russell,henderson,97,1829 swepsonville rd,graham,nc,27253,nc,10/26/1940,11-Dec
+991,9.99E+11,edwin,turner,bowland,93,5951 n nc hwy 62,burlington,nc,27217,nc,10/26/1940,11-Dec
+992,9.99E+11,lena,terry,russell,98,823 wildwood st,wadesboro,nc,28170,nc,10/26/1940,11-Dec
+993,9.99E+11,joseph,julian,harrington,92,211 e church st,lewiston woodville,nc,27849,nc,10/26/1940,11-Dec
+994,9.99E+11,edith,dixon,pender,97,202 n seventh st,mebane,nc,27302,nc,10/26/1940,11-Dec
+995,9.99E+11,ruth,e,todd,95,1309 jonestown rd,winston salem,nc,27103,nc,10/26/1940,11-Dec
+996,9.99E+11,james,wilson,dunn,98,3639 spangenberg ave #4a,clemmons,nc,27012,nc,10/26/1940,11-Dec
+997,9.99E+11,josephine,smith,cox,97,512 boundary st,haw river,nc,27258,nc,10/26/1940,11-Dec
+998,9.99E+11,everett,mrs,james,94,2263 w clemmonsville rd,winston salem,nc,27127,nc,10/26/1940,11-Dec

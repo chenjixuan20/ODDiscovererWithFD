@@ -1,6 +1,7 @@
 package discoverer.fd;
 
 import dataStructures.DataFrame;
+import dataStructures.DataWareHouse;
 import dataStructures.fd.Array.FDTreeArray;
 import dataStructures.fd.Array.FDTreeArray.FDTreeNode;
 import dataStructures.fd.FDCandidate;
@@ -13,15 +14,18 @@ import java.util.*;
 
 public abstract class FDDiscoverer {
     public List<FDCandidate> fdCandidates = new ArrayList<>();
-    public Map<Integer, Boolean[]> attributeToConfirmed = new HashMap<>();
+    public static DataWareHouse dataWareHouse = DataWareHouse.getInstance();
+    public Map<String, Boolean[]> attributeToConfirmed = new HashMap<>();
     public FDTreeArray fdTreeArray;
+
+    public  int newFoundFdCount;
 
     public abstract void addFDCandidate(FDTreeNode node, int attributeNum, List<Integer> left);
 
-    public FDDiscoverNodeSavingInfoArray newAndTraverseNode(int expendInLeft, DataFrame data, FDTreeArray.FDTreeNode parent,
+    public FDDiscoverNodeSavingInfoArray newAndTraverseNode(int expendInLeft, DataFrame data, FDTreeNode parent,
                                                             Boolean[] anotherFatherRHSCandidate, boolean isLevel1,
                                                             FDDiscoverNodeSavingInfoArray infoArray){
-        FDTreeArray.FDTreeNode child;
+        FDTreeNode child;
         FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
         List<Integer> left;
         if(isLevel1){
@@ -37,6 +41,11 @@ public abstract class FDDiscoverer {
             fdTreeNodeEquivalenceClasses.mergeLeftNode(expendInLeft, data);
             left.add(expendInLeft);
         }
+        /*
+            fd的PLI的数据仓库改动
+         */
+        dataWareHouse.listEcMap.put(left.toString(),fdTreeNodeEquivalenceClasses.left);
+
         int attributeNum = data.getColumnCount();
         for(int k = 0; k < attributeNum; k++){
             if(isLevel1 && expendInLeft == k) {
@@ -45,42 +54,45 @@ public abstract class FDDiscoverer {
                 continue;
             }
             if(isLevel1 || !child.RHSCandidate[k]){
+//                System.out.println(k);
                 FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(k,data);
+//                System.out.println(fdResult.status);
                 if(fdResult.status.equals("non-valid")){
                     //右侧为k的fdCandidate无效
                     child.RHSCandidate[k] = false;
                 }else{
                     child.RHSCandidate[k] = true;
-                    if(isLevel1 && !parent.RHSCandidate[k])
+                    if(isLevel1 && !parent.RHSCandidate[k]){
                         child.minimal[k] = true;
+                    }
                 }
             }
         }
-
         if(isLevel1)
-            attributeToConfirmed.put(expendInLeft,child.RHSCandidate);
-        else {
+            attributeToConfirmed.put(String.valueOf(expendInLeft),child.RHSCandidate);
+        else
             child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, anotherFatherRHSCandidate);
-        }
         addFDCandidate(child,attributeNum,left);
+        //将字节点挂在parent上，建立联系
         parent.children.add(child);
         return new FDDiscoverNodeSavingInfoArray(child, fdTreeNodeEquivalenceClasses, left);
     }
 
     //处理新增的子节点
-    public FDDiscoverNodeSavingInfoArray vaildateNode(FDTreeArray.FDTreeNode child, DataFrame data,
-                                                      FDDiscoverNodeSavingInfoArray info, FDTreeArray.FDTreeNode parent){
+    public FDDiscoverNodeSavingInfoArray vaildateNode(FDTreeNode child, DataFrame data,
+                                                      FDDiscoverNodeSavingInfoArray info, FDTreeNode parent){
         //初始left
 //        System.out.println("处理新增节点");
         List<Integer> left = info.listDeepClone(info.left);
 //        System.out.println("从queue中初始的left：" + left );
         FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses = info.fdTreeNodeEquivalenceClasses.deepClone();
         int lastInLeft = child.attribute;
+        String lastInLeftString = String.valueOf(lastInLeft);
 //        System.out.println("当前节点属性：" + lastInLeft);
         List<Integer> attributeOfNewNodes = new ArrayList<>();
         //完善初始化RHSCandidate
-        for(int i = 0; i < attributeToConfirmed.get(lastInLeft).length; i++){
-            if(attributeToConfirmed.get(lastInLeft)[i]){
+        for(int i = 0; i < attributeToConfirmed.get(lastInLeftString).length; i++){
+            if(attributeToConfirmed.get(lastInLeftString)[i]){
                 child.RHSCandidate[i] = true;
             }
         }
@@ -100,7 +112,7 @@ public abstract class FDDiscoverer {
             }
         }
 //        System.out.println("当前节点需要增加的子节点" + attributeOfNewNodes);
-        child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, attributeToConfirmed.get(lastInLeft));
+        child.minimal = checkFDMinimalArray(child, parent, left, fdCandidates, attributeToConfirmed.get(lastInLeftString));
         addFDCandidate(child,attributeNum,left);
         parent.children.add(child);
         FDDiscoverNodeSavingInfoArray infoArray = new FDDiscoverNodeSavingInfoArray(child, fdTreeNodeEquivalenceClasses, left, child.RHSCandidate);
@@ -113,14 +125,14 @@ public abstract class FDDiscoverer {
     }
 
     //处理原先已经存在的子节点
-    public FDDiscoverNodeSavingInfoArray reTraverseNode(FDTreeArray.FDTreeNode node, FDTreeArray.FDTreeNode parent,
-                                                        FDDiscoverNodeSavingInfoArray info, DataFrame data, Boolean isLevel1){
+    public FDDiscoverNodeSavingInfoArray reTraverseNode(FDTreeNode node, FDTreeNode parent,
+                                                        FDDiscoverNodeSavingInfoArray info, DataFrame data, Boolean isLevel2){
         FDTreeNodeEquivalenceClasses fdTreeNodeEquivalenceClasses;
         List<Integer> left;
         Boolean[] parentRHSCandidate;
         //还原minimal
         Arrays.fill(node.minimal, false);
-        if(isLevel1){
+        if(isLevel2){
             fdTreeNodeEquivalenceClasses = new FDTreeNodeEquivalenceClasses();
             left = new ArrayList<>();
             parentRHSCandidate = new Boolean[data.getColumnCount()];
@@ -135,6 +147,7 @@ public abstract class FDDiscoverer {
         fdTreeNodeEquivalenceClasses.mergeLeftNode(node.attribute, data);
         left.add(node.attribute);
         int lastInLeft = node.attribute;
+        String lastInLeftString = String.valueOf(lastInLeft);
         int attributeNum = data.getColumnCount();
 //        System.out.println("当前节点的属性： " + node.attribute);
 //        System.out.println("处理到该节点时fd的左侧： " + left);
@@ -142,29 +155,29 @@ public abstract class FDDiscoverer {
         for(int i = 0; i < attributeNum; i++){
             //若右侧对应的fd之前是成立的 &&
             // 不是平凡函数依赖 &&
-            //（其已经在新数据集中处理过的父节点中右侧对应的fd均不成立 || 该节点位于第一层） 理由：若父节点中成立，那么子节点中肯定也成立，就不用验证了
+            //（其已经在新数据集中处理过的父节点中右侧对应的fd均不成立 || 该节点位于第2层） 理由：若父节点中成立，那么子节点中肯定也成立，就不用验证了
             // 则需要重新checkFD;
-            boolean flag = isLevel1  || !(parentRHSCandidate[i] || attributeToConfirmed.get(lastInLeft)[i]);
+            boolean flag = isLevel2  || !(parentRHSCandidate[i] || attributeToConfirmed.get(lastInLeftString)[i]);
             if(node.RHSCandidate[i] && !left.contains(i) && flag){
                 FDValidationResult fdResult = fdTreeNodeEquivalenceClasses.checkFDRefinement(i, data);
-                //新数据集中变成不成立，则子节点中的初始不用遍历的rhs变少，需要补充；并且会有新的子节点生成
+                //新数据集中变成不成立，则子节点中的初始不用遍历的rhs变少(右侧之前被剪掉，现在不能），需要补充；并且会有新的子节点生成
                 if(fdResult.status.equals("non-valid")){
                     //child的子节点的初始RHSCandidate需要更新
                     node.RHSCandidate[i] = false;
                     //子节点中左侧为(left,i)的结点需要生成
                     if(i > lastInLeft)
                         attributeOfNewNodes.add(i);
-                }else {
-                    if(isLevel1 && !parent.RHSCandidate[i])
+                }else{
+                    if(isLevel2 && !parent.RHSCandidate[i])
                         node.minimal[i] = true;
                 }
             }
         }
 
-        if(isLevel1) attributeToConfirmed.put(node.attribute, node.RHSCandidate);
+        if(isLevel2) attributeToConfirmed.put(String.valueOf(node.attribute), node.RHSCandidate);
             //验证是否为最小
         else {
-            node.minimal = checkFDMinimalArray(node, parent, left, fdCandidates, attributeToConfirmed.get(node.attribute));
+            node.minimal = checkFDMinimalArray(node, parent, left, fdCandidates, attributeToConfirmed.get(String.valueOf(node.attribute)));
         }
         addFDCandidate(node,attributeNum,left);
 
@@ -179,13 +192,13 @@ public abstract class FDDiscoverer {
         return infoArray;
     }
 
-    public List<FDTreeArray.FDTreeNode> initializeChildren(FDDiscoverNodeSavingInfoArray infoArray, DataFrame data,
-                                                           List<Integer> attributeOfNewNodes, FDTreeArray.FDTreeNode parent){
+    public List<FDTreeNode> initializeChildren(FDDiscoverNodeSavingInfoArray infoArray, DataFrame data,
+                                                           List<Integer> attributeOfNewNodes, FDTreeNode parent){
         infoArray.hasChildren = true;
-        List<FDTreeArray.FDTreeNode> newChildren = new ArrayList<>();
+        List<FDTreeNode> newChildren = new ArrayList<>();
         for(Integer right : attributeOfNewNodes){
             //map里的RHS还没加入newChild的初始化中
-            FDTreeArray.FDTreeNode newChild = fdTreeArray.new FDTreeNode(parent,right,data.getColumnCount(),null);
+            FDTreeNode newChild = fdTreeArray.new FDTreeNode(parent,right,data.getColumnCount(),null);
             newChildren.add(newChild);
         }
         return newChildren;
@@ -202,7 +215,7 @@ public abstract class FDDiscoverer {
         return result;
     }
 
-    public Boolean[] checkFDMinimalArray(FDTreeArray.FDTreeNode child, FDTreeArray.FDTreeNode parent,
+    public Boolean[] checkFDMinimalArray(FDTreeNode child, FDTreeNode parent,
                                          List<Integer> left, List<FDCandidate> fdCandidates,
                                          Boolean[] anotherConfirmed){
 //        List<Integer> fdRightOfParent = new ArrayList<>();

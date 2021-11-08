@@ -108,7 +108,7 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
     }
 
     @Override
-    public boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<Integer, List<List<Integer>>> fdMap) {
+    public boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<String, List<List<Integer>>> fdMap) {
         return false;
     }
 

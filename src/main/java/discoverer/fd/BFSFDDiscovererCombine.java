@@ -113,5 +113,4 @@ public class BFSFDDiscovererCombine {
         }
         return child.mininal;
     }
-
 }

@@ -36,4 +36,9 @@ public class ODDiscovererNodeSavingInfo {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "left: " + left + "\n" + "right: " + right;
+    }
 }
