@@ -145,7 +145,7 @@ public class ChinoPlus extends ODDiscoverer {
 
 
     public static void main(String[] args) {
-        DataFrame dataFrame=DataFrame.fromCsv("Data/FLI 10K.csv");
+        DataFrame dataFrame=DataFrame.fromCsv("Data/test.csv");
         Timer timer=new Timer();
         ODTree discover = new ChinoPlus(
                 new OneLevelCheckingSampler(),

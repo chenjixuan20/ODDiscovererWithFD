@@ -64,12 +64,7 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
                                       Map<String, List<List<Integer>>> fdMap){
         if(expandList.size() == 1) return true;
         String expandAttribute = String.valueOf(expandList.get(expandList.size() - 1).attribute);
-
         List<List<Integer>> leftOfExpandRight = fdMap.get(expandAttribute);
-//        System.out.println("right: " + expandAttribute);
-//        System.out.println("allLeft: " + leftOfExpandRight);
-//        System.out.println();
-
         List<Integer> expandListAttributes = new ArrayList<>();
         for(int i = 0; i < expandList.size() - 1; i++){
             expandListAttributes.add(expandList.get(i).attribute);
@@ -113,8 +108,10 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
             List<AttributeAndDirection> right = od.leftAndRightAttributeList.right;
 
             int leftIndex = getIndex(list, left), rightIndex = getIndex(list, right);
+
             if(leftIndex != -1 && rightIndex != -1 &&
-                    (leftIndex < rightIndex  //前推后
+                    (
+                            leftIndex < rightIndex  //前推后
                             || rightIndex + right.size() == leftIndex //后推前
                     )){
                 return false;
@@ -123,7 +120,10 @@ public class ODMinimalCheckerBruteForce extends ODMinimalChecker{
             leftIndex = getIndex(list, left);
             rightIndex = getIndex(list, right);
             if(leftIndex != -1 && rightIndex != -1 &&
-                    (leftIndex < rightIndex || rightIndex + right.size() == leftIndex)){
+                    (
+                            leftIndex < rightIndex   //前推后
+                            || rightIndex + right.size() == leftIndex   //后推前
+                    )){
                 return false;
             }
         }

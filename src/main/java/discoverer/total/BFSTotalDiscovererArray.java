@@ -36,9 +36,9 @@ public class BFSTotalDiscovererArray extends FDDiscoverer {
         ODTree odResult = new ODTree(attributeNum);
         ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
 
-        //处理fd根节点和level1的节点
+        //处理fd根节点和level2的节点
         processFDRootAndLevel2(data,fdRoot);
-        System.out.println("处理完fd根节点和level1的节点");
+        System.out.println("处理完fd根节点和level2的节点");
 
         //od第二层的所有结点的direction为UP
         addLevel1ODNode(data,odResult,odReference);

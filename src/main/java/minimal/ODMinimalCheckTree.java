@@ -82,7 +82,7 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
             node=node.children[attributeAndDirection2childrenIndex(attributeAndDirection)];
             if(node==null)
                 break;
-            //case XLYR
+            //case XLYR  前推后
             if(node.leftList!=null){
                 for(List<AttributeAndDirection> pattern:node.leftList){
                     int leftBegin=attribute2Index.getOrDefault(pattern.get(0).attribute,-1);
@@ -90,7 +90,7 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
                         return false;
                 }
             }
-            //case XRL
+            //case XRYL  后推前
             if (node.rightList != null) {
                 for(List<AttributeAndDirection> pattern:node.rightList){
                     int rightBegin=attribute2Index.getOrDefault(pattern.get(0).attribute,-1);
@@ -109,7 +109,44 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
 
     @Override
     public boolean isListMinimalFDMap(List<AttributeAndDirection> list, Map<String, List<List<Integer>>> fdMap) {
-        return false;
+        HashMap<Integer,Integer> attribute2Index=new HashMap<>();
+        //attribute和list中的index对应
+        for (int i = 0; i < list.size(); i++) {
+            attribute2Index.put(list.get(i).attribute,i);
+        }
+        if(list.get(list.size()-1).direction==AttributeAndDirection.DOWN){
+            list=reverseDirection(list);
+        }
+        ODMinimalCheckTreeNode node=root;
+        for(int i=list.size()-1; i>=0; i--) {
+            //得到list中的最后一个元素，也就是expandAttribute
+            AttributeAndDirection attributeAndDirection=list.get(i);
+            node=node.children[attributeAndDirection2childrenIndex(attributeAndDirection)];
+            if(node==null)
+                break;
+            //case 后推前
+            if (node.rightList != null) {
+                for(List<AttributeAndDirection> pattern:node.rightList){
+                    int rightBegin=attribute2Index.getOrDefault(pattern.get(0).attribute,-1);
+                    if(rightBegin!=-1 && rightBegin+pattern.size()==i && exactMatch(list,pattern,rightBegin))
+                        return false;
+                }
+            }
+        }
+
+        String expandAttribute = String.valueOf(list.get(list.size() - 1).attribute);
+        List<List<Integer>> leftOfExpandRight = fdMap.get(expandAttribute);
+        List<Integer> expandListAttributes = new ArrayList<>();
+        for(int i = 0; i < list.size() - 1; i++){
+            expandListAttributes.add(list.get(i).attribute);
+        }
+
+        //FD前推后
+        for (List<Integer> integers : leftOfExpandRight) {
+            if (expandListAttributes.containsAll(integers))
+                return false;
+        }
+        return true;
     }
 
     public ODMinimalCheckTree(int countAttribute) {

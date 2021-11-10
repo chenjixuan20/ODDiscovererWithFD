@@ -11,6 +11,7 @@ import util.Timer;
 import validator.fd.FDTreeIncrementalValidator;
 import validator.od.ODBruteForceFullValidator;
 import discoverer.total.BFSTotalDiscovererArrayThreshold.*;
+import validator.od.ODPrefixBasedIncrementalValidator;
 
 import java.util.List;
 import java.util.Set;
@@ -18,7 +19,7 @@ import java.util.Set;
 public class ThresholdEnter {
 
     public static void main(String[] args) {
-        DataFrame data = DataFrame.fromCsv("Data/FLI 10K.csv");
+        DataFrame data = DataFrame.fromCsv("Data/FLI 100K.csv");
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame sampleData = sampler.sample(data);
         System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
@@ -27,7 +28,8 @@ public class ThresholdEnter {
 
         FDTreeIncrementalValidator validator = new FDTreeIncrementalValidator();
 
-        ODBruteForceFullValidator ODValidator = new ODBruteForceFullValidator();
+//        ODBruteForceFullValidator ODValidator = new ODBruteForceFullValidator();
+        ODPrefixBasedIncrementalValidator ODValidator = new ODPrefixBasedIncrementalValidator();
 
         List<FDCandidate> fds;
         List<ODCandidate> ods;

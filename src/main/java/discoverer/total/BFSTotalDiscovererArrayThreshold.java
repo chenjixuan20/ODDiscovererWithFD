@@ -22,10 +22,11 @@ import java.util.*;
 
 public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     private final CloneUtil cloneUtil = new CloneUtil();
-    public static final int FD_INITIAL_RETURN_THRESHOLD =500;
-    public static final int OD_INITIAL_RETURN_THRESHOLD =500;
+    public static final int FD_INITIAL_RETURN_THRESHOLD =80;
+    public static final int OD_INITIAL_RETURN_THRESHOLD =80;
     private boolean isFirstDone = false;
-    private boolean isInterrup = false;
+    private boolean isFDInterrup = false;
+    private boolean isODInterrup = false;
     private InterruptStatus interruptStatus;
     private int fdReturnThreshold;
     private int odReturnThreshold;
@@ -34,7 +35,10 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     Queue<QueueElementArray> queue = new LinkedList<>();
     private int newFoundOdCount;
 
+    //todo 使用ODMinimalCheckTree实现 fd后推前
     static ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
+//    static ODMinimalChecker odMinimalChecker;
+
     int firstLever = 3;
     int afterLever = 3;
 
@@ -44,11 +48,6 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
 
     public void setInterruptStatus(InterruptStatus interruptStatus) {
         this.interruptStatus = interruptStatus;
-    }
-
-    //todo 修改
-    public boolean isComplete() {
-        return interruptStatus.equals(InterruptStatus.END);
     }
 
     @Override
@@ -79,42 +78,37 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     public void discover(DataFrame data, ODTree odReference, FDTreeArray fdTree){
         if(!isFirstDone){
             if(interruptStatus.equals(InterruptStatus.START_FIRST)){
-                System.out.println("-从头执行First算法-");
+      System.out.println("-从头执行First算法-");
                 discoverFirstTimes(data,odReference);
             }else if(interruptStatus.equals(InterruptStatus.CONTINUE_FIRST)) {
-                System.out.println("-恢复执行当前First算法-");
+      System.out.println("-恢复执行当前First算法-");
                 continueFirstTimes(data, odReference);
             }else {
-                System.out.println("-First算法没有全部完成时，中断状态错误-");
+      System.out.println("-First算法没有全部完成时，中断状态错误-");
             }
         }else {
             if(interruptStatus.equals(InterruptStatus.START_AFTER)){
-                System.out.println("-从头执行After算法-");
+      System.out.println("-从头执行After算法-");
                 discoverAfterValidate(data,odReference,fdTree);
             }else if(interruptStatus.equals(InterruptStatus.CONTINUE_AFTER)) {
-                System.out.println("-恢复执行当前After算法-");
+      System.out.println("-恢复执行当前After算法-");
                 continueAfterValidate(data,odReference,fdTree);
             }else{
-                System.out.println("-After阶段中断状态错误-");
+      System.out.println("-After阶段中断状态错误-");
             }
         }
     }
 
     public void discoverFirstTimes(DataFrame data, ODTree odReference){
-        System.out.println("--startFirstTimes--");
-        clear();
+    System.out.println("--startFirstTimes--");
         fdReturnThreshold = FD_INITIAL_RETURN_THRESHOLD;
         odReturnThreshold = OD_INITIAL_RETURN_THRESHOLD;
-        if(isInterrup){
-            fdReturnThreshold*=2;
-            odReturnThreshold*=2;
-        }
+        init();
 
-        System.out.println("fdReturnThreshold: " + fdReturnThreshold);
-        System.out.println("odReturnThreshold: " + odReturnThreshold);
-        System.out.println("newFoundFdCount: "+newFoundFdCount);
-        System.out.println("newFoundOdCount: "+ newFoundOdCount);
-
+    System.out.println("fdReturnThreshold: " + fdReturnThreshold);
+    System.out.println("odReturnThreshold: " + odReturnThreshold);
+    System.out.println("newFoundFdCount: "+newFoundFdCount);
+    System.out.println("newFoundOdCount: "+ newFoundOdCount);
 
         int attributeNum = data.getColumnCount();
         fdTreeArray = new FDTreeArray(attributeNum);
@@ -123,23 +117,22 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
 
         //处理fd根节点和level2的节点
         processFDRootAndLevel2(data,fdRoot);
-        System.out.println("处理完fd根节点和level2的节点");
+    System.out.println("处理完fd根节点和level2的节点");
         //od第二层的所有结点的direction为UP
         processLevel1AddLevel2ODNode(data,odResult,odReference);
-        System.out.println("处理完od第一层节点,添加第二层进入队列");
+    System.out.println("处理完od第一层节点,添加第二层进入队列");
 
         BFSFirstTime(data, odResult);
         odTree = odResult;
     }
 
     public void continueFirstTimes(DataFrame data, ODTree odReference){
-        System.out.println("--continueFirstTimes--");
-        fdReturnThreshold*=2;
-        odReturnThreshold*=2;
-        System.out.println("fdReturnThreshold: " + fdReturnThreshold);
-        System.out.println("odReturnThreshold: " + odReturnThreshold);
-        System.out.println("newFoundFdCount: "+newFoundFdCount);
-        System.out.println("newFoundOdCount: "+ newFoundOdCount);
+      System.out.println("--continueFirstTimes--");
+        disposeThreshold();
+      System.out.println("fdReturnThreshold: " + fdReturnThreshold);
+      System.out.println("odReturnThreshold: " + odReturnThreshold);
+      System.out.println("newFoundFdCount: "+newFoundFdCount);
+      System.out.println("newFoundOdCount: "+ newFoundOdCount);
         BFSFirstTime(data, odReference);
         odTree = odReference;
     }
@@ -166,12 +159,20 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
             System.out.println("FdCount： " + newFoundFdCount);
             System.out.println("OdCount： " + newFoundOdCount);
             if(newFoundFdCount >= fdReturnThreshold || newFoundOdCount >= odReturnThreshold){
-                System.out.println("first发现阶段中断发生");
-                isInterrup = true;
+                if(newFoundFdCount >= fdReturnThreshold){
+                    System.out.println("****first发现阶段fd中断发生****");
+                    isFDInterrup = true;
+                }
+                if(newFoundOdCount >= odReturnThreshold){
+                    System.out.println("****first发现阶段od中断发生****");
+                    isODInterrup = true;
+                }
                 return;
             }
+
         }
-        isInterrup = false;
+        isFDInterrup = false;
+        isODInterrup = false;
         isFirstDone = true;
         //first没有中断的进行完，将状态设为START_AFTER，开始从头执行after算法
         interruptStatus = InterruptStatus.START_AFTER;
@@ -179,11 +180,7 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
 
     public void discoverAfterValidate(DataFrame data, ODTree odReference, FDTreeArray fdReference){
         System.out.println("-----after------");
-        clear();
-        if(isInterrup){
-            fdReturnThreshold*=2;
-            odReturnThreshold*=2;
-        }
+        init();
         System.out.println("fdReturnThreshold: " + fdReturnThreshold);
         System.out.println("odReturnThreshold: " + odReturnThreshold);
         System.out.println("newFoundFdCount: "+newFoundFdCount);
@@ -203,20 +200,19 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     }
 
     public void continueAfterValidate(DataFrame data, ODTree odReference, FDTreeArray fdReference){
-        System.out.println("--continueAfter--");
-        fdReturnThreshold*=2;
-        odReturnThreshold*=2;
-        System.out.println("fdReturnThreshold: " + fdReturnThreshold);
-        System.out.println("odReturnThreshold: " + odReturnThreshold);
-        System.out.println("newFoundFdCount: "+newFoundFdCount);
-        System.out.println("newFoundOdCount: "+ newFoundOdCount);
+      System.out.println("--continueAfter--");
+        disposeThreshold();
+      System.out.println("fdReturnThreshold: " + fdReturnThreshold);
+      System.out.println("odReturnThreshold: " + odReturnThreshold);
+      System.out.println("newFoundFdCount: "+newFoundFdCount);
+      System.out.println("newFoundOdCount: "+ newFoundOdCount);
         BFSAfter(data, odReference);
         odTree = odReference;
     }
 
     public void BFSAfter(DataFrame data, ODTree odResult){
         while(!queue.isEmpty()){
-            System.out.println("--处理第" + (afterLever++) +"层--");
+      System.out.println("--处理第" + (afterLever++) +"层--");
             int size = queue.size();
             for(int i = 0; i < size; i++) {
                 QueueElementArray element = queue.poll();
@@ -243,15 +239,22 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
                     disposeODNode(odResult, parent, data, info);
                 }
             }
-            System.out.println("FdCount： " + newFoundFdCount);
-            System.out.println("OdCount： " + newFoundOdCount);
+      System.out.println("FdCount： " + newFoundFdCount);
+      System.out.println("OdCount： " + newFoundOdCount);
             if(newFoundFdCount >= fdReturnThreshold || newFoundOdCount >= odReturnThreshold){
-                System.out.println("after发现阶段中断发生");
-                isInterrup = true;
+                if(newFoundFdCount >= fdReturnThreshold){
+      System.out.println("****after发现阶段fd中断发生****");
+                    isFDInterrup = true;
+                }
+                if(newFoundOdCount >= odReturnThreshold){
+      System.out.println("****after发现阶段od中断发生****");
+                    isODInterrup = true;
+                }
                 return;
             }
         }
-        isInterrup = false;
+        isFDInterrup = false;
+        isODInterrup = false;
     }
 
     public void disposeFDNode(FDTreeNode parent, DataFrame data, FDDiscoverNodeSavingInfoArray info){
@@ -410,7 +413,7 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
         }
     }
 
-    public void clear(){
+    public void init(){
         queue.clear();
         fdCandidates.clear();
         dataWareHouse.listEcMap.clear();
@@ -419,6 +422,12 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
         newFoundOdCount = 0;
         firstLever = 3;
         afterLever = 3;
+        disposeThreshold();
+    }
+
+    public void disposeThreshold(){
+        if(isFDInterrup) fdReturnThreshold*=2;
+        if(isODInterrup) odReturnThreshold*=2;
     }
 
     enum InterruptStatus
@@ -452,25 +461,6 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     }
 
     public boolean getIsInterrup(){
-        return this.isInterrup;
-    }
-
-    public static void main(String[] args) {
-        DataFrame data = DataFrame.fromCsv("Data/FLI 1000.csv");
-        BFSTotalDiscovererArrayThreshold discoverer = new BFSTotalDiscovererArrayThreshold();
-        discoverer.discover(data,null,null);
-        System.out.println("fd:" + discoverer.fdCandidates.size());
-        System.out.println("od: " + discoverer.odTree.getAllOdsOrderByBFS().size());
-        System.out.println(discoverer.queue.size());
-
-        ODTree odTree = discoverer.odTree;
-        FDTreeArray fdTree = discoverer.fdTreeArray;
-
-//        discoverer.setInterruptStatus(InterruptStatus.CONTINUE_FIRST);
-        discoverer.discover(data,odTree,fdTree);
-        System.out.println("fd:" + discoverer.fdCandidates.size());
-        System.out.println("od: " + discoverer.odTree.getAllOdsOrderByBFS().size());
-        System.out.println(discoverer.queue.size());
-
+        return this.isFDInterrup || this.isODInterrup;
     }
 }

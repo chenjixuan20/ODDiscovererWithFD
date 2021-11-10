@@ -8,6 +8,7 @@ import dataStructures.od.ODTree.ODTreeNode;
 import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import minimal.ODMinimalCheckTree;
 import minimal.ODMinimalChecker;
+import minimal.ODMinimalCheckerBruteForce;
 import util.Timer;
 
 import java.util.LinkedList;
@@ -30,8 +31,8 @@ public class BFSODDiscovererForIteration extends ODDiscoverer{
 
     public ODTree restartDiscovering(DataFrame data,ODTree reference){
         System.out.println("restartDiscovering");
-        odMinimalChecker=new ODMinimalCheckTree(data.getColumnCount());
-//        odMinimalChecker=new ODMinimalCheckerBruteForce();
+//        odMinimalChecker=new ODMinimalCheckTree(data.getColumnCount());
+        odMinimalChecker=new ODMinimalCheckerBruteForce();
         queue=new LinkedList<>();
         ODTree result=new ODTree(data.getColumnCount());
 

@@ -55,6 +55,7 @@ public abstract class ODMinimalChecker {
         return result;
     }
 
+
     public boolean isCandidateMinimalFD(ODCandidate candidate, List<FDCandidate> fdCandidates){
         Timer timer=new Timer();
         boolean result;
