@@ -31,8 +31,8 @@ public class BFSODDiscovererForIteration extends ODDiscoverer{
 
     public ODTree restartDiscovering(DataFrame data,ODTree reference){
         System.out.println("restartDiscovering");
-//        odMinimalChecker=new ODMinimalCheckTree(data.getColumnCount());
-        odMinimalChecker=new ODMinimalCheckerBruteForce();
+        odMinimalChecker=new ODMinimalCheckTree(data.getColumnCount());
+//        odMinimalChecker=new ODMinimalCheckerBruteForce();
         queue=new LinkedList<>();
         ODTree result=new ODTree(data.getColumnCount());
 
@@ -55,7 +55,6 @@ public class BFSODDiscovererForIteration extends ODDiscoverer{
 
     public ODTree continueDiscovering(DataFrame data,ODTree tree){
         System.out.println("continueDiscovering");
-        System.out.println(tree);
         returnThreshold*=2;
         BFSTraversing(data, tree);
         return tree;

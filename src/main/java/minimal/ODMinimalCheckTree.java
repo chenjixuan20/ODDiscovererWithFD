@@ -141,11 +141,17 @@ public class ODMinimalCheckTree extends ODMinimalChecker  {
             expandListAttributes.add(list.get(i).attribute);
         }
 
+
+        if(leftOfExpandRight == null){
+            return true;
+        }
+
         //FD前推后
         for (List<Integer> integers : leftOfExpandRight) {
             if (expandListAttributes.containsAll(integers))
                 return false;
         }
+
         return true;
     }
 

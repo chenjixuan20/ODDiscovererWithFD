@@ -14,6 +14,7 @@ import dataStructures.od.ODTreeNodeEquivalenceClasses;
 import discoverer.fd.Array.FDDiscoverNodeSavingInfoArray;
 import discoverer.fd.FDDiscoverer;
 import discoverer.od.ODDiscovererNodeSavingInfo;
+import minimal.ODMinimalCheckTree;
 import minimal.ODMinimalChecker;
 import minimal.ODMinimalCheckerBruteForce;
 import util.CloneUtil;
@@ -22,8 +23,8 @@ import java.util.*;
 
 public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     private final CloneUtil cloneUtil = new CloneUtil();
-    public static final int FD_INITIAL_RETURN_THRESHOLD =80;
-    public static final int OD_INITIAL_RETURN_THRESHOLD =80;
+    public static final int FD_INITIAL_RETURN_THRESHOLD = 500;
+    public static final int OD_INITIAL_RETURN_THRESHOLD = 200;
     private boolean isFirstDone = false;
     private boolean isFDInterrup = false;
     private boolean isODInterrup = false;
@@ -36,8 +37,7 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     private int newFoundOdCount;
 
     //todo 使用ODMinimalCheckTree实现 fd后推前
-    static ODMinimalChecker odMinimalChecker = new ODMinimalCheckerBruteForce();
-//    static ODMinimalChecker odMinimalChecker;
+    static ODMinimalChecker odMinimalChecker;
 
     int firstLever = 3;
     int afterLever = 3;
@@ -103,8 +103,7 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     System.out.println("--startFirstTimes--");
         fdReturnThreshold = FD_INITIAL_RETURN_THRESHOLD;
         odReturnThreshold = OD_INITIAL_RETURN_THRESHOLD;
-        init();
-
+        init(data);
     System.out.println("fdReturnThreshold: " + fdReturnThreshold);
     System.out.println("odReturnThreshold: " + odReturnThreshold);
     System.out.println("newFoundFdCount: "+newFoundFdCount);
@@ -179,12 +178,12 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
     }
 
     public void discoverAfterValidate(DataFrame data, ODTree odReference, FDTreeArray fdReference){
-        System.out.println("-----after------");
-        init();
-        System.out.println("fdReturnThreshold: " + fdReturnThreshold);
-        System.out.println("odReturnThreshold: " + odReturnThreshold);
-        System.out.println("newFoundFdCount: "+newFoundFdCount);
-        System.out.println("newFoundOdCount: "+ newFoundOdCount);
+      System.out.println("-----after------");
+        init(data);
+      System.out.println("fdReturnThreshold: " + fdReturnThreshold);
+      System.out.println("odReturnThreshold: " + odReturnThreshold);
+      System.out.println("newFoundFdCount: "+newFoundFdCount);
+      System.out.println("newFoundOdCount: "+ newFoundOdCount);
 
         int attributeNum = data.getColumnCount();
         fdTreeArray = fdReference;
@@ -413,7 +412,9 @@ public class BFSTotalDiscovererArrayThreshold extends FDDiscoverer {
         }
     }
 
-    public void init(){
+    public void init(DataFrame data){
+//        odMinimalChecker = new ODMinimalCheckerBruteForce();
+        odMinimalChecker = new ODMinimalCheckTree(data.getColumnCount());
         queue.clear();
         fdCandidates.clear();
         dataWareHouse.listEcMap.clear();

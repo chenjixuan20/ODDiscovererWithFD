@@ -19,7 +19,7 @@ import java.util.Set;
 public class ThresholdEnter {
 
     public static void main(String[] args) {
-        DataFrame data = DataFrame.fromCsv("Data/FLI 100K.csv");
+        DataFrame data = DataFrame.fromCsv("Data/flights 50k.csv");
         OneLevelCheckingSampler sampler = new OneLevelCheckingSampler();
         PartialDataFrame sampleData = sampler.sample(data);
         System.out.println("抽样数据集大小：" + sampleData.getRowsCount());
